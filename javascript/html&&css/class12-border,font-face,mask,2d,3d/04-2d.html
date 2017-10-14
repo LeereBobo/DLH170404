@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px ;
+            height: 200px ;
+            background-color:gold;
+            margin: 50px;
+        }
+
+        /*平移*/
+        /*过渡前的起始位置,起始位置均为零可不写*/
+        .rain-translate {
+            -webkit-transform: translate(0,0px);
+            -moz-transform: translate(0,0px);
+            -ms-transform: translate(0,0px);
+            -o-transform: translate(0,0px);
+            transform: translate(0,0px);
+
+
+            /*平移的元素以及时间*/
+            -webkit-transition: all 2s;
+            -moz-transition: all 2s;
+            -ms-transition: all 2s;
+            -o-transition: all 2s;
+            transition: all 2s;
+        }
+
+        /*div. 选择此类里的div元素*/
+        div.rain-translate:hover {
+
+            /*需平移到的位置*/
+            -webkit-transform: translate(200px,20px);
+            -moz-transform: translate(200px,20px);
+            -ms-transform: translate(200px,20px);
+            -o-transform: translate(200px,20px);
+            transform: translate(200px,20px);
+        }
+
+
+
+        /*缩放*/
+        /*(1,1)指的是起始宽和高.有缩有放*/
+        div.rain-scale {
+            -webkit-transform: scale(1,1);
+            -moz-transform: scale(1,1);
+            -ms-transform: scale(1,1);
+            -o-transform: scale(1,1);
+            transform: scale(1,1);
+        }
+
+        div.rain-scale {
+            -webkit-transition: all 2s;
+            -moz-transition: all 2s;
+            -ms-transition: all 2s;
+            -o-transition: all 2s;
+            transition: all 2s;
+        }
+
+        div.rain-scale:hover {
+
+            -webkit-transform: scale(0.5,2);
+            -moz-transform: scale(0.5,2);
+            -ms-transform: scale(0.5,2);
+            -o-transform: scale(0.5,2);
+            transform: scale(0.5,2);
+
+            -webkit-transform-origin:bottom;
+            -moz-transform-origin:bottom;
+            -ms-transform-origin:bottom;
+            -o-transform-origin:bottom;
+            transform-origin:bottom;
+            /*原点:默认为图像中心*/
+        }
+
+
+
+
+        /*旋转*/
+        /*正值为顺时针旋转,负值为逆时针旋转*/
+        /*旋转中心为图像中心*/
+        div.rain-rotate {
+            -webkit-transform:rotateY(-60deg) ;
+            -ms-transform:rotateY(-60deg) ;
+            -o-transform:rotateY(-60deg) ;
+            transform:rotateY(-60deg);
+        }
+
+
+
+        /*倾斜*/
+        /*括号里第一个值指沿着x轴倾斜,第二个值是y轴,若哪个没写,则默认为零*/
+        div.rain-skew {
+            -webkit-transform:skew(0,20deg);
+            -moz-transform: skew(0,20deg);
+            -ms-transform: skew(0,20deg);
+            -o-transform:skew(0,20deg);
+            transform: skew(0,20deg);
+        }
+        
+        
+        /*混合*/
+        div.rain-all {
+            -webkit-transform: rotate(30deg) translate(100px,0) scale(2,1) skew(-20deg,20deg);
+            -moz-transform: rotate(30deg) translate(100px,0) scale(2,1) skew(-20deg,20deg);
+            -ms-transform: rotate(30deg) translate(100px,0) scale(2,1) skew(-20deg,20deg);
+            -o-transform: rotate(30deg) translate(100px,0) scale(2,1) skew(-20deg,20deg);
+            transform: rotate(30deg) translate(100px,0) scale(2,1) skew(-20deg,20deg);
+        }
+        
+    </style>
+</head>
+<div class="box"></div>
+<div class="box rain-translate">平移</div>
+<div class="box rain-scale">缩放</div>
+<div class="box rain-rotate">旋转</div>
+<div class="box rain-skew">倾斜</div>
+<div class="box rain-all">混合</div>
+</body>
+</html>

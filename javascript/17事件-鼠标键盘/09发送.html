@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		ul,
+		li {
+			list-style: none;
+		}
+	</style>
+
+	<body>
+		<ul id="all">
+			<input type="text" name="" id="in" value="" />
+		</ul>
+
+		<script type="text/javascript">
+			var oAll = document.getElementById("all");
+			var oIn = document.getElementById("in");
+
+			document.onkeydown = function() {
+
+				var ev = ev || window.event;
+
+				if(ev.ctrlKey && ev.keyCode == 13) {
+					if(oIn.value == "") {
+						alert("空内容不可发送哦!😁")
+					} else {
+						var newLi = document.createElement("li");
+						oAll.appendChild(newLi);
+						newLi.innerHTML = oIn.value;
+						oIn.value = "";
+					}
+				}
+			}
+
+
+		</script>
+		</body>
+
+</html>

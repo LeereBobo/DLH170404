@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .border {
+            width: 600px;
+            border: 1px solid lightblue;
+            background-color: lightcyan ;
+            font-size: 15px;
+            padding:40px 0 60px 80px ;
+            margin: auto;
+
+        }
+
+        input[type="text"],input[type="password"],input[type="tel"]
+        {
+            border: none;
+            width: 280px;
+            border:1px grey solid;
+            border-radius: 4px ;
+            padding: 10px 5px;
+            margin: 8px 5px ;
+
+        }
+
+        .warning {
+            color: red;
+            font-size: 12px;
+            background: url("images/warning.png") no-repeat left;
+            background-size: 15px;
+            padding-left:18px;
+            margin-left: 8px;
+        }
+
+        input[type="radio"] {
+            margin: 8px 5px;
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            border:1px grey solid ;
+            border-radius: 4px;
+            padding: 3px 40px 3px 3px ;
+            background: url("images/jiao.jpg") no-repeat right;
+            margin:8px 4px;
+            color:blue;
+        }
+
+        .find {
+            color: grey;
+            font-size: 12px;
+            margin-left: 65px;
+        }
+
+        a {
+          text-decoration: none;
+            color:blue;
+        }
+
+        input[type="submit"] {
+            background-color: lightpink;
+            color: white;
+            font-size: 30px;
+            width: 300px;
+            padding: 8px 95px;
+            border: none;
+            border: 1px solid lightpink;
+            border-radius: 4px;
+            margin:15px 65px;
+        }
+        
+        #read {
+            border: none;
+            color: black;
+        }
+
+        #wenzi {
+
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .big {
+            padding-right: 63px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="border">
+
+
+        <!--输入框部分-->
+        <form action="">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="username">昵称</label>
+                <input type="text" name="username" id="username">
+                <span class="warning">
+                    昵称不可以为空
+                </span>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password">
+
+            <br>
+
+            <label for="sure">确认密码</label>
+            <input type="password" name="sure" id="sure">
+
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            性别
+            <input type="radio" checked>男
+            <input type="radio" style="margin-left:40px ">女
+
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            生日
+            <select name="" id="">
+                <option value="">公历</option>
+            </select>
+            <select name="" id="" class="big">
+                <option value="" >年</option>
+            </select>
+            <select name="" id="">
+                <option value="">月</option>
+            </select>
+            <select name="" id="">
+                <option value="">日</option>
+            </select>
+
+            <br>
+            &nbsp;&nbsp;&nbsp;
+            所在地
+            <select name="" id="" class="big">
+                <option value="" >中国</option>
+            </select>
+            <select name="" id="" class="big">
+                <option value="" >北京</option>
+            </select>
+            <select name="" id="" class="big">
+                <option value="" >海淀</option>
+            </select>
+
+            <br>
+
+            <label for="tel">手机号码</label>
+            <input type="tel" id="tel" name="tel">
+
+            <!--找回密码-->
+            <div class="find">可通过该手机号码快速找回密码</div>
+            <div class="find">
+                <span>中国大陆地区以外手机号码</span>
+                <a href="#">点击这里</a>
+            </div>
+
+            <!--立即注册-->
+            <input type="submit" value="立即注册"><br>
+
+            <!--多选框-->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" checked>
+                <span id="wenzi">同时开通QQ空间</span>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" checked>
+                <select name="read" id="read">
+                    <option id="wenzi" >我已阅读并同意相关服务条款和隐私政策</option>
+                </select>
+
+
+        </form>
+    </div>
+</body>
+</html>

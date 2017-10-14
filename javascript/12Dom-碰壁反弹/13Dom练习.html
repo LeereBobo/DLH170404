@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			.big {
+				margin-bottom: 10px;
+			}
+			.one {
+				font-size: 30px;
+			}
+			.two {
+				font-size: 30px;
+				background-color: red;
+			}
+			.two:hover{
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">添加</button>
+		<div id="all">
+			
+		</div>
+		
+		<script type="text/javascript">
+			var oAll = document.getElementById("all");
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var newDiv = document.createElement("div");
+				newDiv.className = "big";
+				oAll.appendChild(newDiv);
+				
+				var newSpan1 = document.createElement("span");
+				newSpan1.innerHTML = "马老师";
+				newSpan1.className = "one";
+				newDiv.appendChild(newSpan1);
+				
+				var newSpan2 = document.createElement("span");
+				newSpan2.innerHTML = "酸奶";
+				newSpan2.className = "two";
+				newDiv.appendChild(newSpan2);
+				
+				newSpan2.onclick = function(){
+					//删除newSpan2的父标签
+					oAll.removeChild(this.parentNode);
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: relative;
+				transform: rotate(45deg);
+				margin:300px  300px;
+			}
+			
+			#wrap::after{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -50px;
+				border-radius: 50px 50px;
+
+			}
+			#wrap::before{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				content: "";
+				position: absolute;
+				top: -50px;
+				right: 0;
+				border-radius: 50px 50px;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap"></div>
+		
+		
+	</body>
+</html>

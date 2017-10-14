@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 100%;
+        }
+
+        /*给表格添加边框,不能给<tr>加边框,而是给每一个小的单元格添加边框*/
+
+        table,td,th {
+            border: 2px solid black;
+
+            /*单元格边框之间的距离.前提是边框不能折叠*/
+            /*border-spacing: 20px;*/
+
+            /*折叠边框*/
+            /*border-collapse: collapse;*/
+
+        }
+        th,td {
+            padding: 20px;
+
+
+
+        }
+        th {
+            /*表头左对齐*/
+            text-align: left;
+
+        }
+    </style>
+</head>
+<body>
+
+<!--<table>是表格元素-->
+<!--<tr>是表格中的一行-->
+<!--<th>是表头元素-->
+<!--<td>是单元格元素,内容是表格的真正数据-->
+    <table>
+
+        <!--<caption>元素必须要紧挨着<table>开始标签-->
+        <caption>表格标题</caption>
+        <tr>
+            <th style="width: 10px">姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+        <tr>
+            <td>张婷</td>
+            <td>男</td>
+            <td>58</td>
+        </tr>
+        <tr>
+            <td>张伟</td>
+            <td>?</td>
+            <td>?</td>
+        </tr>
+    </table>
+</body>
+</html>

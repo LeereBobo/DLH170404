@@ -1,0 +1,332 @@
+/*content1-左边*/
+.content1-left {
+    width: 252px;
+    box-sizing: border-box;
+
+}
+
+.kind {
+    border:1px lightgray solid;
+    margin:20px 0;
+    background-color: white;
+
+}
+
+.small-kind {
+    padding: 15px 12px;
+    border-bottom: 1px solid lightgray;
+}
+
+.title {
+    width:100%;
+    border-left: 2px solid red;
+    font-size: 16px;
+    padding-left: 15px;
+    margin-top: 10px;
+    color: black;
+
+}
+
+.small-kind a {
+    color:grey;
+    font-size: 14px ;
+    padding:3px 5px;
+    display:inline-block;
+}
+/*content1-右边*/
+
+/*图片轮播*/
+.small{
+    width: 226px;
+    height: 90px;
+}
+.small:not(.first) {
+    margin-left: 4px;
+}
+
+.first {
+    margin-left: 10px;
+}
+
+.big {
+    position: relative;
+    margin-top:20px;
+    margin-left: 10px;
+}
+
+.fixed {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/*最新职位*/
+/*.new-position{*/
+    /*border: 1px solid lightgray;*/
+    /*width: 930px;*/
+    /*background-color: white;*/
+    /*margin: 5px 0;
+}*/
+/*头部*/
+.item {
+    color: grey;
+    font-size: 14px;
+    padding: 15px;
+}
+ .zuixinzhiwei {
+     color: black;
+     font-size: 18px ;
+     border-left: 2px solid red;
+     padding-left:15px ;
+ }
+.new-position-header-right {
+    color: grey;
+}
+
+.new-position-header {
+    padding: 10px ;
+}
+
+/*内容*/
+.height-float::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+.new-position-content-left::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+.new-position-header::after{
+    display: table;
+    content: "";
+    clear:both;
+}
+
+.display {
+    display: block;
+}
+
+.overflow {
+    width: 100px;
+    height: 18px;
+    overflow: hidden;
+}
+
+/*content*/
+.new-position {
+    width: 930px;
+    background-color: white;
+    margin:10px 5px;
+    padding-bottom: 25px;
+    border: 1px solid lightgray;
+}
+.new-position-content-left-one:hover {
+
+    background-color: lightgrey;
+
+}
+
+.new-position-content-left-one {
+    padding-left: 25px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+.hover-line:hover {
+    text-decoration: underline;
+}
+
+.hover-red:hover {
+    color: red;
+}
+
+.hover-red {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.hover-line {
+    font-size: 14px ;
+    color:grey;
+}
+.two {
+    padding-left:45px ;
+}
+
+.three {
+    padding-left: 65px;
+    text-align: right;
+}
+
+/*右边*/
+.new-position-content-right {
+    margin-left: 60px;
+}
+
+/*查看*/
+.check {
+    width: 880px;
+    clear: both;
+    font-size:16px;
+    text-align: center;
+    padding:10px 0;
+    background-color:lightgrey;
+    margin-left: 25px;
+
+}
+
+/*名企招聘*/
+/*1.图标*/
+.dingwei-picture {
+    border:1px lightgray solid;
+    background-color: white;
+
+}
+.content2-mingqi {
+    position: relative;
+    margin: 20px 0;
+}
+.left-img {
+    position: absolute;
+    top: 130px;
+    left: -60px;
+}
+
+.right-img {
+    position: absolute;
+    top: 130px;
+    right: -60px;
+}
+
+/*2.title*/
+.mingqi-title {
+    font-size: 18px;
+    border-left: 2px red solid;
+    padding-left: 20px;
+    margin:15px 0;
+}
+/*3.广告位*/
+.place a {
+    display: inline-block;
+    position: relative;
+
+}
+
+.place span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: white;
+    background-color:gray;
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+    display: none;
+}
+.place a:hover span{
+    display: block;
+}
+
+.place {
+    display: inline;
+    margin: 6px;
+}
+
+.adds {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/*推荐职位*/
+.tuijian-title {
+    font-size: 18px;
+    border-left: 2px red solid;
+    padding-left: 20px;
+    margin:15px 0;
+
+}
+.tuijian-num {
+    padding:1px 5px 3px 5px;
+    background-color: red;
+    border-radius: 3px;
+    color: white;
+}
+
+.greyfont {
+    font-size: 14px;
+    color: grey;
+}
+
+.greyfont:hover {
+    color: red;
+}
+
+.tuijian-position {
+    width: 390px;
+    border:1px lightgray solid;
+    background-color: white;
+    /*overflow: hidden;*/
+}
+
+
+
+.tuijian-content1 {
+    border-bottom: 1px solid lightgray;
+    padding: 10px 0 10px 0 ;
+    margin-bottom: 5px;
+}
+
+.tuijian-content2,.tuijian-content3 {
+    margin-left: 10px;
+}
+
+.tuijian-father::after {
+    display: table;
+    content:"";
+    clear: both;
+}
+
+/*求职攻略*/
+.job-letter {
+    font-size: 18px;
+    border-left: 2px solid red;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+.offer {
+    color: grey;
+
+}
+.offer-float::after ,.float-date::after,.gl-first::after{
+    display: table;
+    content: "";
+    clear: both;
+
+}
+.gonglv-picture {
+   width: 180px;
+}
+
+.wenzi {
+    width: 400px; ;
+}
+.gl-first {
+    width: 600px;
+}
+
+.rzzc {
+    font-size:16px;
+    color: black;
+
+}
+.hover-red-next:hover {
+    color: red;
+}
+.qzgl-content {
+
+}

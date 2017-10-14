@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#big {
+				width: 600px;
+				min-height: 330px;
+				border: 3px solid black;
+				margin: 10px auto;
+			}
+			
+			#many {
+				width: 500px;
+				height: 200px;
+				display: block;
+				margin: 30px auto;
+			}
+			
+			#btn {
+				display: inline-block;
+				font-size: 18px;
+				background-color: orange;
+				color: white;
+				margin-left: 30px;
+			}
+			
+			.add {
+				width: 500px;
+				min-height: 100px;
+				border-radius: 5px;
+				background-color: lightgray;
+				margin: 30px auto;
+				position: relative;
+			}
+			
+			.de {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="big">
+			<textarea name="" rows="" cols="" value="" id="many"></textarea>
+			<br>
+			<input type="button" name="btn" id="btn" value="发布" />
+
+		</div>
+
+		<script type="text/javascript">
+			//获取
+			var oBig = document.getElementById("big");
+			var oTextarea = document.getElementById("many");
+			var oInput = document.getElementById("btn");
+			oTextarea.value;
+
+			//点击事件
+			oInput.onclick = function() {
+				//发布变色
+
+				//添加灰色div
+				var newDiv = document.createElement("div");
+				newDiv.className = "add";
+				newDiv.innerHTML = oTextarea.value;
+
+				//添加X删除
+				var oDelete = document.createElement("div");
+				oDelete.className = "de";
+				
+
+				//删除灰色div点击事件
+				oDelete.onclick = function() {
+					oBig.removeChild(this.parentNode);
+				}
+
+				if(oTextarea.value.length > 0) {
+					oBig.appendChild(newDiv);
+					newDiv.appendChild(oDelete);
+					oDelete.innerHTML = "x";
+					oTextarea.value = "";
+				}
+			}
+		</script>
+	</body>
+
+</html>

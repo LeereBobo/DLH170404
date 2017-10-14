@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,li {
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="theUL">
+			<!--li{刘珈麟今天好像防化服}*5-->
+			<li>刘珈麟今天好像防化服</li>
+			<li>刘珈麟今天好像防化服</li>
+			<li>刘珈麟今天好像防化服</li>
+			<li>刘珈麟今天好像防化服</li>
+			<li>刘珈麟今天好像防化服</li>
+		</ul>
+		
+		<script type="text/javascript">
+			var oUL = document.getElementById("theUL");
+			var lis = oUL.getElementsByTagName("li");
+			
+			/*
+			 * for (var i = 0; i < lis.length; i++) {
+				lis[i].onclick = function(){
+					this.style.color = "green";
+				}
+				
+				lis[i].onmouseover = function(){
+					this.style.color = "red";
+				}
+				lis[i].onmouseout = function(){
+					this.style.color = "";
+				}
+			}
+			*/
+			
+			
+			
+			oUL.onclick = function(e){
+				var e = e || window.event;
+				e.target.style.color = "green";
+			}
+			oUL.onmouseover = function(ev){
+				var e = e || window.event;
+				e.target.style.color = "red";
+			}
+			oUL.onmouseout = function(ev){
+				var e = e || window.event;
+				e.target.style.color = "";
+			}
+		</script>
+	</body>
+</html>

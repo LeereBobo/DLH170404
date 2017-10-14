@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//Math 对数字进行操作
+
+			var x = Math.abs(-30); // 30 返回数的绝对值
+			var y = Math.ceil(5.1); // 6  对数向上取整
+			var z = Math.floor(5.9); // 5  对数向下取整
+			var m = Math.max(3 > 7 ? 3 : 7, 1, 78, 789, 999, 7894656); // 7894656 返回多个数的最大值 
+			var a = Math.min(2, 1, 0.1); //0.1   返回多个数的最小值
+			var b = Math.round(4.5); // 4    四舍五入
+			var c = Math.random(); //0~1间的随机数,不包括0和1
+
+			//[a,b] [10,30]
+			var max = 30;
+			var min = 10;
+			var aa = Math.floor(Math.random() * (max - min + 1) + min); //取10~30间的整数
+
+			alert(aa);
+   
+			/*	//随机1000个随机数
+					for (var i = 0; i < 1000; i++) {
+						
+						console.log(Math.random());
+					}
+			*/
+			
+			//随机50个 50~80 之间的随机数, 并求和
+			var max = 80;
+			var min = 50;
+			var sum = 0;
+			for(var i = 1; i <= 50; i++) {
+				var m = Math.floor(Math.random() * (max - min + 1) + min);
+				console.log(m);
+				sum += m;
+			}
+
+			console.log(sum);
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 700px;
+				height: 500px;
+				border: 10px solid lightpink;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			#boxA {
+				width: 50px;
+				height: 50px;
+				background-color: lightgray;
+				position: absolute;
+				top: 0;
+				left: 0;
+				border-radius: 25px;
+			}
+			
+			#boxB {
+				width: 100px;
+				height: 100px;
+				background-color: lightgray;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -50px;
+				margin-top: -50px;
+				border-radius: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrap">
+			<div id="boxA">
+
+			</div>
+			<div id="boxB">
+
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var oWrap = document.getElementById("wrap");
+		var oBoxA = document.getElementById("boxA");
+		var oBoxB = document.getElementById("boxB");
+		
+		var maxWidth = oWrap.clientWidth - oBoxA.offsetWidth;
+		var maxHeight = oWrap.clientHeight - oBoxA.offsetHeight;
+		
+		oBoxA.onmousedown = function(e){
+			var e = e || window.event;
+			
+			var mx_boxA = e.clientX;
+			var my_boxA = e.clientY;
+			
+			var boxAL = oBoxA.offsetLeft;
+			var boxAT = oBoxA.offsetTop;
+			
+			document.onmousemove = function(e){
+				var e = e || window.event;
+				
+				var mx = e.clientX;
+				var my = e.clientY;
+				var lessX = mx - mx_boxA;
+				var lessY = my - my_boxA;
+				
+				oBoxA.style.left = lessX + boxAL + "px";
+				oBoxA.style.top = lessY + boxAT + "px";
+				
+				//A圆心的位置
+				var boxARL = oBoxA.offsetLeft + oBoxA.offsetWidth / 2;
+				var boxART = oBoxA.offsetTop + oBoxA.offsetHeight / 2;
+				
+				//B圆心的位置
+				var boxBRL = oBoxB.offsetLeft + oBoxB.offsetWidth / 2;
+				var boxBRT = oBoxB.offsetTop + oBoxB.offsetHeight / 2;
+				
+				//A半径
+				var boxAR = oBoxA.offsetWidth / 2;
+				var boxBR = oBoxB.offsetWidth / 2;
+
+				//勾股定理判断
+				var isTouch = (boxARL - boxBRL) * (boxARL - boxBRL) + (boxART - boxBRT) * (boxART - boxBRT) <= (boxAR + boxBR) * (boxAR + boxBR);
+				if (isTouch) {
+					oBoxB.style.backgroundColor = "lightcoral";
+					
+				} else{
+					oBoxB.style.backgroundColor = "lightgray";
+				}
+			}
+			
+			
+		}
+		
+		oBoxA.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	</script>
+
+</html>

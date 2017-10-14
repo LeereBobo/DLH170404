@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<leble>账号</leble>
+		<input type="text" name="" id="input1" value="" />
+		<leble>记住账号</leble>
+		<input type="checkbox" id="rememberInput" />
+		<br />
+		<leble>密码</leble>
+		<input type="password" name="" id="password" value="" />
+		<leble>记住密码</leble>
+		<input type="checkbox" name="" id="rememberPassword" value="" />
+	</body>
+	<script>
+		var zhangHao = document.getElementById("input1");
+		var rememberZH = document.getElementById("rememberInput");
+		var myPassword = document.getElementById("password");
+		var rememberMM = document.getElementById("rememberPassword");
+		zhangHao.value = window.localStorage["username"];
+
+		rememberZH.onclick = function() {
+			if (rememberZH.checked == true) {
+				window.localStorage["username"] = zhangHao.value;
+				console.log(window.localStorage["username"]);
+			}
+		}
+	</script>
+
+</html>

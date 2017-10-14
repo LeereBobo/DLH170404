@@ -1,0 +1,92 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#all {
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<div id="all"></div>
+		
+		<script type="text/javascript">
+			var oAll = document.getElementById("all");
+			
+			//第一种绑定方式 只能绑定一个  第一个
+			
+			/*
+			 * oAll.onclick = function(){
+				console.log(123);
+			}
+			
+			oAll.onclick = function(){
+				console.log(456);
+			}
+			*/
+			
+			//第二种方式 事件监听
+			/*
+			 * addEventListener
+			 * 第一个参数 事件名,注意是没有on
+			 * 第二个参数 绑定事件触发的函数
+			 * 第三个参数 bool值 false(事件冒泡) true(事件捕获) 可不写,默认false
+			 * */
+			oAll.addEventListener("click",function(){
+				console.log("🎃");
+			},false);
+			
+			oAll.addEventListener("click",function(){
+				console.log("🍉");
+			},false);
+			
+			function theClick(){
+				console.log("🐱");
+			}
+			
+			oAll.addEventListener("click",theClick,false);
+			
+			//事件删除,匿名函数不能被删除
+			oAll.removeEventListener("click",theClick,false);
+			
+			//兼容性 IE678
+			oAll.attachEvent("onclick",function(){
+
+			},false);
+
+            /*function myClick() {
+                console.log("🍑");
+            }
+            wrap.attachEvent("onclick",myClick);
+
+            wrap.detachEvent("onclick",myClick);*/
+
+			//事件绑定函数
+			function addEvent(obj,theEvent,fn){
+				if (obj.attachEvent) {
+					//IE678
+					obj.attachEvent("on" + theEvent,fn,false);
+				} else{
+					obj.addEventListener(theEvent,fn,false);
+				}
+			}
+
+			//事件移除函数
+            function removeEvent(obj,theEvent,fn){
+                if (obj.detachEvent) {
+                    //IE678
+                    obj.detachEvent("on" + theEvent,fn,false);
+                } else{
+                    obj.removeEventListener(theEvent,fn,false);
+                }
+            }
+		</script>
+		
+	</body>
+</html>

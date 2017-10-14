@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="number" id="num"/>
+		<button id="btn">输入</button>
+		
+		<script type="text/javascript">
+			var oNum = document.getElementById("num")
+		
+			var oBtn = document.getElementById("btn")
+			
+			
+			oBtn.onclick = function(){
+				var x = oNum.value;
+				var y = 0;//设置初值
+				
+				if(x < 1){
+					y = x;
+				} else if( 1<= x && x <10){
+					y = 2 * x - 1;
+				} else{
+					y = 3 * x - 11;
+				}
+				console.log(y);
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

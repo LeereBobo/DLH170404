@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//1.加减乘除  + - * /
+			var a = 10;
+			var b = 3;
+			var c = a + b;
+			var d = a / b;
+			//控制台打印值
+			console.log("c的值是" + c);
+			console.log("d的值是" + d);
+			
+		    //2.取余
+		    var x = a % b;
+		    console.log("a余b的值是" + x);
+		    
+		    //3.复合运算符 += -= *= /=
+		    var aa = 4;
+		    aa += 1;//aa 5
+		    //等价于 aa = aa + 1;
+		    aa %= 2; 
+		    //等价于 aa = aa % 2;
+		    
+		    console.log(aa);
+		    
+		    //4.自增自减 ++ --
+		    var abc = 5;
+		    var m = abc++; //先返回,再自加
+		    console.log(m);//5
+		    console.log(abc);//6
+		    
+		    abc = 5;
+		    var n = ++abc; //先自加,再返回
+		    console.log(n);//6
+		    console.log(abc);//6
+		    abc++;//等价于 abc += 1;
+		    
+		    //拓展
+		    abc = 5;
+		    var  nn = abc++ +1;
+		    console.log(nn);//6
+		    console.log(abc);//6
+		    
+		    
+		  
+		    
+		</script>
+	</body>
+</html>

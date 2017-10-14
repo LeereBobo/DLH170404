@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style>
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 60px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="div1"></div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+
+			//console.log(getStyle(oDiv1, "left"));
+
+			//匀速运动完美封装
+			function linearMove(obj, attr, speed, distance) {
+				//清除上一个 timer
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					//获取属性值
+					var attrValue = parseInt(getStyle(obj, attr));
+					if(Math.abs(distance - attrValue) <= Math.abs(speed)) {
+						obj.style[attr] = distance + "px";
+						clearInterval(obj.timer);
+					} else {
+						obj.style[attr] = attrValue + speed + "px";
+					}
+				}, 30);
+			}
+			//获取属性
+			function getStyle(obj, attr) {
+				//获取当前的样式
+				if(obj.currentStyle) {
+					return obj.currentStyle[attr]; //针对IE 			
+				} else {
+					return getComputedStyle(obj)[attr];
+				}
+			}
+			// 调用函数
+			linearMove(oDiv1, "height", 10, 500);
+		</script>
+
+	</body>
+
+</html>

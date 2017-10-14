@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/position.css">
+    <style>
+        #div2 {
+            /*相对定位
+                不脱离原来的文本流.
+                relative的定位元素原来的空间不会被其他元素占用.
+                可能会覆盖其他元素.
+            */
+            position: relative;
+            /*向上偏移*/
+            top: 50px;
+            /*left: 50px;*/
+            /*bottom: 50px;*/
+            /*right: 50px;*/
+
+            /*margin-top: 50px;*/
+
+            /*
+              只有和定位结合使用才会起作用,控制元素叠加的顺序,数值越大,代表元素越靠前
+            */
+            /*z-index:-2;*/
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="small div-red"></div>
+    <div id="div2" class="small div-green"></div>
+    <div class="small div-yellow"></div>
+</body>
+</html>

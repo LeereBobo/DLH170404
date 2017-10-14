@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 200px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="div1"></div>
+		
+		<script src="../index.js" type="text/javascript"></script>
+			
+		
+		<script type="text/javascript">
+			
+			var oDiv1 = document.getElementById("div1");
+			oDiv1.onmouseover = function(){
+				
+				//json中包含 要改变的属性(attr) 和 目标值(iTarget)
+				var cssJson = {
+					width:300,
+					height:500,
+					opacity:30
+				};
+				multiMove(this,cssJson,5)
+				
+			}
+			
+			
+			//multi 多个值运动
+			function  multiMove(obj,attrJson,speed){
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function(){
+					//定时器每走一次 三个属性值都有变化
+					//attr是json中的key key代表的是要变化的属性
+					//当三个属性值都不变的时候(到达目标值时)的时候 停止定时器
+					
+					var isStop = true;//标记定时器是否可以停止,默认停止
+					for (var attr in attrJson) {
+						
+						//当前属性的目标值
+						var iTarget = attrJson[attr];
+						//获取当前属性的样式值
+						var attrValue = getStyle(obj,attr);
+						attrValue = attr == "opacity" ? attrValue * 100 : parseInt(attrValue);
+						
+						var speedEnd = (iTarget - attrValue) / speed;
+						speedEnd = speedEnd > 0 ? Math.ceil(speedEnd) : Math.floor(speedEnd);
+						
+						//如果每次都没进来此if判断  说明可以停止定时器
+						if (iTarget != attrValue) {
+							
+							isStop = false;//没达到目标值,不能停止定时器
+							obj.style[attr] = attr == "opacity" ? (attrValue + speedEnd) / 100 : (attrValue + speedEnd +"px");
+						} 
+					}
+					
+					//判断是否三个都达到目标
+					if(isStop){
+						clearInterval(obj.timer);
+					}
+					
+					
+					
+				},30);
+			}
+		</script>
+		
+	</body>
+</html>

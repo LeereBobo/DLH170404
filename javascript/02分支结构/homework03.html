@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				margin: 20px;
+			
+			}
+		
+			#div1 {
+				background-color: red;
+			}
+			#div2 {
+				background-color: yellow;
+			}
+			
+		
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1")
+			var oDiv2 = document.getElementById("div2")
+			var x = 0;
+
+//			oDiv1.onclick = function(){
+//
+//				 x = ++x;
+//				if(x % 2){
+//					oDiv2.style.backgroundColor = "green";
+//
+//				} else {
+//
+//					oDiv2.style.backgroundColor = "pink";
+//
+//				}
+//
+//
+//
+//			}
+//		
+
+
+	
+			oDiv1.onclick = function(){
+
+
+				if(x == 0){
+					oDiv2.style.backgroundColor = "green";
+
+				} else {
+
+					oDiv2.style.backgroundColor = "pink";
+
+				}
+
+				x = !0;
+
+			}
+
+	
+		
+		
+		</script>
+	</body>
+</html>

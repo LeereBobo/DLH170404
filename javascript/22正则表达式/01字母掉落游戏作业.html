@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			body {
+				background-color: lightgray;
+				position: relative;
+			}
+			
+			div {
+				color: white;
+			}
+			
+			#content {
+				position: absolute;
+				width: 500px;
+				z-index: 2;
+			}
+			
+			.game {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#start {
+				background-color: white;
+				border: 0;
+				font-size: 20px;
+				width: 80px;
+				height: 30px;
+			}
+			
+			#letterAll {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.letter {
+				position: absolute;
+				top: 0;
+				width: 50px;
+				font-size: 50px;
+				color: hotpink;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<div class="game">
+				<input type="button" name="start" id="start" value="开始" />
+				<span>分数:</span>
+				<span id="score">0</span>
+				<span>倒计时:</span>
+				<span id="times">30</span>
+			</div>
+
+		</div>
+		<div id="letterAll">
+
+		</div>
+	</body>
+
+	<script>
+		var oBtn = document.getElementById("start");
+		var oScore = document.getElementById("score");
+		var oTime = document.getElementById("times");
+		var oLetterAll = document.getElementById("letterAll");
+
+		var maxWidth = document.documentElement.clientWidth;
+		var maxHeight = document.documentElement.clientHeight;
+
+		function ran(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+
+		var isFirstClick = true;
+
+		oBtn.onclick = function() {
+
+			if(isFirstClick) {
+				isFirstClick = false;
+				setInterval(function() {
+					var letter = document.createElement("div");
+					letter.innerHTML = String.fromCharCode(ran(65, 90));
+					letter.speed = ran(2, 5);
+					letter.className = "letter";
+
+					letter.style.left = ran(0, maxWidth - letter.offsetWidth) + "px";
+					oLetterAll.appendChild(letter);
+					letter.timer = setInterval(function() {
+
+						if(letter.offsetTop + letter.speed > maxHeight) {
+							oLetterAll.removeChild(letter);
+						} else {
+							letter.style.top = letter.offsetTop + letter.speed + "px";
+						}
+
+					}, 20);
+
+				}, 300);
+
+			}
+
+		}
+		
+		document.onkeydown = function(e){
+			var e = e || window.event;
+			var str = String.fromCharCode(e.keyCode);
+			for (var i = 0; i < oLetterAll.children.length; i++) {
+				if (oLetterAll.children[i].innerHTML == str) {
+					oLetterAll.removeChild(oLetterAll.children[i]);
+					break;
+				}
+			}
+		}
+	</script>
+
+</html>

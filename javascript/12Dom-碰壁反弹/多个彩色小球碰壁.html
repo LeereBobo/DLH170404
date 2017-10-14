@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#big {
+				width: 500px;
+				height: 300px;
+				border: 4px solid blue;
+				position: relative;
+			}
+			
+			.ball {
+				position: absolute;
+				border-radius: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="big">
+
+		</div>
+		<script type="text/javascript">
+			var oBig = document.getElementById("big");
+			//  随机函数
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			//  随机颜色;
+			function getRandomColor() {
+				var r = getRandom(0, 255);
+				var g = getRandom(0, 255);
+				var b = getRandom(0, 255);
+				return "rgb(" + r + "," + g + "," + b + ")";
+			}
+			//  创建小球
+			function createBall() {
+				var d = getRandom(25, 50); //随机直径
+				var newDiv = document.createElement("div");
+				newDiv.className = "ball";
+				newDiv.style.backgroundColor = getRandomColor();
+				newDiv.style.width = d + "px";
+				newDiv.style.height = d + "px";
+				oBig.appendChild(newDiv);
+				moveBall(newDiv);
+			}
+			// 小球移动;
+			function moveBall(obj) {
+				var xSpeed = getRandom(4, 8);
+				var ySpeed = getRandom(4, 8);
+				setInterval(function() {
+
+					//水平方向
+					if(obj.offsetLeft >= oBig.clientWidth - obj.offsetWidth) {
+						xSpeed = -xSpeed;
+						oBig.style.width = oBig.clientWidth - xSpeed + "px";
+						if(oBig.clientWidth >= 600) {
+//							oBig.style.width = document.documentElement.clientWidth + "px";
+//							oBig.style.height = document.documentElement.clientHeight + "px";
+							oBig.style.border = "none";
+						}
+
+					}
+					if(obj.offsetLeft <= 0) {
+						xSpeed = Math.abs(xSpeed);
+					}
+
+					//垂直方向
+					if(obj.offsetTop >= oBig.clientHeight - obj.offsetHeight) {
+						ySpeed = -ySpeed;
+						oBig.style.height = oBig.clientHeight - ySpeed + "px";
+						if(oBig.clientHeight >= 400) {
+							oBig.style.width = document.documentElement.clientWidth + "px";
+							oBig.style.height = document.documentElement.clientHeight + "px";
+							oBig.style.border = "none";
+						}
+					}
+					if(obj.offsetTop <= 0) {
+						ySpeed = Math.abs(ySpeed);
+					}
+
+					obj.style.left = obj.offsetLeft + xSpeed + "px";
+					obj.style.top = obj.offsetTop + ySpeed + "px";
+				}, 20);
+
+			}
+			oBig.onclick = function() {
+				createBall();
+			}
+		</script>
+	</body>
+
+</html>

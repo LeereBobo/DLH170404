@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<!--内部引入-->
+	<script type="text/javascript">
+			alert("内部引入!");
+	</script>
+	
+	<!--外部引入-->
+	<script src="js/index.js"  type="text/javascript">
+		
+	</script>
+	
+	<body>
+			
+	</body>
+</html>
+
+<!--内部引入-->
+
+<script type="text/javascript">
+	alert("我和齐美丽是姐妹!");		
+</script>	
+
+<!--外部引入:
+	1.创建js文件
+	2.使用javascript标签引入,在标签内添加属性src进行html和js文件的关联
+	3.注意:外部引入的js文件中,不需要写script标签
+	
+	内部引入:
+	1.在script中写入js代码
+	2.可以在文档任何位置引入
+	3.可以写多个script标签,按照从上到下的顺序执行
+	
+	***推荐写在body中的尾部
+-->
+	

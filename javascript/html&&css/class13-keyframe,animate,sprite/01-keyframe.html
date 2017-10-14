@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes change-color {
+
+            /*!*from代表0%*!*/
+            /*from {*/
+                /*background-color: darkcyan;*/
+            /*}*/
+
+            /*!*to代表100%*!*/
+            /*to {*/
+                /*background-color: blueviolet;*/
+            /*}*/
+
+            0%,20% {
+
+                /*在每一帧改变其样式*/
+                background-color: red;
+            }
+
+            30%{
+                background-color: green;
+                width: 300px;
+                border:3px solid transparent;
+            }
+
+            65% {
+                background-color: black;
+                height: 100px;
+                border-color: red;
+            }
+
+            100% {
+                background-color: blue;
+
+            }
+        }
+
+        @keyframes change-position {
+
+            0% {
+                background-color: red;
+            }
+
+            25% {
+                top:0;
+                left: 200px;
+            }
+
+            50% {
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                top: 200px;
+                left:0;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+                background-color: blue;
+            }
+        }
+
+        .box {
+            /*动画:名字 时间*/
+            -webkit-animation:change-color 10s,change-position 4s;
+            -o-animation:change-color 10s,change-position 4s;
+            animation:change-color 10s,change-position 4s;
+
+
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+            border-radius: 4px;
+
+            position: absolute;
+            top:0;
+            left:0;
+
+            -webkit-animation-delay: 2s;
+            -moz-animation-delay: 2s;
+            -o-animation-delay: 2s;
+            animation-delay: 2s;
+
+            /*动画播放速率,即从快到慢或从慢到快之类的*/
+            -webkit-animation-timing-function: ease-in;
+            -moz-animation-timing-function: ease-in;
+            -o-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+
+
+            /*交替与次数结合使用*/
+            /*方向:
+                alternate:交替改变,顺时针开始
+                alternate-reverse:交替改变,逆时针开始*/
+            -webkit-animation-direction: alternate-reverse;
+            -moz-animation-direction:alternate-reverse;
+            -o-animation-direction: alternate-reverse;
+            animation-direction: alternate-reverse;
+
+
+            /*动画播放次数 infinite:无限次*/
+            -webkit-animation-iteration-count:infinite;
+            -moz-animation-iteration-count: infinite;
+            -o-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+
+
+            /*animation-fill-mode: none;*/
+
+            /*动画停止的时候样式,定格在100%的样式*/
+            /*animation-fill-mode: forwards;*/
+
+            /*动画开始的时候样式定格在0%时的样式,而不是原来的样式*/
+            /*-webkit-animation-fill-mode: backwards;*/
+            /*-moz-animation-fill-mode: backwards;*/
+            /*-o-animation-fill-mode: backwards;*/
+            /*animation-fill-mode: backwards;*/
+
+            /*!*animation-fill-mode: both;*!*/
+        /*}*/
+
+        /*.box:hover {*/
+            /*!*暂停*!*/
+            /*-webkit-animation-play-state:paused;*/
+            /*-moz-animation-play-state:paused ;*/
+            /*-o-animation-play-state:paused ;*/
+            /*animation-play-state:paused ;*/
+
+
+            /*简写顺序:
+                animation-name
+                animation-duration
+                animation-timing-function
+                animation-delay
+                animation-iteration-count
+                animation-direction
+                animation-fill-mode
+                animation-play-state
+            */
+
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

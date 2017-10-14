@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#item {
+				width: 600px;
+				border: 1px solid black;
+			}
+			
+			#item::after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+			#timer {
+				float: left;
+				font-size: 30px;
+				margin: 20px;
+			}
+			
+			#score {
+				float: right;
+				font-size: 30px;
+				margin: 20px;
+			}
+			
+			header::after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+			#big {
+				font-size: 150px;
+				width: 100%;
+				text-align: center;
+				margin-top: 60px;
+			}
+			
+			#word {
+				font-size: 30px;
+				text-indent: calc(60px);
+				margin: 20px;
+			}
+			
+			#bottom div {
+				float: left;
+				font-size: 80px;
+				margin: 15px 20px 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="item">
+			<!--头部-->
+			<header>
+				<div id="timer">剩余时间:20</div>
+				<div id="score">分数:0</div>
+			</header>
+
+			<!--上面的字-->
+			<div id="big"></div>
+
+			<!--文本-->
+			<div id="word">
+				根据上面的字的颜色,从下面选择对应正确的字,选择正确自动开始
+			</div>
+
+			<!--底部-->
+			<div id="bottom">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+
+			<!--js部分-->
+
+			<script type="text/javascript">
+				//获取
+				var oTimer = document.getElementById("timer");
+				var oScore = document.getElementById("score");
+				var oBig = document.getElementById("big");
+				var oBottom = document.getElementById("bottom");
+				var oBottoms = oBottom.getElementsByTagName("div");
+				
+				//定时器
+				var timer = null;
+				var count = 20;
+				
+				//数组
+				var colorArr = ["red", "yellow", "blue", "green", "black"];
+				var textArr = ["红", "黄", "蓝", "绿", "黑"];
+
+				//初始页面样式
+				changeBig();
+				changeColorAndText();
+
+				//随机数函数
+				function ran(max, min) {
+					return Math.floor(Math.random() * (max - min + 1) + min);
+				}
+				
+				//获取 0~4 五个不重复的随机数
+				function getRan() {
+
+					var arr = [];
+					while(arr.length != 5) {
+						var a = ran(4, 0);
+						var tf = false;
+						for(var i = 0; i < arr.length; i++) {
+							if(arr[i] == a) {
+								tf = true;
+								break;
+							}
+						}
+						if(!tf) {
+							arr.push(a);
+						}
+					}
+					return arr;
+				}
+
+				
+				//开启定时器
+				function startTimer(){
+					
+					setInterval(function(){
+						
+						if(count == 0){
+							//停止定时器
+							clearInterval(timer);
+							alert("时间到啦,您的分数是" + score);
+							
+							location.reload();//刷新网页
+						
+						} else {
+							count--;
+							oTime.innerHTML = "剩余时间" +count;
+						}
+					
+						
+					},1000);
+				}
+				
+				//小div 改变字体与颜色
+				function changeColorAndText() {
+					var colorIndex = getRan();
+					var textIndex = getRan();
+					
+					
+					for(var i = 0; i < oBottoms.length; i++) {
+						oBottoms[i].innerHTML = textArr[textIndex[i]];
+						oBottoms[i].style.color = colorArr[colorIndex[i]];
+
+						oBottoms[i].index = textIndex[i];
+					}
+				}
+
+				//小div 自定义属性
+				var compare = 0;
+
+				//大div 改变字体与颜色
+				function changeBig() {
+					var b = ran(4, 0);
+					compare = b;
+					oBig.innerHTML = textArr[b];
+					oBig.style.color = colorArr[b];
+
+				}
+
+				
+				
+						
+				//点击事件
+				var scoreNum = 0;
+
+				for(var j = 0; j < oBottoms.length; j++) {
+
+					oBottoms[j].onclick = function() {
+
+						
+						if(this.index == compare) {
+							changeColorAndText();
+							changeBig();
+							scoreNum++;
+							oScore.innerHTML = "分数:" + scoreNum;
+
+						}
+					}
+
+				} 		
+						
+				
+				
+				
+				
+			</script>
+
+		</div>
+	</body>
+
+</html>

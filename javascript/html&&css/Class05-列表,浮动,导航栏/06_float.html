@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/float.css">
+    <style>
+        .big {
+            width:auto;
+            height:auto;
+
+        }
+        /*清除浮动方式2:*/
+        /*伪元素 (css的一种选择器)*/
+        /*::after 伪元素,在元素的内容的最后添加的一个子元素.*/
+        /*.big::after {*/
+            /*content:"清除浮动";*/
+            /*display: table;*/
+            /*!*table 把伪元素显示成块元素*!*/
+            /*clear:left;*/
+        /*}*/
+
+
+        /*清除浮动方式3*/
+        .big {
+            /*overflow:hidden;*/
+            /*或者是*/
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="big">
+    <div class="in left">1</div>
+    <div class="in left">2</div>
+    <div class="in left">3</div>
+    <!--清除浮动方式1:在浮动元素下面添加内容为空的div元素.-->
+    <!--<div style="clear:left;">5</div>-->
+    <!--缺点:会添加很多无意义的div元素,扰乱页面结构.-->
+</div>
+</body>
+</html>

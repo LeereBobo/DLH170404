@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <button id="btn">随机一注</button>
+
+    <script>
+
+        //点击按钮随机生成一组双色球的号码
+
+        /*注：双色球数字特点
+         1.一组双色球的号码一共有7个数字
+         2.其中6个数的取值范围[1, 33]，数字不能重复
+         3.剩余1个数的取值范围[1, 16]*/
+
+        var oDiv1 = document.getElementById("div1");
+        var oBtn = document.getElementById("btn");
+
+        function ran(max,min){
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+       oBtn.onclick = function(){
+
+            var arr = [];
+            while(arr.length != 6){
+                var a = ran(33,1);
+                var tf = false;
+
+                for(var i = 0;i < arr.length;i++){
+
+                    if(arr[i] == a){
+                        tf = true;
+                        break;
+                    }
+                }
+
+                if(!tf){
+                    arr.push(a);
+                }
+
+            }
+       }
+
+
+
+    </script>
+</body>
+</html>

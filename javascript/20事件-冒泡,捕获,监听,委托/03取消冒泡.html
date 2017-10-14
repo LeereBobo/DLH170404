@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 700px;
+				height: 500px;
+				border: 1px solid black;
+			}
+			
+			#div2 {
+				width: 300px;
+				height:300px;
+				background-color: red;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			
+			oDiv1.onclick = function(){
+				console.log(this.id);
+			}
+			
+			oDiv2.onclick = function(e){
+				
+				var e = e || window.event;
+				
+				//阻止当前对象的当前事件冒泡
+				//兼容IE 谷歌,不兼容火狐
+				e.cancelBubble = true;
+				
+				//兼容火狐 谷歌,不兼容IE
+				//e.stopPropagation();
+				console.log(this.id);
+			}
+		</script>
+	</body>
+</html>

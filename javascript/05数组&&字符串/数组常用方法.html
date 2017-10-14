@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,3,4,5,6,7,8];
+			
+			//1.push:
+				//向数组末尾添加一个或多个数据
+			
+			arr.push(9);
+			arr.push(10,11,12);
+			var a = arr.push(1000); //返回添加元素 新的数组的个数
+			console.log(a);
+			console.log(arr);
+			
+			//2.unshift
+			//在数组开头添加一个或多个元素
+			//IE6 7不支持
+			arr.unshift(0);
+			arr.unshift(-2,-1);
+
+			//返回添加-3这个元素之后 数组的个数
+			var b = arr.unshift(-3);
+			console.log(b);
+			console.log(arr);
+
+
+			//3.pop
+			//删除并返回数组中的最后一个元素
+			arr.pop();
+			var c =  arr.pop(); //接收被删除的元素
+			console.log(c);
+			console.log(arr);
+			//对空数组进行删除,不会对数组产生影响,但是返回值为undefined
+			var arr1 = [];
+			var d = arr1.pop();
+			console.log(arr1);
+			console.log(d);
+
+			//4.shift() 将数组中的第一个元素删除
+			console.log(arr);
+			//arr.shift();
+			var m = arr.shift();//将删除的元素返回给m
+			console.log(m);
+			console.log(arr);
+
+			//对空数组shift,对数组本身无影响.返回值为undefined
+			var arr2 = [];
+			var n = arr2.shift();
+			console.log(arr2);
+			console.log(n);//undefined
+
+			//5.splice
+			console.log(arr);
+
+			//第一个参数:必填,开始删除的下标
+			//第二个参数:必填,删除的个数,可为0
+			//第三个参数:可选,向数组中添加一个或多个元素
+			//arr.splice(2,3);
+			//从下标为2开始删,删除3个,包含下标为2的元素
+
+			var x = arr.splice(2,3);
+			console.log(x);//[0,1,2]删除的元素存到数组中返回
+			console.log(arr);
+
+			arr.splice(2,2,999,666,777);
+			console.log(arr);
+
+
+			arr.splice(1,0,888,777);
+			console.log(arr);
+
+			//6.concat
+			//拼接多个数组或者数值,并返回新的数组
+			var arrA = [1,2,3];
+			var arrB = [4,5,6];
+			var arrC = [7,8,9];
+
+			var arrD = arrA.concat(arrB);
+			arrD = arrA.concat(1000);
+			console.log(arrD+"❤️");
+			arrD = arrA.concat(arrB,arrC);
+
+			console.log(arrD);
+			console.log(arrA);
+			console.log(arrB);
+
+			//7.join
+			var arr= ["齐美丽","真的","美丽吗","!"];
+			var str = arr.join("😄");
+            console.log(str);
+			str = arr.join();//默认使用逗号拼接
+			console.log(str);
+
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

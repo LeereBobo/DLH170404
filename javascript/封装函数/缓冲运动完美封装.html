@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute; 
+				top: 0;
+				left: 0;
+			}
+			
+			#line {
+				width: 1px;
+				height: 300px;
+				background-color: black;
+				position: absolute;
+				top: 0;
+				left: 500px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="div1"></div>
+		<div id="line"></div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			
+			
+			easeMove(oDiv1,"left",10,500);
+			function easeMove(obj, attr, speed, iTarget) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					var attrValue = getStyle(obj, attr)
+					attrValue = attr == "opacity" ? attrValue * 100 : parseInt(attrValue);
+					var speedEnd = (iTarget - attrValue) / speed;
+					speedEnd = speedEnd > 0 ? Math.ceil(speedEnd) : Math.floor(speedEnd);
+					if(attrValue == iTarget) {
+						clearInterval(obj.timer);
+					} else {
+						if(attr == "opacity") {
+							obj.style[attr] = (attrValue + speedEnd) / 100;
+						} else {
+							obj.style[attr] = attrValue + speedEnd + "px";
+						}
+					}
+				}, 30);
+			}
+
+			//获取属性
+			function getStyle(obj, attr) {
+				//获取当前的样式
+				if(obj.currentStyle) {
+					return obj.currentStyle[attr]; //针对IE 			
+				} else {
+					return getComputedStyle(obj)[attr];
+				}
+			}
+
+		
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       html,body{
+           width:100%;
+           height:100%;
+       }
+
+       #wrap {
+           width: 1050px;
+           height:100%;
+           position: relative;
+           margin:auto;
+           text-align: center;
+           background: url("3.jpg") no-repeat;
+       }
+
+       #wrap div {
+           display: inline-block;
+           font-size: 30px;
+           margin: 10px;
+           color: coral;
+           border-radius: 10px;
+           padding: 10px;
+           border:2px dashed black;
+
+       }
+
+       button {
+           font-size: 20px;
+           padding: 15px;
+           border-radius: 50%;
+           position: absolute;
+           bottom: 25px;
+           background-color: black;
+           color: coral;
+           outline: none;
+       }
+
+       #btn1 {
+           right: 180px;
+       }
+
+       #btn2 {
+           right: 115px;
+       }
+
+       #num {
+           position: absolute;
+           left: 50px;
+           bottom: 30px;
+           font-size: 20px;
+           color: coral;
+           padding:10px 0;
+       }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <div id="wrap">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <div style="padding-left: 25px; padding-right: 25px;"></div>
+        <input type="text" id="num" placeholder="请输入人数...">
+        <button id="btn1">开始</button>
+        <button id="btn2">结束</button>
+
+    </div>
+
+
+    <script>
+        var oWrap = document.getElementById("wrap");
+        var oDivs = oWrap.getElementsByTagName("div");
+        var oBtn1 = document.getElementById("btn1");
+        var oBtn2 = document.getElementById("btn2");
+        var num = document.getElementById("num");
+
+
+        var arr = ["陈宇航","贺冠纶","黎健斌","梁霆锋","卓文亮","钟伟杰","叶家玮","王伟锋",
+            "钟海滨","卢子辉", "赖喜勇","黄蔼琳","袁雪怡","黄楚怡","罗严凤","李志洋",
+            "黄文杰", "欧阳瀚", "廖壬秋", "黎志明", "刘俊麟","范银花","叶宝怡","庄瑜静","肖碧霞",
+            "骆晓悠","潘艳莹","何佳君","吴梦敏","王啟先","袁启杨","李伟平","黄兴龙","范龙飞","钟炜豪",
+            "杨祎铭","刘丽清","余静雯","吴嘉欣","李慕华","黄宇诗","张彬婧",
+            "陈杰","刘昕","韦洁", "李乐","赖鑫", "黄彬","娄汀", "曾腾","向辉","左勇"];
+        var timer = null;
+
+        for(var i = 0; i < oDivs.length; i++){
+            oDivs[i].index = i;
+            oDivs[i].innerHTML = arr[oDivs[i].index];
+        }
+
+        oBtn1.onclick = function () {
+
+            var music = document.createElement("audio");
+            music.src = "selfie.mp3";
+            music.play();
+
+
+            clearInterval(timer);
+
+            timer = setInterval(function () {
+                var arr1 = [];
+                for(var j = 0; j < num.value; j++){
+
+                    var count = Math.floor(Math.random() * (51 - 0 + 1) + 0);
+                    var tf = false;
+
+                    for(var s = 0; s < arr1.length; s++){
+                        if(arr1[s] == count){
+                            tf = true;
+                            j = j - 1;
+                            break;
+                        }
+                    }
+
+                    if(!tf){
+                        arr1.push(count);
+                    }
+
+                }
+                console.log(arr1);
+
+                for(var m = 0; m < arr1.length; m++){
+                    oDivs[arr1[m]].style.color = "white";
+                    oDivs[arr1[m]].style.backgroundColor = "deepskyblue";
+
+                }
+
+                for(var h = 0; h < oDivs.length; h++){
+                    var tf1 = false;
+                    for(var m = 0; m < arr1.length; m++){
+                        if(h == arr1[m]){
+                            tf1 = true;
+                            break;
+                        }
+
+                    }
+
+                    if(!tf1){
+                        oDivs[h].style.color = "coral";
+                        oDivs[h].style.backgroundColor = "transparent";
+                    }
+
+                }
+
+            },20);
+
+
+        }
+
+        oBtn2.onclick = function () {
+
+            clearInterval(timer);
+            refreshPage();
+
+
+        }
+
+        function refreshPage(){
+
+            setTimeout(function(){
+                window.location.reload();
+            },15000);
+        }
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 200px;
+				height: 500px;
+				border: 5px solid lightblue;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">按钮</button>
+		<div id="div1"></div>
+		<div id="text">
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+			<p>的回复回复ID时间覅来得及方法</p>
+		</div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oText = document.getElementById("text");
+			var oP = oText.getElementsByTagName("p");
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function() {
+				oDiv1.style.display = "block";
+			}
+			
+			//冒泡做法
+			oText.onclick = function(){
+				oDiv1.style.display = "none";
+			}
+			
+			
+//			for(var i = 0; i < oP.length; i++) {
+//				oP[i].onclick = function() {
+//					oDiv1.style.display = "none";
+//				}
+//			}
+		</script>
+	</body>
+
+</html>

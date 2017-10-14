@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			#line {
+				width: 10px;
+				height: 300px;
+				background-color: yellow;
+				position: absolute;
+				top: 0;
+				left: 800px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+		<div id="line"></div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+
+			
+			//封装函数
+			function linearMove(obj, speed, iTarget) {
+				var timer = null;
+				timer = setInterval(function() {
+
+					if(iTarget - obj.offsetWidth <= speed) {
+						obj.style.width =iTarget + "px";
+						clearInterval(timer);
+					} else {
+
+						//obj.style.left = obj.offsetLeft + speed + "px";
+						obj.style.width =  obj.offsetWidth + speed + "px";
+					}
+
+				}, 20);
+			}
+			//调用函数
+			linearMove(oDiv1,9,800);
+
+
+
+			
+		</script>
+
+	</body>
+
+</html>

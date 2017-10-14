@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="post">
+			
+			<input type="number"  id="money"/>
+			<button id="btn" value="计算">计算</button>
+			
+			<script type="text/javascript">
+				var omoney = document.getElementById("money");
+				var obtn = document.getElementById("btn");
+				obtn.onclick = function (){
+					//获取用户数据
+					var user = omoney.value
+					
+					//20的张数
+					var m20 = (user - user % 20) / 20;
+					
+					//10的张数
+					var price = user % 20;
+					var m10 = (price - price % 10) / 10;
+					
+					//5的张数
+					var price10 = price % 10;
+					var m5 = (price10 - price10 % 5) / 5;
+					
+					//1的张数
+					var price5 = price10 % 5;
+					var m1 = (price5 - price5 % 1) / 1;
+					
+					//显示结果
+					alert (m20 + "张20美元," + m10 + "张10美元," + m5 + "张5美元," + m1 + "张1美元");
+					
+				}
+				
+				var br = "23" < "3";
+				console.log(br);
+				
+			</script>	
+		</form>
+	</body>
+</html>

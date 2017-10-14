@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			#list {
+				position: relative;
+				margin: 0 auto;
+				border: 1px solid red;
+			}
+			
+			#list li {
+				position: absolute;
+				width: 200px;
+				border: 1px solid lightgray;
+				padding: 10px;
+				visibility: hidden;
+				transition: all 0.5s;
+			}
+			
+			#list li img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="list">
+
+		</ul>
+
+		<script type="text/javascript">
+			var oList = document.getElementById("list");
+			
+			function createImg(){
+				for (var i = 1; i <= 20; i++) {
+					var newImg = new Image();
+					newImg.src = "../images/" + i + ".jpeg";
+					
+					var newLi = document.createElement("li");
+					newLi.appendChild(newImg);
+					oList.appendChild(newLi);
+				}
+				
+			}
+			
+			window.onload = function(){
+				createFall();
+			}
+			
+			window.onresize = function(){
+				createFall();
+			}
+			
+			window.onscroll = function(){
+				var theTop = document.body.scrollTop;
+				var winHeight = document.documentElement.clientHeight;
+				var pageHeight = document.documentElement.scrollHeight;
+				
+				if ((theTop + winHeight) / pageHeight > 0.9) {
+					createImg();
+					createFall();
+				}
+			}
+			
+			function createFall(){
+				var lis = oList.children;
+				var space = 10;
+				
+				//宽
+				var winWidth = document.documentElement.clientWidth;
+				var liWidth = lis[0].offsetWidth + space;
+				var cols = parseInt(winWidth / liWidth);
+				oList.style.width = cols * liWidth + space + "px";
+				
+				//高
+				var colsHeight = [];
+				for (var i = 0;i < cols; i++) {
+					colsHeight[i] = 0;
+				}
+				
+				for (var i = 0; i < lis.length;i++) {
+					var minHeight = colsHeight[0];
+					minIndex = i;
+					
+					for (var j = 0; j < colsHeight.length;j++) {
+						if (minHeight > colsHeight[i]) {
+							minHeight = colsHeight[i];
+							minIndex = i;
+						}
+					}
+					
+					lis[i].style.left = liWidth * minIndex +space + "px";
+					lis[i].style.top = minHeight + space +"px";
+					lis[i].style.visibility = "visible";
+					
+					colsHeight[minIndex] += lis[i].offsetHeight + space;
+				}
+				
+				var maxHeight = 0;
+				
+				for (var i = 0; i < colsHeight.length; i++) {
+					if (maxHeight < colsHeight[i]) {
+						maxHeight = colsHeight[i];
+					}
+				}
+				oList.style.height = maxHeight +space + "px";
+			}
+		</script>
+	</body>
+
+</html>

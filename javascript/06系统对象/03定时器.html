@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="stop">停止</button>
+		<script type="text/javascript">
+		var oStop = document.getElementById("stop");
+		
+		/*setInterval(function(){},1000)
+		每隔一秒(1000毫秒)执行一次大括号中的代码*/
+		var timer = setInterval(function(){
+				
+				console.log(1111);
+			},1000);//1000毫秒 = 1秒
+		console.log(timer+"🐷");
+		
+		oStop.onclick = function(){
+			
+			//销毁setInterval产生的定时器
+			clearInterval(timer);
+		}
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

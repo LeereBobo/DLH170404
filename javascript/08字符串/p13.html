@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="div1"></div>
+		<button id="btn">随机一注</button>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oBtn = document.getElementById("btn");
+			function ran(max,min){
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			
+			oBtn.onclick = function(){
+				var arr = [];
+				while(arr.length != 6){
+					var a = ran(33,1);
+					var tf = false;
+					for (var i = 0; i < arr.length; i++) {
+						if(arr[i] == a){
+							break;
+							tf = true;
+						}
+					}
+					if(!tf){
+						arr.push(a);
+					}
+				}
+				var b = ran(16,1);
+				arr.push(b);
+				oDiv1.innerHTML = arr;
+			}
+			
+	
+		</script>
+
+	</body>
+
+</html>

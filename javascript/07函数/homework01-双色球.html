@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+		    #box{
+		    		/*text-align: center;*/
+		    		font-size: 30px;
+		    		margin-top: 200px;
+		    }
+			#red ,#blue{
+				display: inline-block;
+				width: 300px;
+				height: 50px;
+				border: 3px solid red;
+				line-height: 50px;
+				text-align: center;
+				padding: 15px;
+				border-radius: 10px;
+			}
+			#blue {
+				width: 100px;
+				border: 3px solid blue;
+			}
+			#btn {
+				font-size: 20px;
+				padding: 20px;
+				margin-top: 60px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--HTML部分-->
+		<div>
+			 <div id="box">
+				 <span id="red"></span>
+				 <span id="blue"></span>
+			 </div>
+			 <button id="btn">随机一注</button>
+		 </div>	
+		 
+		 
+		 
+		<!--js部分-->
+		<script type="text/javascript">
+		//点击按钮随机生成一组双色球的号码
+
+		/*注：双色球数字特点
+		1.一组双色球的号码一共有7个数字
+		2.其中6个数的取值范围[1, 33]，数字不能重复
+		3.剩余1个数的取值范围[1, 16]*/
+		
+		//获取
+		var oRed = document.getElementById("red");
+		var oBlue = document.getElementById("blue");
+		var oBtn = document.getElementById("btn");
+		
+		//获取红色球的6个随机数
+		
+		function random () {
+			var arr = [];
+			
+			//随机红球6个数
+			for (var i = 1; i <= 6; i++) {
+				var ran = Math.floor(Math.random() * (33 - 1 + 1) + 1);
+				
+				//判断是否有重复数字
+				//重复结束本次循环
+				for (var j = 0; j < arr.length; j++) {
+					
+					if(arr[j] == ran){
+						
+						//当前循环不满足,产生重复数据时,返回将当前循环再次执行一次
+						i = i - 1;
+						break;
+					} 
+	 			}
+				
+				//不重复时,将数据推入数组,并再次循环,补满6个数
+				if(arr[j] != ran) {
+					arr.push(ran);
+				} 
+				
+			}
+			console.log(arr);
+			oRed.innerHTML = arr;
+		}
+		
+		
+		
+		
+		//点击事件
+		oBtn.onclick = function(){
+			
+			//获取蓝色球的一个随机数
+			var redNum = Math.floor(Math.random() * (16 - 1 + 1) + 1);
+			console.log("🐖" + redNum);
+			
+			oBlue.innerHTML = redNum;
+			
+			//调用红球随机产生的6个数
+			random();
+		}
+		
+
+		</script>
+	</body>
+</html>

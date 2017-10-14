@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "Hello,齐美丽";
+			
+			//1.获取字符串的长度,空格和标点都算字符
+			console.log(str.length);
+			
+			//2.获取某个下标的字符 从0开始
+			console.log(str.charAt(5));
+			//打印字符串中每个字符
+			for (var i = 0; i < str.length; i++) {
+				console.log(str.charAt(i));
+			}
+			
+			//3.indexOf
+			//返回某个指定字符串在字符串中首次出现的位置
+			console.log(str.indexOf("H"));//0
+			console.log(str.indexOf("h"));//-1  如果字符不存在,返回-1
+			//使用场景:判断字符在字符串中是否存在
+			
+			//练习:判断a在str中是否存在 如果存在 打印;不存在则打印不存在
+			for (var i = 0; i < str.length; i++) {
+				
+				if (str.indexOf("a") == -1){
+					console.log("不存在");
+				} else {
+					console.log("存在");
+				}
+			}
+			console.log(str.indexOf("齐美丽"));//返回字符串第一个字符所在的下标
+			console.log(str.indexOf("l"));// 2  首次出现的位置
+			
+			//4.lastIndexOf
+			//返回某个字符串在 字符串中 最后出现的位置
+			console.log(str.lastIndexOf("l"));
+			
+
+
+			//5.substring
+			
+			console.log(str);
+			//从下标为2 开始截取到最后 包括下标2
+			var str1 = str.substring(2);
+			console.log(str1);
+			
+			//从下标为2开始 截取到下标7 不包含下标7 [2,7)
+			var str2 = str.substring(2,7);
+			console.log(str);
+			console.log(str2);
+			
+			//6.substr
+			//从下标为3 截取到最后
+			var str3 = str.substr(3);
+			console.log(str);
+			console.log(str3);
+			
+			//从下标为3 截取4个字符 包括下标3
+			var str4 = str.substr(3,4);
+			console.log(str);
+			console.log(str4);
+			
+			//7.split 字符串分割
+			var strA = "Play,Hard!Study,Hard";
+			
+			//将strA中的字符串 按照 逗号 分割 并返回数组
+			var arr = strA.split("!");
+			console.log(arr);
+			
+			//8.数组 -> 字符串
+			var strB = arr.join("🐅");
+			console.log(strB);
+			
+			//9.字符串替换
+			var strC = "aaaabbbb";
+			console.log(strC.replace("aa","🍑"));
+			
+			//10.字符串拼接
+			var name1 = "齐美丽";
+			var name2 = "梁佳军";
+			var strD = name1 + "💖" + name2;
+			strD = strD.concat("💋","班长","❤️","麻蛋");
+			console.log(strD);
+			
+			//11.大小写转换
+			var strE = "good good study";
+			//大写
+			var strF = strE.toUpperCase();
+			console.log(strF);
+			//小写
+			console.log(strF.toLowerCase());
+		</script>
+	</body>
+</html>

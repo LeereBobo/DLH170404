@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn1">反选</button>
+		<button id="btn2">全选</button>
+		<input type="checkbox" name="box1" id="box1" value="" />
+		<input type="checkbox" name="box2" id="box2" value="" />
+		<input type="checkbox" name="box3" id="box3" value="" />
+		
+		<script type="text/javascript">
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var oBox1 = document.getElementById("box1");
+			var oBox2 = document.getElementById("box2");
+			var oBox3 = document.getElementById("box3");
+			
+			oBtn1.onclick = function(){
+				oBox1.checked = !oBox1.checked
+				oBox2.checked = !oBox2.checked
+				oBox3.checked = !oBox3.checked
+			}
+			
+			oBtn2.onclick = function(){
+				oBox1.checked = true;
+				oBox2.checked = true;
+				oBox3.checked = true;
+				
+			}
+		</script>
+	</body>
+</html>

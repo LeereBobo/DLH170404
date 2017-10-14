@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1 {
+				width: 200px;
+				height: 200px;
+				background-color: palevioletred;
+			}
+			.div2 {
+				width: 400px;
+				height: 400px;
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			
+			//1.获取属性的值
+			console.log(oDiv1.id);
+			
+			var theId = oDiv1.getAttribute("id");
+			console.log(theId);
+			
+			
+			//2.设置属性的值
+			oDiv1.className = "div1";
+//			oDiv1.setAttribute("class","div2");  //(属性,值)
+			
+			//设置自定义属性的值
+//			oDiv1.setAttribute("count","10"); //显示行间样式
+			oDiv1.count = 10; //不显示行间样式
+			
+			
+			//3.删除属性
+			oDiv1.className = "";  //没有值,但有行间样式
+			oDiv1.removeAttribute("class");  //没有值,也没有行间样式
+			
+			
+		</script>
+	</body>
+</html>

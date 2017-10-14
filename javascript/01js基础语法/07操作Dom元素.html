@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#myDiv {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="myDiv"></div>
+		<input type="text"  name="myinput" id="myinput" value=""/>
+		
+		<script type="text/javascript">
+		
+			//document 文档对象 整个网页所有的元素
+			//getElementById 根据id名获取到对应且唯一的元素
+			//omyDiv 元素对象
+			var omyDiv = document.getElementById("myDiv");
+			var omyinput = document.getElementById("myinput");
+			//点击事件
+			omyDiv.onclick = function (){
+				
+				omyDiv.style.backgroundColor = "green";
+				console.log("点我干嘛!!!");
+				
+				//需求 点击div 获取input输入的内容
+				var inputValue = omyinput.value;
+				
+				//获取input输入的内容
+				console.log(omyinput.value)
+			}
+			
+			//鼠标移入事件
+			omyDiv.onmouseover = function(){
+				console.log("鼠标移入");
+			}
+			
+			//鼠标移出事件
+			omyDiv.onmouseout = function(){
+				console.log("鼠标移出");
+			}
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

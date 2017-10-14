@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap {
+            width: 700px;
+            height: 500px;
+            border: 5px solid pink;
+            position: relative;
+        }
+
+        #wrap div {
+            border-radius: 50% 50%;
+            background-color: lightgrey;
+        }
+
+        #big {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+
+        #small {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+
+    <div id="big"></div>
+    <div id="small"></div>
+
+</div>
+
+<script>
+    var wrap = document.querySelector("#wrap");
+    var big = document.querySelector("#big");
+    var small = document.querySelector("#small");
+
+//    var maxW = wrap.clientWidth - small.offsetWidth;
+//    var maxH = wrap.clientHeight - small.offsetHeight;
+
+    small.onmousedown = function(){
+
+        document.onmousemove = function (e) {
+            var e = e || window.event;
+
+            small.style.left = e.clientX - wrap.offsetLeft - wrap.clientLeft - small.offsetWidth / 2 + "px";
+            small.style.top = e.clientY - wrap.offsetTop - wrap.clientTop - small.offsetHeight / 2 + "px";
+
+            var R = big.offsetWidth / 2;
+            var r = small.offsetWidth / 2;
+
+            var a = small.offsetTop + r - (big.offsetTop + R);
+            var b = small.offsetLeft + r - (big.offsetLeft + R);
+            var c = R + r;
+
+            if(a*a + b*b <= c*c){
+                big.style.backgroundColor = "lightpink";
+            }else{
+                big.style.backgroundColor = "lightgrey";
+            }
+
+
+        }
+
+    }
+
+    small.onmouseup = function(){
+        document.onmousemove = null;
+    }
+
+
+
+</script>
+
+</body>
+</html>

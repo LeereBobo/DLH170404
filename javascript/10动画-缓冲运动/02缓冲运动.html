@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+
+        #btn {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1"></div>
+<button id="btn">按钮</button>
+
+
+<script type="text/javascript">
+    var oDiv1 = document.getElementById("div1");
+    var oBtn = document.getElementById("btn");
+    var timer = null;
+    function startMove(obj, speed, iTarget) {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var speedEnd = (iTarget - obj.offsetLeft) / speed;
+
+            //如果速度 >0 向上取整; <0 向下取整
+            //保证最后速度为1或者-1的匀速运动
+
+
+            if (speedEnd > 0) {
+                speedEnd = Math.ceil(speedEnd);
+
+            } else {
+                speedEnd = Math.floor(speedEnd);
+            }
+
+            //三目运算法
+            // speedEnd = speedEnd > 0 ? Math.ceil (speedEnd) : Math.floor (speedEnd);
+
+
+            if (obj.offsetLeft == iTarget) {
+                clearInterval(timer);
+            } else {
+
+                console.log("距左侧的距离" + obj.offsetLeft + "    speedEnd的值是" + speedEnd);
+
+                //offset的值只取整值 没有小数
+                obj.style.left = obj.offsetLeft + speedEnd + "px";
+            }
+
+        }, 30);
+
+    }
+
+    oBtn.onclick = function () {
+        startMove(oDiv1, 10, 0);
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="number" value="num1" id="num1" />  <button id="btn1">点我</button>
+		<br/>
+		<br/>
+		<br/>
+		<input type="number" value="num2" id="num2" />  <button id="btn2">点我</button>
+
+		<script type="text/javascript">
+			var oNum1 = document.getElementById("num1")
+			var oBtn1 = document.getElementById("btn1")
+			var oNum2 = document.getElementById("num2")
+			var oBtn2 = document.getElementById("btn2")
+
+			btn1.onclick = function(){
+				var a = num1.value;
+				    a = num2.value;
+				alert("a的值为" + a)
+
+			}
+
+			btn2.onclick = function(){
+				var b = num2.value;
+				    b = num1.value;
+				alert("b的值为" +b)
+
+			}
+			
+//			var a = 3;
+//			var b = 5;
+//			var c = a;
+//				a = b;
+//				b = c;
+//			alert("a的值为" + a + "b的值为" + b)
+			
+		
+		</script>
+		
+	
+	
+	</body>
+</html>

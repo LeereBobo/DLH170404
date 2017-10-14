@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内外边距的多值设置</title>
+    <style>
+        #a {
+            width: 200px;
+            height: 200px;
+            background-color: aqua ;
+            border: 2px solid gray;
+
+            /*有两个值时,第一个代表上下,第二个代表左右;
+             三个值时,代表上,左右,下;
+             四个值时,代表上,右,下,左.(顺时针) */
+            padding: 10px 100px 200px 300px;
+
+            margin:auto;
+            /*auto在页面始终居中*/
+            /*margin:10px 100px 200px 300px;*/
+            /*赋值意义同padding*/
+
+            /*border-width: medium/thick/thin;*/
+            /*border-style:solid;*/
+            /*border-width:1px 5px 10px;*/
+        }
+    </style>
+
+</head>
+<body>
+    <div id="a">内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区
+        内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区
+        内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区内容区
+    </div>
+</body>
+</html>

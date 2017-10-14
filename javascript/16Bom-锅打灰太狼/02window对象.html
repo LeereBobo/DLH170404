@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//Bom  Browser Object  Model  浏览器对象模型
+			
+			//window 支持所有的浏览器  window对象代表就是浏览器窗口
+			//window 最大 比HTML的Dom还大
+			
+			//定义的全局变量或者是函数 都是window对象的属性或者方法
+			console.log(window.document.documentElement.clientWidth);
+			
+			var a = 10;
+			console.log(a);//10
+			console.log(window.a);//10
+			
+			abc(); //window.abc();
+			function abc(){
+				var b = 30;
+				console.log(this);//window 30
+				console.log(b);
+				console.log(window.b); //undefined
+				
+			}
+			
+			document.onclick = function(){
+				//window.open();  //打开一个新的窗口
+				window.close();  //关闭当前浏览器窗口
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

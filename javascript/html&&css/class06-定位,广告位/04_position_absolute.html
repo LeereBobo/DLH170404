@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/position.css">
+    <style>
+        #div2 {
+
+            /*绝对定位:相对于包含块进行定位,从文本流中删除,原先的位置会被其他元素占用.进行绝对定位的元素都会变成块元素.
+            */
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        /*初始块是网页页面*/
+
+        .div-yellow {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: relative" class="div-yellow">
+<!--div2的包含块是最外边div的内边距界.-->
+        <div class="big div-red" style="margin: 100px;">
+            <div id="div2" class="small div-green"></div>
+        </div>
+    </div>
+</body>
+</html>

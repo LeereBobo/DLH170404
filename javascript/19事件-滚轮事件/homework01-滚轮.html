@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+				top: 300px;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+
+		</div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+
+			mouseWheel(oDiv1, changeStyle);
+
+			function changeStyle(obj, down) {
+				if(down) {
+					obj.style.top = obj.offsetTop + 5 + "px";
+				} else {
+					obj.style.top = obj.offsetTop - 5 + "px";
+				}
+			}
+
+			//判断是否是火狐浏览器
+			function mouseWheel(obj, fn) {
+				var isFireFox = window.navigator.userAgent.indexOf("FireFox") > 0;
+				if(isFireFox) {
+					obj.addEventListener("DOMMouseScroll", progress, false);
+				} else {
+					obj.onmousewheel = progress;
+				}
+
+				//判断滚动方向
+				function progress(e) {
+					var e = e || window.event;
+					var down = true;
+					if(e.detail) {
+						if(e.detail < 0) {
+							down = false;
+						}
+					} else {
+						if(e.wheelDelta > 0) {
+							down = false;
+						}
+					}
+					fn(obj, down);
+				}
+			}
+		</script>
+	</body>
+
+</html>

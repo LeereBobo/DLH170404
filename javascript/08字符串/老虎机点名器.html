@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 700px;
+				height: 800px;
+				margin: auto;
+				position: relative;
+			}
+			
+			#div1::after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+			#div1 div {
+				width: 150px;
+				height: 150px;
+				float: left;
+				background-color: lightblue;
+				font-size: 30px;
+				line-height: 150px;
+				text-align: center;
+				margin: 10px;
+				border-radius: 15px;
+			}
+			
+			button {
+				background-color: lightgray;
+				padding: 5px;
+				font-size: 15px;
+			}
+			
+			#btn1 {
+				position: absolute;
+				bottom: 30px;
+				left: 150px;
+			}
+			
+			#btn2 {
+				position: absolute;
+				bottom: 30px;
+				right: 150px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--HTML部分-->
+
+		<div id="div1">
+			<div>张为</div>
+			<div>李丹丹</div>
+			<div>张霆</div>
+			<div>刘珈麟</div>
+			<div>霍金鑫</div>
+			<div>于凯瑞</div>
+			<div>张德威</div>
+			<div>齐峰</div>
+			<div>梁佳军</div>
+			<div>李晓芮</div>
+			<div>高鑫</div>
+			<div>张泽雨</div>
+			<div>宇百东</div>
+			<div>赵瑞彤</div>
+			<div>康俊鹏</div>
+			<div>王洪阳</div>
+
+			<button id="btn1">Be careful!</button>
+			<button id="btn2">Wow,I've got you.</button>
+		</div>
+		<!--js部分-->
+
+		<script type="text/javascript">
+			//获取及定义变量
+			var oDiv1 = document.getElementById("div1");
+			var oDivs = oDiv1.getElementsByTagName("div");
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var timer = null;
+			var a = 0;
+
+			
+			//点击开始
+			oBtn1.onclick = function() {
+				clearInterval(timer);
+				timer = setInterval(function(){
+				
+					a = Math.floor(Math.random()*(15 - 0 + 1) + 0);
+					
+					oDivs[a].style.backgroundColor = "yellow";
+					
+					//点完后颜色变回初始值
+					for (var i = 0;i < oDivs.length; i++) {
+						if(i != a){
+							oDivs[i].style.backgroundColor = "lightblue";
+						}
+					}
+					
+				},20);
+			}
+			
+			//点击结束
+			oBtn2.onclick = function() {
+
+				oDivs[a].style.backgroundColor = "yellow";
+//				oDivs[a].style.backgroundColor = "lightblue";
+				clearInterval(timer);
+
+
+			}
+		</script>
+
+	</body>
+
+</html>

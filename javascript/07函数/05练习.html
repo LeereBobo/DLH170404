@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1.定义一个函数,实现两个变量的和,并打印和
+			
+			function sum () {
+				var a = 1;
+				var b = 2;
+				var sum = a + b;
+//				console.log(sum);
+				return sum;
+			}
+			
+//			sum();
+//			var s = sum();
+//			console.log(s);
+			console.log(sum());
+			
+			
+			//2.定义一个函数,求12到25之间的和
+			//在函数外部打印和
+			
+			function getSum (){
+				var sum = 0;
+				for (var i = 12; i <= 25; i++) {
+
+					sum += i;
+
+				}
+				return sum;
+			}
+
+			console.log(getSum());
+		</script>
+	</body>
+</html>

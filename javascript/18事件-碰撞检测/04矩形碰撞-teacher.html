@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+		<style type="text/css">
+			#wrap {
+				width: 700px;
+				height: 500px;
+				border: 10px solid lightslategray;
+				position: relative;
+			}
+			
+			#boxA {
+				width: 50px;
+				height: 50px;
+				background-color: black;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			#boxB {
+				width: 100px;
+				height: 100px;
+				background-color: black;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -50px;
+				margin-right: -50px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="boxA">
+
+			</div>
+			<div id="boxB">
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oBoxA = document.getElementById("boxA");
+		var oBoxB = document.getElementById("boxB");
+		oBoxA.onmousedown = function(e) {
+			var e = e || window.event;
+			//获取鼠标按下时位置
+			var mx_boxA = e.clientX;
+			var my_boxA = e.clientY;
+			//获取按下时oBoxA的位置
+			var boxALeft = oBoxA.offsetLeft;
+			var boxATop = oBoxA.offsetTop;
+			document.onmousemove = function(e) {
+				var e = e || window.event;
+				//获取鼠标移动的位置
+				var mX = e.clientX;
+				var mY = e.clientY;
+				//boxA移动的距离
+				var lessXA = mX - mx_boxA;
+				var lessYA = mY - my_boxA;
+				//boxA的位置
+				var oBoxALeft = lessXA + boxALeft;
+				var oBoxATop = lessYA + boxATop;
+				oBoxA.style.left = oBoxALeft + "px";
+				oBoxA.style.top = oBoxATop + "px";
+				//获取boxA的高宽
+				var oBoxAW = oBoxA.offsetWidth;
+				var oBoxAH = oBoxA.offsetHeight;
+				//获取boxB的宽高
+				var oBoxBW = oBoxB.offsetWidth;
+				var oBoxBH = oBoxB.offsetHeight;
+				//获取boxB的位置
+				var oBoxBLeft  = oBoxB.offsetLeft;
+				var oBoxBTop   = oBoxB.offsetTop;
+				var leftType   = oBoxALeft + oBoxAW >= oBoxBLeft;
+				var rightType  = oBoxBLeft + oBoxBW >= oBoxALeft;
+				var topType    = oBoxATop + oBoxAH >= oBoxBTop;
+				var bottomType = oBoxBTop + oBoxBH >= oBoxATop;
+				
+				if (leftType && rightType && topType && bottomType) {
+					oBoxB.style.backgroundColor = "red";
+				} else {
+					oBoxB.style.backgroundColor = "";
+				}
+			}
+		}
+		document.onmouseup = function() {
+			document.onmousemove = null;
+		}
+	</script>
+
+</html>                    

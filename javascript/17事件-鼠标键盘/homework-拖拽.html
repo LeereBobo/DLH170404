@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#item {
+				width: 700px;
+				height: 500px;
+				border: 10px solid black;
+				
+				margin: 0 auto;
+			}
+			
+			#drag {
+				width: 100px;
+				height: 100px;
+				background-color: #DB7093;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="item">
+			<div id="drag"></div>
+		</div>
+		
+		<script type="text/javascript">
+			var oItem = document.getElementById("item");
+			var oDrag = document.getElementById("drag");
+			
+			oDrag.onmousedown = function(){				
+				oItem.onmousemove = function(ev){
+					var ev = ev || window.event;
+					oDrag.style.left = ev.clientX - oDrag.offsetWidth / 2 + "px";
+					oDrag.style.top = ev.clientY - oDrag.offsetHeight / 2 + "px";
+					//左
+					if (oDrag.offsetLeft <= oItem.offsetLeft + oItem.clientLeft){
+						oDrag.style.left = oItem.offsetLeft + oItem.clientLeft + "px";
+					}
+					//上
+					if (oDrag.offsetTop <= oItem.offsetTop + oItem.clientTop){
+						oDrag.style.top = oItem.offsetTop + oItem.clientTop + "px";
+					}
+					//右
+					if (oDrag.offsetLeft + oDrag.offsetWidth >= oItem.offsetLeft + oItem.offsetWidth - oItem.clientLeft){
+						oDrag.style.left = oItem.offsetLeft  + oItem.offsetWidth - oItem.clientLeft - oDrag.offsetWidth + "px";
+					}
+					//下
+					if (oDrag.offsetTop + oDrag.offsetHeight >= oItem.offsetTop + oItem.offsetHeight - oItem.clientTop){
+						oDrag.style.top = oItem.offsetTop  + oItem.offsetHeight - oItem.clientTop - oDrag.offsetHeight + "px";
+					}
+					
+				}
+			}
+			
+			oDrag.onmouseup = function(){
+				oItem.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

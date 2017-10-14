@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				font-size: 60px;
+				color: white;
+				line-height: 200px;
+				text-align: center;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -100px;
+				margin-left: -100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+		<button id="stop">停止</button>
+		<button id="start">开始</button>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oStop = document.getElementById("stop");
+			var oStart = document.getElementById("start");
+
+			var timer = null; //函数作用域:function里的内容在外不可用,所以需要在外定义
+			var count = 0;//定时器停止后从之前停止位置开始
+			//点击开始
+			oStart.onclick = function() {
+				clearInterval(timer); //多个定时器时,消除之前的定时器.会有停顿
+//				var count = 0; 定时器停止后从头开始
+				timer = setInterval(function() {
+					count++;
+					oDiv1.innerHTML = count;
+				}, 1000);
+			}
+
+			//点击停止
+			oStop.onclick = function() {
+				oDiv1.innerHTML = "";
+				clearInterval(timer);
+			}
+
+		</script>
+	</body>
+
+</html>

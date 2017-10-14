@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.all {
+				width: 500px;
+				height: 500px;
+				border: 10px solid yellowgreen;
+				position: absolute;
+				top: 0;
+				left: 100px;
+				
+			}
+			#div1 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 10px solid yellow;
+				padding: 30px;
+				margin:30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div id="div1"></div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			//定位left 200px
+			var oDiv1 = document.getElementById("div1");
+			//通过 .style.left获取CSS样式
+			//获取的是 行间样式
+			oDiv1.style.left = "200px";
+			/*
+			console.log(oDiv1.style.left);
+			console.log(oDiv1.style.backgroundColor);*/
+			
+			//元素的可见边距 距离其 父级 左侧的距离(margin可见,padding border不可见)
+			var theLeft = oDiv1.offsetLeft;
+			console.log(theLeft);
+
+			var theTop = oDiv1.offsetTop;//父级
+			console.log("theTop的值是:" + theTop);
+
+			//可见宽度  content + border + padding
+			var theWidth = oDiv1.offsetWidth;
+			console.log(theWidth);
+
+			//可见高度  content + border + padding
+			var theHeight = oDiv1.offsetHeight;
+			console.log(theHeight);
+			
+		</script>
+	</body>
+</html>

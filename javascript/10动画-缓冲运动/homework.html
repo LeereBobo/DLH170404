@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.all {
+				width: 500px;
+				height: 100px;
+				margin-bottom: 10px;
+				position: relative;
+			}
+			
+			.on {
+				width: 100px;
+				height: 100px;
+				margin-bottom: 10px;
+				background-color: black;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 100;
+			}
+			
+			.bottom {
+				width: 200px;
+				height: 100px;
+				background-color: red;
+				line-height: 100px;
+				text-align: center;
+				color: white;
+				font-size: 26px;
+				position: absolute;
+				top: 0;
+				left: -200px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="all">
+			<div class="on"></div>
+			<div class="bottom">购物车</div>
+		</div>
+
+		<div class="all">
+			<div class="on"></div>
+			<div class="bottom">我的订单</div>
+		</div>
+
+		<div class="all">
+			<div class="on"></div>
+			<div class="bottom">历史足迹</div>
+		</div>
+
+		<div class="all">
+			<div class="on"></div>
+			<div class="bottom">网络红人</div>
+		</div>
+
+		<div class="all">
+			<div class="on"></div>
+			<div class="bottom">精彩推荐</div>
+		</div>
+
+		<script type="text/javascript">
+			var oAlls = document.getElementsByClassName("all");
+			var oOns = document.getElementsByClassName("on");
+			var oBottoms = document.getElementsByClassName("bottom");
+	
+			var timer = null;
+			
+			//匀速运动函数完美封装
+			function linearMove(obj, attr, speed, iTarget) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					var attrValue = parseInt(getStyle(obj, attr));
+					if(Math.abs(iTarget - attrValue) <= Math.abs(speed)) {
+						obj.style[attr] = iTarget + "px";
+						clearInterval(obj.timer);
+					} else {
+						obj.style[attr] = attrValue + speed + "px";
+					}
+
+				}, 20);
+			}
+
+			//适配于所有浏览器
+			function getStyle(obj, attr) {
+
+				if(obj.currentStyle) {
+					return obj.currentStyle[attr]; //针对IE
+				} else {
+					return getComputedStyle(obj)[attr];
+				}
+
+			}
+
+			for(var i = 0; i < oAlls.length; i++) {
+				oAlls[i].index = oBottoms[i];
+				oAlls[i].onmouseover = function() {
+					linearMove(this.index, "left", 10, 100);
+				}
+
+				oAlls[i].onmouseout = function() {
+					linearMove(this.index, "left", -10, -100);
+				}
+			}
+
+		
+		</script>
+
+	</body>
+
+</html>

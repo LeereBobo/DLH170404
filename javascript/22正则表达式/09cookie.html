@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//cookie 存储信息 4KB
+			//cookie 按照键值对存储,但cookie不是json结构.获取到的cookie是一个字符串
+			//当不设置cookie的存储时间时,关闭浏览器,会清空存储的cookie
+			
+			/*
+			 * document.cookie = "username = hexin";
+			document.cookie = "password = mimamima";
+			document.cookie = "username = hewenjign";//重新赋值会被覆盖
+			console.log(document.cookie);
+			*/
+			
+			//设置存储时间 关闭浏览器,不会清空存储的cookie
+//			//var nowDate = new Date();
+//			//console.log(nowDate.getDate());
+//			//nowDate.setDate(nowDate.getDate()+100);//当前日期后推100天
+////			console.log(nowDate);
+//			
+////			document.cookie = "username=hexin;expires=" + nowDate.toGMTString();
+//			nowDate.toGMTString();时间转化为字符串
+			//console.log(document.cookie);
+			
+			//清除cookie
+			var nowDate = new Date();
+			nowDate.setDate(nowDate.getDate() - 1);//将cookie存储时间改为前一天,失效
+			document.cookie = "username=hexin;expires=" + nowDate.toGMTString();
+			console.log(document.cookie);
+		</script>
+	</body>
+</html>

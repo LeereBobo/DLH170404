@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#myDiv {
+				width: 300px;
+				height: 400px;
+				border: 1px dashed black;
+				position: relative;
+				text-align: center;
+				line-height: 400px;
+			}
+			#div1 {
+				font-size: 50px;
+			}
+			button {
+				background-color: black;
+				color: white;
+				font-size: 20px;
+				padding: 3px 10px;
+			}
+			
+			#start {
+				position: absolute;
+				bottom: 20px;
+				left: 40px;
+			}
+			
+			#stop {
+				position: absolute;
+				bottom: 20px;
+				right: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="myDiv">
+			<div id="div1"></div>
+			<button id="start">开始</button>
+			<button id="stop">结束</button>
+		</div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oStart = document.getElementById("start");
+			var oStop = document.getElementById("stop");
+			
+			var arr = ["张为", "李丹丹", "张霆", "刘珈麟", "霍金鑫",
+				"于凯瑞", "张德威", "齐峰", "梁佳军", "李晓芮",
+				"高鑫", "张泽雨", "宇百东", "赵瑞彤", "康俊鹏", "王洪阳"];
+				
+				
+			//定时器 每次随机一个0~15之间的数	
+			
+			var timer = null;
+			oStart.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					
+					//随机下标  耦合度
+					var index = Math.floor(Math.random()*(arr.length - 1 - 0 + 1) + 0);
+					//根据随机下标 获取随机人名
+					var name = arr[index];
+					//将随机的人名放到div中
+					oDiv1.innerHTML = name;
+					
+				},10);
+			}
+			
+			oStop.onclick = function(){
+				var arr1 = ["张为", "李丹丹", "张霆"];
+				var index = Math.floor(Math.random()*(arr1.length - 1 - 0 + 1) + 0);
+				oDiv1.innerHTML = arr1[index];
+				clearInterval(timer);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			 div{
+			 	/*height: 50px;*/
+			 	font-size: 50px;
+			 	text-align: center;
+			 	color: white;
+			 	background-color: pink;
+			 }
+		</style>
+	</head>
+	<body>
+		<div id="">
+			我是第三个网页
+		</div>
+		<a href="04.html">去04</a>
+		<button onclick="goTo()">后退</button>
+		
+		
+		
+		<script type="text/javascript">
+			function goBack(){
+				history.back();
+			}
+			function goTo(){
+				history.go(-1);
+			}
+		</script>
+	</body>
+</html>

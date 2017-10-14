@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style type="text/css">
+			#all {
+				width: 800px;
+				border: 1px solid black;
+				/*padding: 10px 0;*/
+				border-radius: 5px;
+				background-color: lightpink;
+			}
+			
+			.source {
+				float: left;
+				margin: 10px 0;
+				font-size: 12px;
+			}
+			
+			.count {
+				float: right;
+				margin: 10px 0;
+				font-size: 12px;
+			}
+			
+			.small::after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+			.small {
+				width: 750px;
+				border-bottom: 1px dashed black;
+				margin: 25px auto;
+				
+			}
+			.joy {
+				margin: 15px 0;
+				font-size: 17px;
+				word-spacing: 4px;
+				line-height: 25px;
+				
+			}
+			#btn {
+				margin:5px 5px;
+				border-radius:5px;
+				background-color: lightblue;
+				outline: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="all">
+			
+
+			<button id="btn" onclick="btnClick()">每日一乐😁</button>
+
+		</div>
+
+	</body>
+
+	<script>
+		
+		var oAll = document.getElementById("all");
+		//使用jsonp的形式，点击按钮获取返回结果
+
+		function btnClick() {
+
+			var oScript = document.createElement("script");
+			oScript.src = "http://c.3g.163.com/recommend/getChanRecomNews?channel=duanzi&passport=91153191bdb987ca2bc10b1d3e7a5004@tencent.163.com&devId=CE80EFE4-9CE9-4E06-B117-DFA8DE7893F1&size=20&callback=getData";
+			document.body.appendChild(oScript);
+
+		}
+
+		function create() {
+			var oSmall = document.createElement("div");
+			oSmall.className = "small";
+			oAll.appendChild(oSmall);
+			
+			//段子
+			var dig = document.createElement("div");
+			dig.className = "joy";
+			oSmall.appendChild(dig);
+
+			//来源
+			var oSource = document.createElement("div");
+			oSource.className = "source";
+			oSmall.appendChild(oSource);
+
+			//回复个数
+			var replyCount = document.createElement("div");
+			replyCount.className = "count";
+			oSmall.appendChild(replyCount);
+		}
+
+		
+		function getData(data) {
+
+			var arr = data["段子"];
+			for(var i in arr) {
+				create();
+				var digs = document.getElementsByClassName("joy");
+				var oSources = document.getElementsByClassName("source");
+				var replyCounts = document.getElementsByClassName("count");
+				digs[i].innerHTML = arr[i]["digest"];
+				oSources[i].innerHTML = "来源:" + arr[i]["source"];
+				replyCounts[i].innerHTML = "回复个数:" + arr[i]["replyCount"];
+			}
+		}
+	</script>
+
+</html>

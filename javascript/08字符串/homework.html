@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			#box {
+				width: 900px;
+				border: 1px solid black;
+				position: relative;
+				text-align: center;
+			}
+			#box div {
+				width: 100px;
+				height: 100px;
+				text-align: center;
+				line-height: 100px;
+				font-size: 50px;
+				display: inline-block;
+				margin:60px 30px 30px;
+				border: 1px solid yellow;
+			}
+			#btn {
+				position: absolute;
+				top: 20px;
+				left: 30px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<section id="box">
+			<button id="btn">更换</button>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		
+		</section>
+		
+		
+		
+		<script type="text/javascript">
+		
+			//获取数据
+			var oDivs = document.getElementsByTagName("div");
+			var oBtn = document.getElementById("btn");
+			
+			//定义数组
+			var colorArr = ["red", "yellow", "blue", "green", "black"];
+			var textArr  = ["红", "黄", "蓝", "绿", "黑"];
+			
+			colorArr = ["black","blue", "red",  "green", "yellow"];
+			textArr  = [ "绿", "黄", "蓝", "红","黑"];
+			//点击事件
+			
+			oBtn.onclick = function (){
+				//随机数组去重
+				var arr = [];
+				while (arr.length != 5) {
+					var a = random(4,0);
+					
+					var tf = false;
+					for (var i = 0; i < arr.length; i++) {
+						if(arr[i] == a) {
+							tf = true;
+							break;
+						}
+					}
+					if (!tf) {
+						arr.push(a);
+						//随机数组作为下标添加到定义数组中
+						
+						oDivs[a].style.color = colorArr[i];
+						oDivs[i].innerHTML = textArr[a];
+					}
+				}
+				console.log(arr);
+				
+			}
+			
+			
+			
+			//获取随机数
+			function random (max,min) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+				
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1.写一段函数 求两个数的和  有参有返回
+				
+			function sum (a,b){
+				var sum = a + b;
+				return sum;
+			}
+			var a = sum(1,2);
+			console.log(a);
+			
+			//2.求两个数的最大值
+			
+			function s (max,min) {
+				//var s = max > min ? max : min;
+				var s = Math.max(max,min);
+				return s;
+			}
+			var b = s (3,6);
+			console.log(b);
+			
+			//3.求1~n的和
+			
+			function plus (n) {
+				var sum = 0;
+				for (var i = 1; i <= n; i++) {
+					sum += i;
+				}
+				return sum;
+			}
+			console.log(plus(20));
+			
+			//4.函数功能  如果a > b  返回两数之差的绝对值
+			//否则 返回两数之和
+			
+			function number (a,b) {
+				
+				return a > b ? Math.abs(a - b) : a + b;
+				
+			}
+			console.log(number(21,50));
+			
+			
+		</script>
+	</body>
+</html>

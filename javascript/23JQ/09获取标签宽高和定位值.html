@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#all {
+				width: 100px;
+				height: 100px;
+				background-color: lightgray;
+				margin: 50px;
+				padding: 40px;
+				border: 10px solid lightcoral;
+				position: absolute;
+				left:300px;
+				top: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="all"></div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			
+			$(function() {
+				//都不带px值
+				//获取内容的宽高
+				console.log($("#all").width());//100
+				console.log($("#all").height());//100
+				
+				//内容 + padding  相当于clientWidth/clientHeight
+				console.log($("#all").innerWidth());//180
+				console.log($("#all").innerHeight());//180
+				
+				//内容 + padding + border  相当于offsetWidth/offsetHeight
+				console.log($("#all").outerWidth());//200
+				console.log($("#all").outerHeight());//200
+				
+				
+				//据左 据上位置 
+				//距浏览器窗口的位置,不管多重嵌套,其父级为浏览器窗口
+				console.log($("#all").offset().left);//350
+				console.log($("#all").offset().top);//50
+				
+				
+				//带px
+				console.log($("#all").css("left"));//300px
+				console.log($("#all").css("top"));//50px
+				
+				
+				/*获取匹配元素相对父元素的偏移。
+				返回的对象包含两个整型属性：top 和 left。
+				为精确计算结果，请在补白、边框和填充属性上使用像素单位。此方法只对可见元素有效*/
+				position();
+				
+			});
+		</script>
+	</body>
+
+</html>

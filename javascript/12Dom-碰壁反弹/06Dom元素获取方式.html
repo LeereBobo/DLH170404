@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="div1">
+			
+			<div class="left"></div>
+			<div></div>
+			
+		</div>
+		
+		<div ></div>
+		<div ></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		
+		<script type="text/javascript">
+			/*
+			 
+			 * getElementById()
+			 * getElementsByTagName() 
+			 * getElementsByClassName() (新)
+			 * querySelectorAll() (新)
+			 * querySelector() (新)
+			 * 
+			 * 标注为新的 仅在IE8以上可以使用(包含IE8)
+			
+			 * */
+			
+			//1.通过id获取
+			var oDiv1 = document.getElementById("div1");
+			console.log(oDiv1);
+			
+			//2.通过标签名获取
+			document 
+			var oDivs = document.getElementsByTagName("div");
+			console.log(oDivs);
+			
+			//3.class
+			var oDivArr = document.getElementsByClassName("left");
+			console.log(oDivArr);
+			//注意:获取一个或多个同名class 都返回数组类型
+			
+			//4.通过CSS选择器获取指定的所有标签
+			var oDivArr1 = document.querySelectorAll(" .left");
+			//注意:即使是一个,也返回数组类型
+			console.log(oDivArr1);
+			
+			//5.通过CSS选择器获取指定的,第一个符合条件的标签
+			//返回值类型 Dom对象
+			var oDiv2 = document.querySelector(".left");
+			console.log(oDiv2);
+			
+			//注意:上面所有的方法不仅可以使用document获取,也可以是任意Dom对象
+		</script>
+	</body>
+</html>

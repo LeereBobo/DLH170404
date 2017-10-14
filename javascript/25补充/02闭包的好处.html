@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			//1.让一个变量长期驻扎在内存中
+			
+			var a = 0;
+			function abc(){
+				a++;
+			}
+			abc();
+			abc();
+			console.log(a);
+			
+			/*function bbb(){
+				var b = 2;
+				b++;
+				console.log(b);
+			}
+			
+			bbb();
+			bbb();
+			
+			//防止全局变量污染
+			function ccc(){
+				var a = 0;
+				
+				return function(){
+					a++;
+					console.log(a);
+				}
+				
+			}
+			var c = ccc();
+			c();
+			c();
+			c();
+			c();
+			
+			//闭包常用方式
+			//先函数自调用
+			var nnn = (function(){
+				
+				var a = 0;
+				
+				return function(){
+					a++;
+					console.log(a);
+				}
+				
+			})();
+			nnn();*/
+		
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*#all div {
+				width: 100px;
+				height: 100px;
+				display:inline-block;
+			}*/
+			
+			.small {
+				width: 100px;
+				height: 100px;
+				display:inline-block;
+				margin-left:5px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<button id="btn1">添加</button>
+		<button id="btn2">删除</button>
+		<div id="all">
+
+		</div>
+
+		<script type="text/javascript">
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var oAll = document.getElementById("all");
+		
+
+			function ran(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			
+			function ranColor() {
+				var r = ran(0,255);
+				var g = ran(0,255);
+				var b = ran(0,255);
+				return "rgb(" + r + ", " + g + "," + b + ")";
+			}
+			oBtn1.onclick = function() {
+				var newDiv = document.createElement("div");
+				newDiv.className = "small";
+				newDiv.style.backgroundColor = ranColor();
+				oAll.appendChild(newDiv);
+			
+			}
+
+			oBtn2.onclick = function() {
+				if(oAll.children.length != 0){
+					var lastIndex = oAll.children.length - 1;
+					
+					//要删除的元素
+					var deleteDiv = oAll.children[lastIndex];
+					oAll.removeChild(deleteDiv);
+				}
+				
+			}
+		</script>
+	</body>
+
+</html>

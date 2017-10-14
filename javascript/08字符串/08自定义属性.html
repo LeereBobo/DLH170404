@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		 <div id="div1"></div>
+		 <div id="div2"></div>
+		<script type="text/javascript">
+			var oDiv = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			//自定义属性index  命名 符合命名规范即可
+			//帮助元素记录某些值  可赋值  可取值
+			//不会在行内生成对应的属性
+			oDiv.index = 1;
+			
+			//取值
+			console.log(oDiv.index);
+		</script>
+	</body>
+</html>

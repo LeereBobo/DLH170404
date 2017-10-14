@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 300px;
+				height: 300px;
+				background-color: pink;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			oWrap.onclick = function(ev){
+				
+				var ev = ev || window.event;
+				
+				//*鼠标距离浏览器窗口的位置
+				console.log("🐈" + ev.clientX);
+				console.log("🐖" + ev.clientY);
+				
+				//鼠标距离当前页面的距离,从页面本身开始计算
+				console.log("🐎" + ev.pageX);
+				console.log("🐎" + ev.pageY);
+				
+				//非定位元素 获取距离本身的距离
+				//offsetLeft 如果是定位元素,获取的相对于最近的父级定位的距离
+				//否则border是距离页面本身的距离
+				console.log(ev.pageX - this.offsetLeft);
+				console.log(ev.pageY - this.offsetTop);
+			
+				//鼠标距离屏幕的距离	
+				console.log("🐑" + ev.screenX);
+				console.log("🐑" + ev.screenY);
+			}
+		</script>
+	</body>
+</html>

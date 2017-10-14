@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--value 不给值-->
+		<input type="number" id="num" value="" />
+		<button type="submit" id="btn">点击判断</button>
+		
+		<script type="text/javascript">
+			var oNum = document.getElementById("num");
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var x = oNum.value;
+				if(x % 2){
+					console.log("x为奇数");
+				} else {
+					console.log("x为偶数");
+				}
+				
+				
+			}
+		</script>
+		
+	</body>
+</html>

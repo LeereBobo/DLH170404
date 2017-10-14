@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div>div</div>
+		<span id="">
+			span
+		</span>	
+		<p>p</p>		
+		<div id="div1">
+			<h3>h3</h3>
+			<h2>h2</h2>
+			<h3 >h3</h3>
+			<h2>h2</h2>
+			<h3 id="h">h3</h3>
+		</div>
+		
+		<script src="../23JQ/jquery-1.11.2.min.js" type="text/javascript">
+			
+		</script>
+		<script type="text/javascript">
+			
+			$(function(){
+				
+				//下一个兄弟节点
+				$("div").next().css("background-color","red");
+				
+				//上一个兄弟节点
+				$("span").prev().css("background-color","yellow");
+				
+				$("#div1").find("h2").eq(0).css("color","pink");
+				//$("#div1 h2").css("color","pink");
+				
+				//当前元素在兄弟节点的位置,从0开始
+				console.log($("#h").index());
+			})
+		</script>
+	</body>
+</html>

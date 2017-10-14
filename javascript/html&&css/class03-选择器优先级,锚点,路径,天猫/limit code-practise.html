@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a{
+            color: black ;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: inline-block ;
+            /*上边距会被覆盖,所以加block,又因要横向排列,所以选择inline*/
+        }
+
+        a:hover {
+            background-color: yellow;
+        }
+
+        .two {border-radius: 50%;
+
+        }
+
+        .one {
+            background-color: grey;
+        }
+
+        .three {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="one">上一页</a>
+    <a href="#" class="three">下一页</a>
+    <a href="#" class="two one">&gt;</a>
+    <a href="#" class="two three">&lt;</a>
+</body>
+</html>

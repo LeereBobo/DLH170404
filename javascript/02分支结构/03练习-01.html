@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="myDiv"></div>
+		
+		<script type="text/javascript">
+			var oDiv = document.getElementById("myDiv");
+			
+			oDiv.onmouseover = function(){
+				oDiv.style.backgroundColor = "yellow";
+			}
+			
+			oDiv.onmouseout = function(){
+				oDiv.style.backgroundColor = "blue";
+			}
+		</script>
+	</body>
+</html>

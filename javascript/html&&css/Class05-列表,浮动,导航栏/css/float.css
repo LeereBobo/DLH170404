@@ -1,0 +1,27 @@
+/*  "*"代表通配符选择器. *的优先级为0.*/
+* {
+    /*重置样式表:覆盖默认样式的方式*/
+    margin:0;
+    padding:0;
+}
+.in {
+    width:100px;
+    height:100px;
+    background-color:red;
+    border:1px solid black;
+    color:white;
+    font-size:20px;
+}
+/*让元素向右浮动.*/
+.right {
+    float:right;
+}
+/*让元素向左浮动.*/
+.left {
+    float:left;
+}
+.big {
+    width:280px;
+    height:320px;
+    border:2px solid black;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        #box{
+            /*text-align: center;*/
+            font-size: 30px;
+            margin-top: 200px;
+        }
+        #red ,#blue{
+            display: inline-block;
+            width: 300px;
+            height: 50px;
+            border: 3px solid red;
+            line-height: 50px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        #blue {
+            width: 100px;
+            border: 3px solid blue;
+        }
+        #btn {
+            font-size: 20px;
+            padding: 20px;
+            margin-top: 60px;
+
+        }
+    </style>
+</head>
+<body>
+
+<!--HTML部分-->
+<div>
+    <div id="box">
+        <span id="red"></span>
+        <span id="blue"></span>
+    </div>
+    <button id="btn">随机一注</button>
+</div>
+
+
+
+<!--js部分-->
+<script type="text/javascript">
+    //点击按钮随机生成一组双色球的号码
+
+    /*注：双色球数字特点
+     1.一组双色球的号码一共有7个数字
+     2.其中6个数的取值范围[1, 33]，数字不能重复
+     3.剩余1个数的取值范围[1, 16]*/
+
+    //获取
+    var oRed = document.getElementById("red");
+    var oBlue = document.getElementById("blue");
+    var oBtn = document.getElementById("btn");
+
+    //获取红色球的6个随机数
+
+    function Random(){
+
+        var arr = [];
+        for(var i = 0;i < 6;i++){
+
+            var ran = Math.floor(Math.random() * (33 - 1 + 1) + 1);
+
+            for(var j = 0;j < arr.length;j++){
+
+                if(arr[j] == ran){
+
+                    i = i - 1;
+                    break;
+                }
+            }
+
+            if(arr[j] != ran){
+
+                arr.push(ran);
+                oRed.innerHTML = arr;
+            }
+
+
+
+        }
+    }
+
+    oBtn.onclick = function(){
+
+        var ran1 = Math.floor(Math.random() * (16 - 1 + 1) + 1);
+        oBlue.innerHTML = ran1;
+        Random();
+    }
+
+</script>
+</body>
+</html>

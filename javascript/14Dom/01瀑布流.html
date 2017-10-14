@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#wrap {
+				position: relative;
+			}
+			#wrap div {
+				width: 200px;
+				position: absolute;
+				background-color: black;
+				color: white;
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap"></div>
+		
+		<script type="text/javascript">
+			
+			var oWrap = document.getElementById("wrap");
+			
+			//间隙值
+			var space = 10;//色块和色块之间的距离
+			
+			//列数
+			//200 + space 一个色块的大小
+			var cols = document.documentElement.clientWidth / (200 + space);
+			cols = parseInt(cols);
+			//给每一列初始高度
+			//colsHeight  存放每一列的高度
+			var colsHeight = [];
+			for (var i = 0; i < cols; i++) {
+				colsHeight[i] = 0;
+			}
+			
+			
+			for (var i = 0; i < 20; i++) {
+				//创建一个新的div
+				var newDiv = document.createElement("div");
+				newDiv.innerHTML = i;
+				newDiv.style.height = ran(300,100) + "px";
+				
+				//2.找到最短列
+				var minHeight = colsHeight[0];//默认第一个最小
+				var minIndex = 0;//默认第一个
+				
+				for (var j = 0; j < colsHeight.length; j++ ) {
+					if(minHeight > colsHeight[j]){
+						minHeight = colsHeight[j];
+						minIndex = j;
+					}
+				}
+				
+				
+				
+				//3.根据最短列计算定位值 放到相应的位置
+				var theLeft = (space + 200) * minIndex + space;
+				newDiv.style.left  = theLeft + "px";
+				
+				var theTop = minHeight + space;
+				//var theTop = colsHeight[minIndex] + space;
+				newDiv.style.top = theTop + "px";
+				oWrap.appendChild(newDiv);
+				
+				//更新最短列高度
+				colsHeight[minIndex] += newDiv.offsetHeight + space; 
+			}
+			
+			function ran(max,min){
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+			.all {
+				margin: 100px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all"></div>
+		<img src=""/id="a">
+		
+		<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+		
+		<script type="text/javascript">
+						
+		$(function(){
+			//css样式改一个值
+			$("#all").css("background-color","#00FFFF");
+			//css样式改多个值  .css
+			$("#all").css({"background-color":"black","width":"200px","opacity":"0.5"});
+			$("#a").attr({src:"1.jpg"});
+			//添加一个css类名   .addClass
+			$("#all").addClass("all");
+			//$("#all").attr("class","all");
+			//删除一个css类   .removeClass
+			$("#all").removeClass("all");
+			
+			//判断某个元素是否具有某个类 .hasClass
+			var isHave = $("#all").hasClass("all");
+			console.log(isHave);
+			
+		});
+			
+		</script>
+	</body>
+</html>

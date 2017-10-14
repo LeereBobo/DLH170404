@@ -1,0 +1,194 @@
+
+* {
+    box-sizing: border-box;
+}
+
+
+.row::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+/*移动优先原则*/
+
+/*手机:默认,所以不写@media*/
+[class*="xs"] {
+    float: left;
+}
+
+/*占1列宽*/
+.rain-xs-1 {
+    width: 8.333333333%;
+    /*100%/12*/
+}
+
+/*占2列宽*/
+.rain-xs-2 {
+    width: 16.666666667%;
+}
+
+/*占3列宽*/
+.rain-xs-3 {
+    width: 25%;
+}
+
+.rain-xs-4 {
+    width: 33.333333333%;
+}
+
+.rain-xs-5 {
+    width: 41.666666667%;
+}
+
+.rain-xs-6 {
+    width: 50%;
+}
+
+.rain-xs-7 {
+    width: 58.333333333%;
+}
+
+.rain-xs-8 {
+    width: 64.666666667%;
+}
+
+.rain-xs-9 {
+    width:75% ;
+}
+
+.rain-xs-10 {
+    width: 83.333333333% ;
+}
+
+.rain-xs-11 {
+    width: 91.666666667%;
+}
+
+.rain-xs-12{
+    width: 100% ;
+}
+
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    [class*="sm"] {
+        float: left;
+    }
+
+
+
+    /*占1列宽*/
+    .rain-sm-1 {
+        width: 8.333333333%;
+        /*100%/12*/
+    }
+
+    /*占2列宽*/
+    .rain-sm-2 {
+        width: 16.666666667%;
+    }
+
+    /*占3列宽*/
+    .rain-sm-3 {
+        width: 25%;
+    }
+
+    .rain-sm-4 {
+        width: 33.333333333%;
+    }
+
+    .rain-sm-5 {
+        width: 41.666666667%;
+    }
+
+    .rain-sm-6 {
+        width: 50%;
+    }
+
+    .rain-sm-7 {
+        width: 58.333333333%;
+    }
+
+    .rain-sm-8 {
+        width: 64.666666667%;
+    }
+
+    .rain-sm-9 {
+        width:75% ;
+    }
+
+    .rain-sm-10 {
+        width: 83.333333333% ;
+    }
+
+    .rain-sm-11 {
+        width: 91.666666667%;
+    }
+
+    .rain-sm-12{
+        width: 100% ;
+    }
+}
+
+/*电脑*/
+@media screen and (min-width: 996px) {
+
+    [class*="md"] {
+        float: left;
+    }
+
+
+
+    /*占1列宽*/
+    .rain-md-1 {
+        width: 8.333333333%;
+        /*100%/12*/
+    }
+
+    /*占2列宽*/
+    .rain-md-2 {
+        width: 16.666666667%;
+    }
+
+    /*占3列宽*/
+    .rain-md-3 {
+        width: 25%;
+    }
+
+    .rain-md-4 {
+        width: 33.333333333%;
+    }
+
+    .rain-md-5 {
+        width: 41.666666667%;
+    }
+
+    .rain-md-6 {
+        width: 50%;
+    }
+
+    .rain-md-7 {
+        width: 58.333333333%;
+    }
+
+    .rain-md-8 {
+        width: 64.666666667%;
+    }
+
+    .rain-md-9 {
+        width:75% ;
+    }
+
+    .rain-md-10 {
+        width: 83.333333333% ;
+    }
+
+    .rain-md-11 {
+        width: 91.666666667%;
+    }
+
+    .rain-md-12{
+        width: 100% ;
+    }
+}

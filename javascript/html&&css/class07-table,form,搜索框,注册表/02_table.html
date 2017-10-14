@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格跨列</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        table ,th,td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        th,td {
+            text-align: center;
+        }
+
+        caption {
+            caption-side:top;
+        }
+    </style>
+</head>
+<body>
+    <table>
+
+        <!--css属性caption-side决定表格标题的位置.-->
+        <caption>联系人</caption>
+        <tr>
+            <th>姓名</th>
+
+            <!--colspan属性可以使单元格向右跨列-->
+            <th colspan="2">电话</th>
+        </tr>
+        <tr>
+            <td>张德伟</td>
+            <td>1234</td>
+            <td>1234</td>
+        </tr>
+        <tr>
+            <td>与凯瑞</td>
+            <td>2343</td>
+            <td>2343</td>
+        </tr>
+    </table>
+</body>
+</html>

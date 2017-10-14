@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			#wrap {
+				width: 600px;
+				height: 50px;
+				background-color: lightgray;
+				border-radius: 25px;
+				position: relative;
+				margin:0 auto;
+				
+			}
+			
+			#div1 {
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				background-color: pink;
+				position: absolute;
+			}
+			
+			#div2 {
+				background-color: lightblue;
+				position: absolute;
+				top: 400px;
+				left: 400px;
+			}
+			
+			
+		</style>
+	</head>
+
+	<body>
+		
+		<div id="wrap">
+			<div id="div1">
+				
+			</div>
+		</div>
+		
+		<div id="div2">
+			
+		</div>
+
+		<script src="jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			
+			/* js部分
+			 * var oWrap = document.getElementById("wrap");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			
+			oDiv1.onmousedown = function(){
+				
+				var max = oWrap.clientWidth - oDiv1.offsetWidth;
+				
+				oWrap.onmousemove = function(e){
+					
+					var e = e || window.event;
+					
+					var current = e.clientX - oWrap.offsetLeft - oDiv1.offsetWidth / 2;
+					
+					if (current >= max) {
+						current = max;
+					}else if (current <= 0) {
+						current = 0;
+					}
+					
+					oDiv1.style.left = current + "px";
+					var ratio = current / max;
+					oDiv2.style.width = oWrap.offsetWidth * ratio + "px";
+					oDiv2.style.height = oWrap.offsetWidth * ratio + "px";
+					oDiv2.style.margin = -oDiv2.offsetHeight / 2 + "px";
+					
+				}
+				
+			}
+			
+			oDiv1.onmouseup = function(){
+				oWrap.onmousemove = null;
+			}*/
+			
+			//JQ部分
+			$("#div1").click(function(){
+				var max = $("#wrap").innerWidth - $("#div1").innerWidth;
+				$("#wrap").mousemove(function(){
+					var current = $("div").css("left");
+					var div1L = $("#div1").position().left;
+					var div1T = $("#div1").position().top;
+					
+					var ratio = current / max;
+					if ($("current") >= $("max")) {
+						
+					}
+				})
+			})
+			
+			
+			
+		</script>
+	</body>
+
+</html>
