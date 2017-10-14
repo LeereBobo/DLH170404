@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.small {
+    width: 100px;
+    height: 100px;
+
+}
+
+.big {
+    width: 400px;
+    height: 400px;
+}
+ .div-red {
+     background-color: red;
+ }
+ .div-green {
+     background-color: green;
+ }
+ .div-yellow {
+     background-color: yellow;
+ }

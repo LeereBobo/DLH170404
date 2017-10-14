@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            /*appearance 是用于去掉表单元素的默认样式,即下拉图标*/
+        }
+
+        textarea {
+            /*resize: horizontal;*/
+            /*!*水平方向可拽*!*/
+            /**/
+
+            resize: vertical;
+            /*垂直方向可拽*/
+
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+
+        <!--<select>下拉列表-->
+        <select name="car" id="select01">
+            <option value="aodi">奥迪</option>
+            <option value="baoma">宝马</option>
+            <option value="falali">法拉利</option>
+            <option value="daqilv">倒骑驴</option>
+        </select>
+
+        <!--多行文本输入表单元素.在<textarea>里写注释可以在页面显示-->
+        <!--<textarea>元素的开始标签和结束标签之间的空格不会被浏览器忽略,
+                      同样会显示在页面上-->
+        <!--cols代表可见的宽度,rows代表可见的高度-->
+        <textarea name="" id="" cols="10" rows="20"
+                  placeholder="请输入..."></textarea>
+        <br>
+
+        <!--<button>按钮-->
+        <button type="button" onclick="alert('好好学习,天天向上!')">点击我</button>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body {
+            height:100%;
+        }
+        
+        body {
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            
+            perspective: 1000px;
+
+            background-color: black;
+        }
+        
+        section {
+            width: 200px;
+            height: 200px;
+
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -100px;
+            margin-left: -100px;
+
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+            -webkit-transition: all 100s;
+            -moz-transition: all 100s;
+            -ms-transition: all 100s;
+            -o-transition: all 100s;
+            transition: all 100s;
+        }
+
+        .center {
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+            -webkit-transform: rotateX(45deg) rotateZ(45deg);
+            -moz-transform: rotateX(45deg) rotateZ(45deg);
+            -ms-transform: rotateX(45deg) rotateZ(45deg);
+            -o-transform: rotateX(45deg) rotateZ(45deg);
+            transform: rotateX(45deg) rotateZ(45deg);
+        }
+
+        .center div {
+            width:100%;
+            height:100%;
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .center div:nth-child(1) {
+            background-color: green;
+            -webkit-transform: translateZ(100px);
+            -moz-transform: translateZ(100px);
+            -ms-transform: translateZ(100px);
+            -o-transform: translateZ(100px);
+            transform: translateZ(100px);
+        }
+
+        .center div:nth-child(2) {
+            background-color: red;
+            -webkit-transform: translateZ(-100px);
+            -moz-transform: translateZ(-100px);
+            -ms-transform: translateZ(-100px);
+            -o-transform: translateZ(-100px);
+            transform: translateZ(-100px);
+        }
+
+        .center div:nth-child(3) {
+            background-color: blue;
+            -webkit-transform: rotateY(90deg) translateZ(-100px);
+            -moz-transform: rotateY(90deg) translateZ(-100px);
+            -ms-transform: rotateY(90deg) translateZ(-100px);
+            -o-transform: rotateY(90deg) translateZ(-100px);
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+
+        .center div:nth-child(4) {
+            background-color: orange;
+            -webkit-transform: rotateY(90deg) translateZ(100px);
+            -moz-transform: rotateY(90deg) translateZ(100px);
+            -ms-transform: rotateY(90deg) translateZ(100px);
+            -o-transform: rotateY(90deg) translateZ(100px);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .center div:nth-child(5) {
+            background-color: white;
+            -webkit-transform: rotateX(90deg) translateZ(-100px);
+            -moz-transform: rotateX(90deg) translateZ(-100px);
+            -ms-transform: rotateX(90deg) translateZ(-100px);
+            -o-transform: rotateX(90deg) translateZ(-100px);
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+
+        .center div:nth-child(6) {
+            background-color: deeppink;
+            -webkit-transform: rotateX(90deg) translateZ(100px);
+            -moz-transform: rotateX(90deg) translateZ(100px);
+            -ms-transform: rotateX(90deg) translateZ(100px);
+            -o-transform: rotateX(90deg) translateZ(100px);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        
+        section:hover {
+            -webkit-transform: rotateY(10000deg);
+            -moz-transform: rotateY(10000deg);
+            -ms-transform: rotateY(10000deg);
+            -o-transform: rotateY(10000deg);
+            transform: rotateY(10000deg);
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <section>
+        <div class="center">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+
+    </section>
+
+</body>
+</html>

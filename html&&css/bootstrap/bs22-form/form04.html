@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>.sr-only 屏幕阅读器只读</title>
+
+    <meta name="viewport"
+    content="width=devive-width" initial-scale="1">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Inline form with .sr-only class</h2>
+
+    <p>Make the viewport larger than 768px wide to see that all of the form elements are inline, left aligned, and the labels are alongside.</p>
+
+    <form class="form-inline">
+
+        <div class="form-group">
+            <label class="sr-only" for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+            <label class="sr-only" for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+        </div>
+
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+<!--提示：如果您不为每个输入都添加标签，屏幕阅读器将无法使用您的表单。您可以使用 .sr-only 类隐藏所有设备（屏幕阅读器除外）的标签-->
+</body>
+</html>

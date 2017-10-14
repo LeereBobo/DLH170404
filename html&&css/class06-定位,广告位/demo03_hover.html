@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        a {
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+        }
+
+        span {
+            display: none;
+            width: 100%;
+            height: 100px;
+
+            /*水平居中,只能用于块元素*/
+            text-align: center;
+            /*设置行高和高度一样*/
+            line-height: 100px;
+
+            background-color: grey;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            /*透明度:1代表完全不透明,0代表完全透明
+                    会影响子元素和文本内容.
+            */
+            opacity: 0.8;
+
+            /*
+              IE6,IE7  前者不适用,所以用后者,为了保证兼容性,二者都写
+            */
+            filter: alpha(opacity=50);
+        }
+        a:hover span {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">
+        <span>广告位</span>
+        <img src="images/4.jpg" >
+    </a>
+</body>
+</html>

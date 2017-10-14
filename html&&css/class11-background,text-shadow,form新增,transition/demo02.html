@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            float: left;
+        }
+
+        div::after {
+            display: table;
+            content:"";
+            clear: both;
+        }
+
+        li {
+            padding: 10px;
+            color: white;
+            width: 40px;
+            height: 40px;
+
+        }
+
+        ul:nth-child(1),li:nth-child(1) {
+            background-color: black;
+        }
+        ul:nth-child(2) li:nth-child(2) {
+            background-color: rgba(255,0,0,1);
+        }
+        ul:nth-child(2) li:nth-child(3) {
+            background-color: rgba(0,255,0,1);
+        }
+        ul:nth-child(2) li:nth-child(4) {
+            background-color: rgba(0,0,255,1);
+        }
+        ul:nth-child(3) li:nth-child(2) {
+            background-color: rgba(255,0,0,0.8);
+        }
+        ul:nth-child(3) li:nth-child(3) {
+            background-color: rgba(0,255,0,0.8);
+        }
+        ul:nth-child(3) li:nth-child(4) {
+            background-color: rgba(0,0,255,0.8);
+        }
+        ul:nth-child(4) li:nth-child(2) {
+            background-color: rgba(255,0,0,0.6);
+        }
+        ul:nth-child(4) li:nth-child(3) {
+            background-color: rgba(0,255,0,0.6);
+        }
+        ul:nth-child(4) li:nth-child(4) {
+            background-color: rgba(0,0,255,0.6);
+        }
+        ul:nth-child(5) li:nth-child(2) {
+            background-color: rgba(255,0,0,0.4);
+        }
+        ul:nth-child(5) li:nth-child(3) {
+            background-color: rgba(0,255,0,0.4);
+        }
+        ul:nth-child(5) li:nth-child(4) {
+            background-color: rgba(0,0,255,0.4);
+        }
+        ul:nth-child(6) li:nth-child(2) {
+            background-color: rgba(255,0,0,0.2);
+        }
+        ul:nth-child(6) li:nth-child(3) {
+            background-color: rgba(0,255,0,0.2);
+        }
+        ul:nth-child(6) li:nth-child(4) {
+            background-color: rgba(0,0,255,0.2);
+        }
+
+    </style>
+</head>
+
+<body>
+<div>
+    <ul>
+        <li></li>
+        <li>red</li>
+        <li>green</li>
+        <li>blue</li>
+    </ul>
+    <ul>
+        <li>1</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li>0.8</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li>0.6</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li>0.4</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li>0.2</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

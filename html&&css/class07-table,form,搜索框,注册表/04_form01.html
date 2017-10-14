@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+        <!--action属性定义当提交表单时要执行的动作-->
+        <!--method属性定义在提交表单数据时使用的http方法-->
+        <!--get方式传输不加密,且数据量小-->
+        <!--post方式传输加密数据,数据量笔get方式大-->
+        <form action="form.php" method="get"></form>
+
+        <!--name属性用于提交数据时参数的名称-->
+        <!--value属性是提交给服务器时参数名对应的值-->
+
+        <!--<label>为<input>元素定义了标记,当用户点击<label>元素时,浏览器会自动将焦点转到和<label>元素相关联的表单元素上-->
+        <!--<label>的for属性的值和<input>的id值要相同,这样就将两个元素关联起来了-->
+        <label for="username">用户名:</label>
+
+        <!--placeholder 代表占位符-->
+        <input id="username" type="text" placeholder="请输入用户名" name="username">
+        <!--readonly-->
+
+         <br>
+        <!--readonly代表只能让用户阅读,不能输入-->
+
+        密码:
+        <input type="password" name="password"> <br>
+
+        性别:<br>
+        <!--radio 代表单选框
+                  name属性值必须相同,才能单选
+                  checked代表选中,是一种布尔类型的属性,可以简写成一个单词checked
+        -->
+
+        <input type="radio" name="gender" value="man"
+               checked>男<br>
+        <input type="radio" name="gender">女<br>
+        <input type="radio" name="gender" value="?">?<br>
+
+        爱好:<br>
+        <!--checkbox代表多选-->
+        <input type="checkbox" name="hobby1" value="ride" disabled>我喜欢骑自行车<br>
+        <!--disabled禁止,禁用字段-->
+
+
+        <input type="checkbox" name="hobby2" value="read">我喜欢读书<br>
+
+        <!--submit 代表提交,可自己赋值-->
+        <input type="submit" value="登录">
+
+        <!--reset 重置表单内的数据为默认值-->
+        <input type="reset" value="重置">
+        
+        
+    </form>
+</body>
+</html>

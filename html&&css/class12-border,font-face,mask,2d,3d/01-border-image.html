@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边框背景图片</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border:50px dotted black;
+            background-clip: padding-box;
+            /*背景延伸到的位置:边框,内外边距*/
+
+            background-color: #00a500;
+
+            /*边框图片*/
+            border-image-source:url("images/border.png");
+
+            /*border-img-width: 10px;*/
+
+            /*背景图片拉伸*/
+            /*border-img-repeat:stretch;*/
+            /*border-img-slice:50;*/
+
+            border-image: url("images/border.png") 10 50 stretch repeat;
+            /*50为拉伸的值*/
+        }
+    </style>
+
+</head>
+<body>
+<div></div>
+</body>
+</html>

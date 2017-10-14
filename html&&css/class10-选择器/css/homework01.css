@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style-type: none;
+    margin: 4px;
+    width: 200px;
+
+}
+ul a {
+    padding-left: 20px;
+}
+ul {
+    width: 300px;
+    background-color:lightgray;
+    padding:20px;
+    margin: auto;
+}
+
+a[href*="pdf"] {
+    background: url("../images/icon_pdf.gif") no-repeat;
+}
+
+a[href*="ppt"] {
+    background: url("../images/icon_ppt.gif") no-repeat;
+}
+
+a[href*="xls"] {
+    background: url("../images/icon_xls.gif") no-repeat;
+}
+
+a[href*="rar"] {
+    background: url("../images/icon_rar.gif") no-repeat;
+}
+
+a[href*="g"] {
+    background: url("../images/icon_img.gif") no-repeat;
+}
+
+a[href*="txt"] {
+    background: url("../images/icon_txt.gif") no-repeat;
+}
+
+a[href*="mdm"] {
+    background: url("../images/window.gif") no-repeat 0 4px;
+}
+

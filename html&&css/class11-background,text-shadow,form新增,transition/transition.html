@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡</title>
+    <style>
+        p {
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+
+        }
+
+        /*p:hover {*/
+            /*width: 400px;*/
+            /*height:400px;*/
+            /*-webkit-transition:width 1s ,height 2s ;*/
+            /*-moz-transition:width 1s ,height 2s;*/
+            /*-ms-transition: width 1s,height 2s;*/
+            /*-o-transition:width 1s,height 2s;*/
+            /*transition:width 1s ,height 2s;*/
+        /*}*/
+
+        .tran:hover {
+            /*!*过渡属性*!*/
+            /*width:600px;*/
+            /*transition-property: width;*/
+
+            /*!*延迟时间*!*/
+            /*transition-delay: 1s;*/
+
+             /*!*过渡时间*!*/
+            /*transition-duration: 2s;*/
+
+
+
+
+            /*过渡背景色*/
+            /*!*过渡属性*!*/
+            /*width:600px;*/
+            /*background-color: red;*/
+            /*transition-property: background-color;*/
+
+            /*!*延迟时间*!*/
+            /*transition-delay: 1s;*/
+
+             /*!*过渡时间*!*/
+            /*transition-duration: 2s;*/
+
+
+
+
+            /*过渡属性*/
+            width:800px;
+            background-color: red;
+
+
+            /*延迟时间*/
+            /*transition-delay: 4s;*/
+
+            transition-timing-function: ease-out;
+            /*过渡曲线:快-慢,慢-块*/
+
+            /*过渡时间*/
+            transition-duration: 8s;
+
+
+            /*简写:属性.时间.曲线.延迟*/
+        }
+    </style>
+</head>
+<body>
+<p class="tran">
+
+</p>
+</body>
+</html>

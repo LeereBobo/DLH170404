@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *  {
+            margin:0;
+            padding:0;
+        }
+        ul {
+            list-style-type: none;
+            overflow:hidden;
+            background-color: #333333;
+        }
+        li a{
+            text-decoration: none;
+            color:white;
+            padding:10px 30px;
+            display:block;
+
+        }
+        .active {
+            background-color: greenyellow;
+        }
+        li {
+            float:left;
+        }
+        li a:hover:not(.active){
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">About</a></li>
+</ul>
+</body>
+</html>

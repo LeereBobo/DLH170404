@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p {
+            font-size: 40px ;
+            color: white;
+        }
+
+        .shadow {
+            /*
+              第一个值是水平方向的阴影宽度,第二个是垂直方向的阴影宽度,第三个是模糊距离*/
+            text-shadow:5px -5px 2px red}
+
+        /*字体描边*/
+        .stroke {
+            -webkit-text-stroke: 2px green;
+        }
+
+        /*方向*/
+        .direction-rtl {
+            direction:rtl;
+            color: black;
+            unicode-bidi: bidi-override;
+        }
+
+        /*0是完全透明,1是完全不透明.并且不会影响元素的内容和子元素*/
+        .color-alpha {
+            background-color: rgba(255,0,0,0.6);
+            color: black;
+        }
+    </style>
+
+
+
+</head>
+<body>
+<p class="shadow">Hello World</p>
+<p class="stroke">Hello World</p>
+<p class="direction-rtl">Hello ,World!</p>
+<p class="color-alpha">Hello World</p>
+</body>
+</html>

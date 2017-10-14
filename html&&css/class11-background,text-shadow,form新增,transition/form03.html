@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form和input的其他属性</title>
+</head>
+<body>
+<form action="">
+    <label for="first name">first name</label>
+    <input type="text" id="first name" autocomplete="on">
+    <!--自动提示可写在form,也可input,-->
+    <br>
+    <br>
+    <label for="last name">last name</label>
+    <input type="text" id="last name">
+
+    <br>
+    <br>
+
+    <label for="email">email</label>
+    <input type="email" id="email" multiple>
+    <!--可添加多个邮件和URL地址.  用,分割-->
+
+    <br>
+    <br>
+    <label for="submit"></label>
+    <input type="submit" id="submit">
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form action="" novalidate>
+    <!--不对表单元素进行检查,必须写在form里-->
+    <label for="email2">email</label>
+    <input type="email" id="email2">
+
+
+    <label for="submit2"></label>
+    <input type="submit" id="submit2">
+
+    <br>
+    <br>
+    <label for="first name2">first name</label>
+    <input type="text" id="first name2" autocomplete="on" autofocus>
+    <!--自动聚焦,同时有两个时选第一个-->
+
+    <br>
+    <br>
+    <label for="last name2">last name</label>
+    <input type="text" id="last name2" autofocus>
+    <br>
+    <br>
+    <label for="submit3"></label>
+    <input type="submit" id="submit3">
+    <!---->
+</form>
+
+    <br>
+    <br>
+    <br>
+
+<form action="#">
+    Country code:
+    <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="Three letter country code">
+    <!--正则-->
+    <!--title:格式不符时出现的提示文本-->
+    <input type="submit">
+</form>
+
+<br>
+<br>
+<br>
+
+<form action="">
+    <label for="text">Name</label>
+    <input type="text" id="text" required>
+    <!--必填-->
+
+    <label for="submit4"></label>
+    <input type="submit" id="submit4">
+</form>
+</body>
+</html>
