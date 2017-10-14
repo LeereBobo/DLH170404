@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--后代-->
+ul>li*5>a[href=$]
+<ul>
+    <li><a href="1"></a></li>
+    <li><a href="2"></a></li>
+    <li><a href="3"></a></li>
+    <li><a href="4"></a></li>
+    <li><a href="5"></a></li>
+</ul>
+<!--同级-->
+div+p+bq
+<div></div>
+<p></p>
+<blockquote></blockquote>
+<!-- ^后面的元素与^前面的元素父级元素是平级-->
+div+div>p>span+em^dq
+<div></div>
+<div>
+    <p><span></span><em></em></p>
+    <dq></dq>
+</div>
+div+div>p>span+em^^dq
+<div></div>
+<div>
+    <p><span></span><em></em></p>
+</div>
+<dq></dq>
+<!--()分组-->
+div>(header>ul>li*2>a[href=#]+footer>p
+div>(
+<header>
+    <ul>
+        <li><a href="#"></a>
+            <footer>
+                <p></p>
+            </footer>
+        </li>
+        <li><a href="#"></a>
+            <footer>
+                <p></p>
+            </footer>
+        </li>
+    </ul>
+</header>
+
+$自增符号
+ul>li.item*5
+<ul>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+</ul>
+
+ul>li.item$$$*5
+<ul>
+    <li class="item001"></li>
+    <li class="item002"></li>
+    <li class="item003"></li>
+    <li class="item004"></li>
+    <li class="item005"></li>
+</ul>
+
+ul>li.item$@-*5
+<ul>
+    <li class="item5"></li>
+    <li class="item4"></li>
+    <li class="item3"></li>
+    <li class="item2"></li>
+    <li class="item1"></li>
+</ul>
+ul>li.item$3*5
+<ul>
+    <li class="item13"></li>
+    <li class="item23"></li>
+    <li class="item33"></li>
+    <li class="item43"></li>
+    <li class="item53"></li>
+</ul>
+
+<script>
+    //!!可以把一个值转换为布尔值
+    var eee = "eee";
+    alert(!!eee);//true
+
+    var [2,3]
+</script>
+<a href="http://docs.emmet.io/cheat-sheet">ooooo</a>
+<a href="http://www.haorooms.com/archives">77777</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--enctype = "multipart/form-data"  上传表单必填-->
+<form action="11upload.php" method="post" enctype="multipart/form-data">
+    <label for="name">姓名:</label>
+    <input type="text" name="userName" id="name" placeholder="请输入姓名">
+    <br>
+    <label for="sex">性别:</label>
+    <input type="text" name="sex" id="sex" placeholder="请输入性别">
+    <br>
+    <label for="img">图片:</label>
+    <input type="file" name="img" id="img">
+    <br>
+    <label for="audio">音频:</label>
+    <input type="file" name="audio" id="audio">
+    <br>
+    <label for="video">视频:</label>
+    <input type="file" name="video" id="video">
+    <br>
+    <label for="zip">压缩包:</label>
+    <input type="file" name="zip" id="zip">
+    <br>
+    爱好:
+    <!--//[]添加在复选框的name后,可以把数据以数组的形式传到PHP-->
+    <input type="checkbox" name="hobby[]" id="hobby1" value="抽烟"><label for="hobby1">抽烟 </label>
+    <input type="checkbox" name="hobby[]" id="hobby2" value="喝酒"><label for="hobby2">喝酒 </label>
+    <input type="checkbox" name="hobby[]" id="hobby3" value="烫头"><label for="hobby3">烫头</label>
+    <br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

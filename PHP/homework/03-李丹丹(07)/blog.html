@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #top,#content{
+            width:600px;
+            margin:20px auto;
+            min-height: 200px;
+            border:1px solid black;
+            border-radius: 8px;
+            text-align: center;
+            padding-top:20px;
+            position: relative;
+        }
+        textarea{
+            outline: none;
+        }
+        #fresh{
+            background-color: orange;
+            position: absolute;
+            top:190px;
+            left:50px;
+        }
+        #btn{
+            background-color: orange;
+            position: absolute;
+            top:190px;
+            right:50px;
+        }
+        .word{
+            border:1px solid black;
+            border-radius: 8px;
+            width:500px;
+            margin:10px auto;
+            text-align: left;
+            position: relative;
+            min-height: 40px;
+        }
+        .word::after{
+            content: "";
+            display:table ;
+            clear: both;
+        }
+        .delete{
+            position: absolute;
+            top:5px;
+            right:10px;
+            cursor: pointer;
+        }
+        .time,.person{
+            margin-top:40px;
+        }
+        .time{
+            float: left;
+            margin-left:40px;
+        }
+        .person{
+            float: right;
+            margin-right:40px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="top">
+    <textarea cols="80" rows="10" id="text"></textarea>
+    <button id="fresh">刷新</button>
+    <button id="btn">发布</button>
+</div>
+<div id="content">
+   <!--<div class="word">-->
+       <!--dsjfkldsjgklfjg-->
+       <!--<div class="delete">X</div>-->
+       <!--<div class="time">4354</div>-->
+       <!--<div class="person">565</div>-->
+   <!--</div>-->
+
+</div>
+
+<script>
+    var oContent = document.getElementById("content");
+    var oBtn = document.getElementById("btn");
+    var oText = document.getElementById("text");
+    var oFresh = document.getElementById("fresh");
+
+    var count = 0;
+    var agr = "";
+    var countArr = null;
+    ajax_post("select.php",agr,function (countRes) {
+         countArr = JSON.parse(countRes);
+        count = parseInt(countArr[countArr.length - 1]["count"]);
+
+    });
+
+
+
+    oBtn.onclick = function () {
+        count += 1;
+        var text = oText.value;
+        var timer = getTime();
+        var person = "苏苏";
+        var url = "submit.php";
+        var agrs = "text="+text+"&timer="+timer+"&person="+person+"&count="+count;
+        ajax_post(url,agrs,function (result) {
+            var arr = JSON.parse(result);
+            sendContent(arr,count);
+        });
+    }
+
+    oFresh.onclick = function () {
+        sendContent(countArr,count);
+    }
+
+
+    //获取时间
+    function getTime() {
+        var myData = new Date();
+        var mouth = myData.getMonth() + 1 ;
+        var date = myData.getDate();
+        var hour = myData.getHours();
+        var min = myData.getMinutes();
+        var second = myData.getSeconds();
+        return  mouth +"月"+date + "日" + hour +":"+ min +":"+ second;
+    }
+
+    //发布内容
+    function sendContent(arr,count) {
+        for(var i = 0; i < arr.length; i++){
+            var wordDiv = document.createElement("div");
+            oContent.appendChild(wordDiv);
+            wordDiv.className = "word";
+            wordDiv.count = count;
+
+            var deleteDiv = document.createElement("div");
+            deleteDiv.className = "delete";
+
+            deleteDiv.onclick = function () {
+//               oContent.removeChild(this.parentNode);
+                this.parentNode.remove();
+                var deleteNum = this.parentNode.count;
+                ajax_post("delete.php","deleteNum="+deleteNum,function (res) {
+                    console.log(res);
+                });
+            }
+
+            var timeDiv = document.createElement("div");
+            timeDiv.className="time";
+            var personDiv = document.createElement("div");
+            personDiv.className="person";
+
+            for(var key in arr[i]){
+                wordDiv.innerHTML = arr[i]["content"];
+                wordDiv.appendChild(deleteDiv);
+                deleteDiv.innerHTML = "X";
+
+                wordDiv.appendChild(timeDiv);
+                timeDiv.innerHTML="发布时间:"+arr[i]["time"];
+
+                wordDiv.appendChild(personDiv);
+                personDiv.innerHTML="发布人:"+arr[i]["person"];
+
+            }
+
+        }
+    }
+
+    //ajax_post
+    function ajax_post(url,agrs,callback) {
+        var xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else{
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("post",url,true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send(agrs);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4 && xhr.status == 200){
+                callback(xhr.responseText);
+            }
+        }
+
+    }
+</script>
+
+</body>
+</html>

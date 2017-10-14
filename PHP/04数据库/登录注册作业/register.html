@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="register.php" method="post" id="theForm">
+    用户名：<input type="text" name="userName" id="userName">
+    <br>
+    密码： <input type="text" name="passWord" id="passWord">
+    <br>
+    <input type="submit" value="提交">
+</form>
+<script>
+    var oForm = document.getElementById("theForm");
+    oForm.onsubmit =function () {
+        var oUserName = document.getElementById("userName");
+        var oPassWord = document.getElementById("passWord");
+        if(oUserName.value.indexOf(" ")!=-1){
+            alert("用户名不能包含空格");
+            return false;
+        }
+        if(oPassWord.value.indexOf(" ")!=-1){
+            alert("密码不能包含空格");
+            return false;
+        }
+        if(oUserName.value==""){
+            console.log(1111);
+            alert("用户名不能为空");
+            return false;
+        }
+        if(oPassWord.value==""){
+            alert("密码不能为空");
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

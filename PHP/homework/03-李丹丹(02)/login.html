@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            text-align: center;
+            width:500px;
+            margin:100px auto;
+            background-color: skyblue;
+            padding-top:150px;
+            border-radius: 4px;
+            height:300px;
+        }
+        input{
+            margin-bottom:10px;
+            outline: none;
+            width:400px;
+            height:40px;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <form action="login.php" method="get">
+        <input type="text" name="userName" id="userName" placeholder="请输入用户名">
+        <input type="password" name="passWord" id="passWord" placeholder="请输入密码">
+        <input type="submit" value="提交" id="btn">
+    </form>
+
+</div>
+
+<script>
+    var oUserName = document.getElementById("userName");
+    var oPassWord = document.getElementById("passWord");
+    var oBtn = document.getElementById("btn");
+    oBtn.onclick = function () {
+        if(oUserName.value.length == 0 || oPassWord.value.length == 0){
+            alert("用户名和密码不能为空!");
+            oUserName.value = "";
+            oPassWord.value = "";
+            return false;
+        }
+       if(oUserName.value != "12345" || oPassWord.value != "12345"){
+           alert("用户名或密码错误!");
+           oUserName.value = "";
+           oPassWord.value = "";
+           return false;
+       }
+    }
+
+</script>
+</body>
+</html>

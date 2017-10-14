@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        #head{
+            width:100%;
+            height: 30px;
+            background-color: rgb(66,64,68);
+            position: relative;
+        }
+        #load{
+            position: absolute;
+            top:29px;
+            right:40px;
+            z-index:2;
+            display: none;
+        }
+        #head a{
+            color:lightgray;
+            font-size:10px;
+            text-decoration: none;
+            line-height: 30px;
+            margin:0 5px;
+        }
+        #head a:hover{
+            color:white;
+        }
+        #head a:nth-child(1){
+            margin-left:20px;
+        }
+        #head a:nth-child(13){
+            margin-left:50%;
+        }
+
+
+        #nav{
+            height:160px;
+            background-color: rgb(236,240,243);
+            margin-bottom:40px;
+        }
+        .contain{
+            width:80%;
+            margin:0 auto;
+        }
+        .contain::after{
+            content:"";
+            display:table;
+            clear: both;
+        }
+
+        #title{
+            display: inline-block;
+            font-size:35px;
+            color:rgb(19,109,191);
+            margin-right:20px;
+            float: left;
+            margin-top: 30px;
+        }
+        #searchBox{
+            outline: none;
+            border:1px solid lightgray;
+            border-radius: 4px;
+            width:460px;
+            height:30px;
+            float: left;
+            margin-top:40px;
+            padding-left:10px;
+        }
+        #search{
+            float: left;
+            margin-top:41px;
+            border-radius: 4px;
+        }
+        #line{
+            width:100%;
+            height:1px;
+            background-color: lightgray;
+            margin:20px 0;
+        }
+        #inform a{
+            text-decoration: none;
+            color:rgb(30,99,156);
+            font-size: 13px;
+            margin-left:20px;
+        }
+        #inform a:hover{
+            background-color:rgb(30,99,156) ;
+            color:white;
+        }
+
+        #hot{
+            border-bottom:1px solid lightgray;
+            padding-bottom:20px;
+            position: relative;
+            margin-bottom:20px;
+        }
+        #hot a{
+            text-decoration: none;
+            color:rgb(30,99,156);
+            font-size: 8px;
+            margin-left:20px;
+        }
+        #hot a:hover{
+            background-color:rgb(30,99,156) ;
+            color:white;
+        }
+        #up{
+            margin-left:600px;
+            position: absolute;
+            top:0;
+            right:20px;
+            cursor: pointer;
+        }
+        #down{
+            position: absolute;
+            top:-2px;
+            right:0;
+            cursor: pointer;
+        }
+        .oneMovie{
+            float: left;
+            margin:20px 33px;
+            width:150px;
+        }
+        .oneMovieName,.score{
+            display: inline-block;
+        }
+        .oneMovieName{
+            width:120px;
+        }
+        .score{
+            width:10px;
+            color:red;
+            text-align: right;
+        }
+        #page{
+            position: absolute;
+            top:0;
+            right:80px;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="head">
+    <a href="https://www.douban.com/" target="_blank">豆瓣</a>
+    <a href="https://book.douban.com/" target="_blank">读书</a>
+    <a href="web.html" target="_blank">电影</a>
+    <a href="https://music.douban.com/" target="_blank">音乐</a>
+    <a href="https://www.douban.com/location/dalian/" target="_blank">同城</a>
+    <a href="https://www.douban.com/group/explore" target="_blank">小组</a>
+    <a href="https://read.douban.com/?dcs=top-nav&dcm=douban" target="_blank">阅读</a>
+    <a href="https://douban.fm/user-guide" target="_blank">FM</a>
+    <a href="https://www.douban.com/time/?dt_time_source=douban-web_top_nav" target="_blank">时间</a>
+    <a href="https://dongxi.douban.com/?dcs=top-nav&dcm=douban" target="_blank">东西</a>
+    <a href="https://market.douban.com/?utm_campaign=douban_top_nav&utm_source=douban&utm_medium=pc_web" target="_blank">市集</a>
+    <a href="" target="_blank">更多</a>
+    <a href="https://www.douban.com/doubanapp/frodo?channel=top-nav&referer=https%3A%2F%2Fmarket.douban.com%2F%3Futm_campaign%3Ddouban_top_nav%26utm_source%3Ddouban%26utm_medium%3Dpc_web&wechat=0&os=Mac+OS+X" target="_blank" id="custom">下载豆瓣客户端</a>
+    <a href="https://www.douban.com/accounts/login?source=movie" target="_blank">登录</a>
+    <a href="https://accounts.douban.com/register?source=movie" target="_blank">注册</a>
+    <div id="load"><img src="img/load.png" alt=""></div>
+</div>
+<div id="nav">
+    <div class="contain">
+        <span id="title">豆瓣电影</span>
+        <input type="search" placeholder="电影" id="searchBox">
+        <img src="img/D17A6B72-6133-4D8F-A122-E0E367A66E86.png" alt="" id="search">
+    </div>
+    <div id="line"></div>
+    <div class="contain" id="inform">
+        <a href="">影讯&购票</a>
+        <a href="">选电影</a>
+        <a href="">电视剧</a>
+        <a href="">排行榜</a>
+        <a href="">分类</a>
+        <a href="">影评</a>
+        <a href="">2016年度榜单</a>
+        <a href="">2016管用报告</a>
+    </div>
+</div>
+
+<div class="contain">
+   <div id="hot">
+       <span>正在热映</span>
+       <a href="#" id="chinese" class="aClass">华语 &gt;&gt;</a>
+       <a href="#" id="USA" class="aClass">欧美&gt;&gt;</a>
+       <a href="#" id="korea" class="aClass">韩国&gt;&gt;</a>
+       <a href="#" id="theHot" class="aClass">最热&gt;&gt;</a>
+       <div id="page">第&nbsp;<span id="pageCount">1</span>&nbsp;页</div>
+       <img src="img/up.png" alt="" id="up">
+       <img src="img/down.png" alt="" id="down">
+   </div>
+    <div id="movie">
+        <!--<div class="oneMovie">-->
+            <!--<img src="img/movie.png" alt="">-->
+            <!--<div class="oneMovieName">港人</div>-->
+            <!--<div class="score">9.0</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<script src="tool.js"></script>
+<script>
+    var oMovie = document.getElementById("movie");
+    var theUp = document.getElementById("up");
+    var theDown = document.getElementById("down");
+    var oPageCount = document.getElementById("pageCount");
+    var oSearch = document.getElementById("search");
+    var oSearchBox = document.getElementById("searchBox");
+    var oChinese = document.getElementById("chinese");
+    var oUSA = document.getElementById("USA");
+    var oKorea = document.getElementById("korea");
+    var oClass = document.getElementsByClassName("aClass");
+    var oTheHot = document.getElementById("theHot");
+    var oCustom = document.getElementById("custom");
+    var oLoad = document.getElementById("load");
+
+    var pageNum = 1;
+    newImg();
+    var num = 0;
+    //点击华语电影时进行分类
+//    for(var i = 0; i < oClass.length;i++){
+//        oClass[i].onclick = function () {
+//            num++;
+//            clickSelect(num);
+//        }
+//
+//    }
+
+    oChinese.onclick = function () {
+        num = 1;
+        clickSelect(num,pageNum);
+
+    }
+    oUSA.onclick = function () {
+        num = 2;
+        clickSelect(num,pageNum);
+    }
+
+    oKorea.onclick = function () {
+        num = 3;
+        clickSelect(num,pageNum);
+    }
+    oTheHot.onclick = function () {
+        num = 4;
+        clickSelect(num,pageNum);
+    }
+
+    function clickSelect(num,pageNum) {
+        oMovie.innerHTML = "";
+        var url = "webSelect.php?num="+num+"&pageNum="+pageNum;
+        ajax_get(url,function (selectRes) {
+            var oneArr = JSON.parse(selectRes);
+            creatImg(oneArr);
+        });
+    }
+
+
+    //模糊查询
+    oSearch.onclick = function () {
+        oMovie.innerHTML ="";
+        var selectName = oSearchBox.value;
+        if(selectName.length == 0){
+            newImg();
+        }else{
+            var selectUrl = "newSelect.php?selectName="+selectName;
+            ajax_get(selectUrl,function (selectArr) {
+                var selArr = JSON.parse(selectArr);
+                creatImg(selArr);
+            });
+        }
+
+    }
+
+
+    //将后台数据显示出来
+    function newImg() {
+        var url = "select.php?pageNum="+pageNum;
+        ajax_get(url,function (result) {
+            var arr = JSON.parse(result);
+            creatImg(arr);
+        });
+    }
+
+
+    //点击上一页
+    theUp.onclick = function () {
+        oMovie.innerHTML = "";
+        newImg();
+        if(pageNum >1){
+            pageNum--;
+        }
+        oPageCount.innerHTML=pageNum;
+    }
+
+    //点击下一页
+    theDown.onclick = function () {
+        oMovie.innerHTML ="";
+        pageNum++;
+        newImg();
+        oPageCount.innerHTML=pageNum;
+    }
+
+
+
+    //创建图片
+    function creatImg(arr) {
+        for(var i  = 0; i < arr.length;i++){
+            var aOneMmovie = document.createElement("div");
+            aOneMmovie.className = "oneMovie";
+            oMovie.appendChild(aOneMmovie);
+
+            var movieImg = new Image();
+            movieImg.src = arr[i]["imgurl"];
+            movieImg.width = "150";
+            movieImg.height = "200";
+            aOneMmovie.appendChild(movieImg);
+
+            var aMovieName = document.createElement("div");
+            aMovieName.className = "oneMovieName";
+            aOneMmovie.appendChild(aMovieName);
+            aMovieName.innerHTML = arr[i]["title"];
+
+            var aScore = document.createElement("div");
+            aScore.className = "score";
+            aOneMmovie.appendChild(aScore);
+            aScore.innerHTML = arr[i]["score"];
+
+        }
+    }
+
+    oCustom.onmouseover = function () {
+        oLoad.style.display = "block";
+    }
+    oCustom.onmouseout = function () {
+        oLoad.style.display = "";
+    }
+</script>
+</body>
+</html>

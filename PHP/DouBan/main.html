@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #login {
+            width: 100%;
+            height: 90px;
+            background-color: rgb(30, 140, 255);
+            /*position: fixed;*/
+            /*top:0;*/
+            /*left:0;*/
+        }
+
+        #login span {
+            color: white;
+            font-size: 60px;
+            display: inline-block;
+            margin-left: 70px;
+        }
+
+        #content {
+            width: 1200px;
+            margin: 40px auto;
+            padding: 10px 0;
+            background-color: white;
+            box-shadow: 2px 2px 2px 2px lightgray;
+        }
+
+        #select, #information {
+            width: 95%;
+            margin: 40px auto;
+        }
+
+        #select {
+            height: 90px;
+            background-color: lightgray;
+        }
+
+        #select input {
+            height: 45px;
+            outline: none;
+            border-radius: 4px;
+            border: 1px solid rgb(149, 205, 217);
+        }
+
+        #name {
+            margin-left: 40px;
+            color: darkgray;
+            font-size: 18px;
+            width: 230px;
+            padding-left: 15px;
+            margin-top: 20px;
+        }
+
+        #selected, #add {
+            border: none;
+            background-color: rgb(30, 140, 255);
+            margin-left: 15px;
+            width: 80px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        table {
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+            width: 100%;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        table tr th, table tr td {
+            padding: 8px;
+        }
+
+        table tr td input {
+            margin-right: 10px;
+        }
+
+        table tr:nth-child(1) {
+            background-color: rgb(234, 237, 244);
+        }
+
+        table tr:nth-child(1) input {
+            margin-right: 10px;
+        }
+
+        .edit {
+            width: 40px;
+            background-color: white;
+            border: none;
+            border: 1px solid lightgray;
+            /*height:40px;*/
+            font-size: 3px;
+            border-radius: 4px;
+            padding: 2px 5px;
+            margin-bottom: 3px;
+            margin-left: 25px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .delete {
+            cursor: pointer;
+            font-size: 3px;
+            padding: 2px 5px;
+            background-color: red;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            color: white;
+            margin-left: 10px;
+        }
+
+        #deleteAll, #up, #down {
+            border: none;
+            background-color: rgb(30, 140, 255);
+            width: 105px;
+            height: 40px;
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #deleteAll {
+            margin-right: 805px;
+        }
+
+        #new {
+            width: 720px;
+            background-color: white;
+            box-shadow: 2px 2px 2px 2px lightgray;
+            font-size: 20px;
+            padding-left: 20px;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -360px;
+            margin-top: -250px;
+            z-index: 5;
+        }
+
+        #newAdd {
+            margin-right: 500px;
+            margin-top: 20px;
+        }
+
+        #close {
+            margin-top: 20px;
+            border: none;
+            background-color: rgb(30, 140, 255);
+            font-size: 16px;
+            color: white;
+            padding: 5px 30px;
+            border-radius: 4px;
+        }
+
+        #new label {
+            display: inline-block;
+            width: 100px;
+            margin-top: 10px;
+        }
+
+        #selectMovie {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #movieId, #movieName, #movieHot, #movieUrl {
+            width: 400px;
+            height: 20px;
+            outline: none;
+            padding: 10px 5px;
+            margin-bottom: 15px;
+            border: 1px solid lightgray;
+            border-radius: 4px;
+        }
+
+        #cla {
+            margin-left: 150px;
+            margin-right: 10px;
+        }
+
+        .claAll {
+            padding: 13px 7px;
+            outline: none;
+            width: 100px;
+            background-color: white;
+            border: 1px solid lightgray;
+            cursor: pointer;
+        }
+
+        #movieSub {
+            width: 320px;
+            height: 50px;
+            border: none;
+            outline: none;
+            background-color: rgb(30, 140, 255);
+            color: white;
+            margin: 40px 190px;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+
+        #mask {
+            background-color: black;
+            opacity: 0.4;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .imgtd {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<!--导航-->
+<div id="login">
+    <span>ADMIN</span>
+</div>
+
+<div id="content">
+    <div id="select">
+        <input type="text" placeholder="电影名" id="name">
+        <input type="submit" value="查询" id="selected">
+        <input type="submit" value="新增" id="add">
+    </div>
+    <div id="information">
+        <table border="1" id="theTable">
+            <!--<tr>-->
+            <!--<th>-->
+            <!--<input type="checkbox">#-->
+            <!--</th>-->
+            <!--<th>影片名</th>-->
+            <!--<th>图片</th>-->
+            <!--<th>评分</th>-->
+            <!--<th>热门</th>-->
+            <!--<th>华语</th>-->
+            <!--<th>欧美</th>-->
+            <!--<th>韩国</th>-->
+            <!--<th colspan="2">操作</th>-->
+            <!--</tr>-->
+        </table>
+
+        <input type="submit" value="全部删除" id="deleteAll">
+        <input type="submit" value="上一页" id="up">
+        <input type="submit" value="下一页" id="down">
+    </div>
+</div>
+
+<div id="new">
+    <span id="newAdd">新增</span>
+    <input type="submit" value="关闭" id="close"><br>
+    <div id="selectMovie">
+        <label for="movieName">电影名</label>
+        <input type="text" placeholder="电影名" id="movieName"><br>
+        <label for="movieHot">热度</label>
+        <input type="text" placeholder="热度" id="movieHot"><br>
+        <label for="movieUrl">图片路径</label>
+        <input type="text" placeholder="图片路径" id="movieUrl"><br>
+        <label for="movieId">ID</label>
+        <input type="text" placeholder="ID" id="movieId"><br>
+    </div>
+    <span id="cla">类别</span>
+    <input type="button" value="最热" class="claAll">
+    <input type="button" value="国产" class="claAll">
+    <input type="button" value="欧美" class="claAll">
+    <input type="button" value="韩国" class="claAll"><br>
+    <input type="submit" value="提交" id="movieSub">
+</div>
+
+<div id="mask"></div>
+
+<script src="tool.js"></script>
+<script>
+    var oTheTable = document.getElementById("theTable");
+    var theUp = document.getElementById("up");
+    var theDown = document.getElementById("down");
+    var oAdd = document.getElementById("add");
+    var oNew = document.getElementById("new");
+    var oClose = document.getElementById("close");
+    var oMask = document.getElementById("mask");
+    var oMovieSub = document.getElementById("movieSub");
+    var oMovieName = document.getElementById("movieName");
+    var oMovieId = document.getElementById("movieId");
+    var oMovieHot = document.getElementById("movieHot");
+    var oMovieUrl = document.getElementById("movieUrl");
+    var oClaAll = document.getElementsByClassName("claAll");
+    var oSelected = document.getElementById("selected");
+    var oName = document.getElementById("name");
+    var oDeleteAll = document.getElementById("deleteAll");
+
+
+    var pageNum = 1;
+    creatTable();
+
+    //点击查询时进行模糊查询 将查询的结果显示在页面上
+    oSelected.onclick = function () {
+        oTheTable.innerHTML = "";
+        var selectName = oName.value;
+        if(selectName.length == 0){
+           alert("请输入关键字");
+            creatTable();
+        }else{
+            var selectUrl = "newSelect.php?selectName=" + selectName;
+            ajax_get(selectUrl, function (selectArr) {
+                var selArr = JSON.parse(selectArr);
+                if (selArr.length == 0) {
+                    alert("没有此部影片");
+                    creatTable();
+                } else {
+                    createAll(selArr);
+                }
+
+            })
+        }
+
+    }
+
+
+    //点击新增热度时记录状态
+    for (var i = 0; i < oClaAll.length; i++) {
+        oClaAll[i].index = 0;
+        oClaAll[i].onclick = function () {
+            if (this.index == 0) {
+                this.index = 1;
+                this.style.backgroundColor = "rgb(30,140,255)";
+            } else {
+                this.index = 0;
+                this.style.backgroundColor = "white";
+            }
+        }
+    }
+
+    //点击提交或者关闭时把热度颜色改变
+    function changeColor() {
+        for (var i = 0; i < oClaAll.length; i++) {
+            oClaAll[i].style.backgroundColor = "white";
+        }
+    }
+
+
+    //点击提交时将新增加的数据添加到数据库中
+    oMovieSub.onclick = function () {
+        oTheTable.innerHTML = "";
+        changeColor();
+        var newName = oMovieName.value;
+        var newId = oMovieId.value;
+        var newUrl = oMovieUrl.value;
+        var url = "add.php?newName=" + newName + "&newId=" + newId + "&newHot=" + oClaAll[0].index + "&newChinese=" + oClaAll[1].index + "&newUsa=" + oClaAll[2].index + "&newKorea=" + oClaAll[3].index + "&newUrl=" + newUrl + "&pageNum=" + pageNum;
+        ajax_get(url, function (result) {
+            var theArr = JSON.parse(result);
+            createAll(theArr);
+        });
+        oNew.style.display = "none";
+        oMask.style.display = "none";
+    }
+
+    //点击新增弹出新增框和蒙版
+    oAdd.onclick = function () {
+        oNew.style.display = "block";
+        oMask.style.display = "block";
+    }
+
+    //点击关闭新增框和蒙版关闭
+    oClose.onclick = function () {
+        oNew.style.display = "none";
+        oMask.style.display = "none";
+        changeColor();
+    }
+
+    //点击上一页
+    theUp.onclick = function () {
+        oTheTable.innerHTML = "";
+        creatTable();
+        if (pageNum > 1) {
+            pageNum--;
+        }
+    }
+
+    //点击下一页
+    theDown.onclick = function () {
+        oTheTable.innerHTML = "";
+        pageNum++;
+        creatTable();
+    }
+
+    // 开始时从数据库中获取索取所有数据创建表格
+    function creatTable() {
+        var url = "select.php?pageNum=" + pageNum;
+        ajax_get(url, function (result) {
+            oTheTable.innerHTML = "";
+            var arr = JSON.parse(result);
+            createAll(arr);
+        });
+    }
+
+    //创建表格
+    function createAll(arr) {
+        var oneTr = document.createElement("tr");
+        oTheTable.appendChild(oneTr);
+
+        var aTh = document.createElement("th");
+        oneTr.appendChild(aTh);
+
+        var aInput = document.createElement("input");
+        aInput.id = "aInput";
+        aInput.type = "checkbox";
+        aTh.appendChild(aInput);
+        var aspan = document.createElement("span");
+        aTh.appendChild(aspan);
+        aspan.innerHTML = "#";
+
+        var bTh = document.createElement("th");
+        oneTr.appendChild(bTh);
+        bTh.innerHTML = "影片名";
+
+        var cTh = document.createElement("th");
+        oneTr.appendChild(cTh);
+        cTh.innerHTML = "图片";
+
+        var dTh = document.createElement("th");
+        oneTr.appendChild(dTh);
+        dTh.innerHTML = "评分";
+
+        var eTh = document.createElement("th");
+        oneTr.appendChild(eTh);
+        eTh.innerHTML = "热门";
+
+        var fTh = document.createElement("th");
+        oneTr.appendChild(fTh);
+        fTh.innerHTML = "华语";
+
+        var gTh = document.createElement("th");
+        oneTr.appendChild(gTh);
+        gTh.innerHTML = "欧美";
+
+        var hTh = document.createElement("th");
+        oneTr.appendChild(hTh);
+        hTh.innerHTML = "韩国";
+
+        var iTh = document.createElement("th");
+        oneTr.appendChild(iTh);
+        iTh.innerHTML = "操作";
+
+        for (var i = 0; i < arr.length; i++) {
+            var theTr = document.createElement("tr");
+            oTheTable.appendChild(theTr);
+
+            var theTd = document.createElement("td");
+            theTr.appendChild(theTd);
+
+            var theInput = document.createElement("input");
+            theInput.className = "allInput";
+            theInput.type = "checkbox";
+            theTd.appendChild(theInput);
+            theTd.id = arr[i]["id"];
+
+
+            var span = document.createElement("span");
+            theTd.appendChild(span);
+            span.innerHTML = arr[i]["id"];
+
+            var tilteTd = document.createElement("td");
+            theTr.appendChild(tilteTd);
+            tilteTd.innerHTML = arr[i]["title"];
+
+            var imgTd = document.createElement("td");
+            theTr.appendChild(imgTd);
+            imgTd.className = "imgtd";
+            imgTd.innerHTML = arr[i]["imgurl"];
+
+            var scroeTd = document.createElement("td");
+            theTr.appendChild(scroeTd);
+            scroeTd.innerHTML = arr[i]["score"];
+
+            var hotTd = document.createElement("td");
+            theTr.appendChild(hotTd);
+            hotTd.innerHTML = arr[i]["hot"];
+
+            var chineseTd = document.createElement("td");
+            theTr.appendChild(chineseTd);
+            chineseTd.innerHTML = arr[i]["chinese"];
+
+            var USATd = document.createElement("td");
+            theTr.appendChild(USATd);
+            USATd.innerHTML = arr[i]["USA"];
+
+            var koreaTd = document.createElement("td");
+            theTr.appendChild(koreaTd);
+            koreaTd.innerHTML = arr[i]["korea"];
+
+            var opeTd = document.createElement("td");
+            theTr.appendChild(opeTd);
+            opeTd.id = arr[i]["id"];
+            opeTd.title = arr[i]["title"];
+            opeTd.url = arr[i]["imgurl"];
+            opeTd.hot = arr[i]["hot"];
+            opeTd.USA = arr[i]["USA"];
+            opeTd.korea = arr[i]["korea"];
+            opeTd.chinese = arr[i]["chinese"];
+
+
+            var editInput = document.createElement("input");
+            editInput.type = "submit";
+            editInput.value = "编辑";
+            editInput.className = "edit";
+            opeTd.appendChild(editInput);
+            editInput.onclick = function () {
+                oNew.style.display = "block";
+                oMask.style.display = "block";
+                oMovieName.value = this.parentNode.title;
+                oMovieId.value = this.parentNode.id;
+                oMovieUrl.value = this.parentNode.url;
+                var editArr = [this.parentNode.hot, this.parentNode.chinese, this.parentNode.USA, this.parentNode.korea];
+                for (var i = 0; i < editArr.length; i++) {
+                    if (editArr[i] == "1") {
+                        oClaAll[i].style.backgroundColor = "rgb(30,140,255)";
+                    } else {
+                        oClaAll[i].style.backgroundColor = "white";
+                    }
+                }
+
+                var deleteUrl = "delete.php?deleteId=" + this.parentNode.id;
+                var _this = this;
+                ajax_get(deleteUrl, function (deleRes) {
+                    var result = JSON.parse(deleRes);
+                    if (result["result"]) {
+                        _this.parentNode.parentNode.remove();
+                    } else {
+                        alert("删除失败");
+                    }
+                });
+
+                oMovieSub.onclick = function () {
+                    oTheTable.innerHTML = "";
+                    changeColor();
+                    var newName = oMovieName.value;
+                    var newId = oMovieId.value;
+                    var newUrl = oMovieUrl.value;
+                    var url = "add.php?newName=" + newName + "&newId=" + newId + "&newHot=" + oClaAll[0].index + "&newChinese=" + oClaAll[1].index + "&newUsa=" + oClaAll[2].index + "&newKorea=" + oClaAll[3].index + "&newUrl=" + newUrl + "&pageNum=" + pageNum;
+                    ajax_get(url, function (result) {
+                        var theArr = JSON.parse(result);
+                        createAll(theArr);
+                    });
+                    oNew.style.display = "none";
+                    oMask.style.display = "none";
+                }
+            }
+
+            var deleteInput = document.createElement("input");
+            deleteInput.type = "submit";
+            deleteInput.value = "删除";
+            deleteInput.className = "delete";
+            opeTd.appendChild(deleteInput);
+
+            deleteInput.onclick = function () {
+                var deleteUrl = "delete.php?deleteId=" + this.parentNode.id;
+                var _this = this;
+                ajax_get(deleteUrl, function (deleRes) {
+                    var result = JSON.parse(deleRes);
+                    if (result["result"]) {
+                        _this.parentNode.parentNode.remove();
+                        alert("删除成功");
+                    } else {
+                        alert("删除失败");
+                    }
+                });
+            }
+        }
+
+        var oAInput = document.getElementById("aInput");
+        var oAllInput = document.getElementsByClassName("allInput");
+
+
+        var isClick = true;
+        //点击#旁边的选框进行全选
+        oAInput.onclick = function () {
+            if (isClick) {
+                for (var i = 0; i < oAllInput.length; i++) {
+                    oAllInput[i].checked = true;
+                }
+            } else {
+                for (var i = 0; i < oAllInput.length; i++) {
+                    oAllInput[i].checked = false;
+                }
+            }
+            isClick = !isClick;
+        }
+
+        oDeleteAll.onclick = function () {
+            for (var i = 0; i < oAllInput.length; i++) {
+
+                if (oAllInput[i].checked == true) {
+//                    oAllInput[i].parentNode.parentNode.remove();
+                    var deleteUrl = "delete.php?deleteId=" + oAllInput[i].parentNode.id;
+                    ajax_get(deleteUrl, function (deleRes) {
+                        var result = JSON.parse(deleRes);
+                        if (result["result"]) {
+//                            oTheTable.innerHTML = "";
+                            creatTable();
+                        } else {
+                            alert("删除失败");
+                        }
+                    });
+                }
+            }
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="content" border="1"></table>
+<button id="up">上一页</button>
+<button id="down">下一页</button>
+<script>
+    var oContent = document.getElementById("content");
+    var oUp = document.getElementById("up");
+    var oDown = document.getElementById("down");
+    var pageNum = 1;
+    creat();
+    function creat() {
+        var url = "01接口.php?pageNum=" + pageNum;
+        ajax_get(url, function (result) {
+            var resArr = JSON.parse(result);
+            //创建表格
+            for (var i  in resArr) {
+                var oTr = document.createElement("tr");
+                oContent.appendChild(oTr);
+                for (var j in resArr[i]) {
+                    var oTd = document.createElement("td");
+                    oTr.appendChild(oTd);
+                    oTd.innerHTML = resArr[i][j];
+                }
+            }
+        });
+    }
+
+    oDown.onclick = function () {
+        oContent.innerHTML = "";
+        pageNum += 1;
+        creat();
+        console.log(pageNum);
+    }
+
+    oUp.onclick = function () {
+        oContent.innerHTML = "";
+        creat();
+        if (pageNum > 1) {
+            pageNum -= 1;
+        }
+    }
+
+    function ajax_get(url, callback) {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xhr.open("get", url, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    callback(xhr.responseText);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

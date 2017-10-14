@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #content{
+            width:600px;
+            margin:20px auto;
+            border:1px solid black;
+        }
+        .joy{
+            width:500px;
+            margin:10px auto;
+            border: 1px solid black;
+        }
+        .joy::after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .joyOne{
+            text-align: center;
+        }
+
+        .left{
+            float: left;
+            margin-left:10px;
+        }
+        .right{
+            float: right;
+            margin-right:10px;
+        }
+        #btn{
+            position: fixed;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <!--<div class = "joy">-->
+       <!--<div class="joyOne">dddddddddd</div>-->
+        <!--<div class="left">ooooo</div>-->
+        <!--<div class="right">ooooo</div>-->
+    <!--</div>-->
+</div>
+<button id="btn">刷新</button>
+<script>
+    var oContent = document.getElementById("content");
+    var oBtn = document.getElementById("btn");
+    creatJoy();
+
+    oBtn.onclick = function () {
+        oContent.innerHTML = "";
+        creatJoy();
+    }
+
+    function creatJoy() {
+        var url = "发布接口.php";
+        ajax_get(url,function (result) {
+            var res = JSON.parse(result);
+            var arr = res["段子"];
+            for(var i = 0; i < arr.length;i++){
+                var joyDiv = document.createElement("div");
+                joyDiv.className = "joy";
+                oContent.appendChild(joyDiv);
+
+                var joyOneDiv = document.createElement("div");
+                joyOneDiv.className = "joyOne";
+                joyDiv.appendChild(joyOneDiv);
+                joyOneDiv.innerHTML = arr[i]["digest"];
+
+                var leftDiv = document.createElement("div");
+                leftDiv.className = "left";
+                joyDiv.appendChild(leftDiv);
+                leftDiv.innerHTML ="来源:" + arr[i]["source"]
+
+                var rightDiv = document.createElement("div");
+                rightDiv.className = "right";
+                joyDiv.appendChild(rightDiv);
+                rightDiv.innerHTML = "回复量:" + arr[i]["replyCount"];
+                console.log(arr[i]);
+            }
+        });
+    }
+
+
+
+    function ajax_get(url,callback) {
+        var xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else{
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get",url,true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    callback(xhr.responseText);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

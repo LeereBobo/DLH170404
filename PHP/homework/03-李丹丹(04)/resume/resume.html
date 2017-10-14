@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form{
+            width: 310px;
+            margin:20px auto;
+            border:1px solid black;
+            padding:20px;
+        }
+        input{
+            margin-bottom:10px;
+            outline: none;
+            width:200px;
+            height:16px;
+        }
+        label{
+            display: inline-block;
+            width:90px;
+        }
+        #sub{
+            margin-left:100px;
+        }
+
+    </style>
+</head>
+<body>
+<form action="resume.php" method="post" enctype="multipart/form-data">
+    <label for="name">姓名</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="sex">性别</label>
+    <input type="text" name="sex" id="sex">
+    <br>
+    <label for="nation">民族</label>
+    <input type="text" name="nation" id="nation">
+    <br>
+    <label for="origin">籍贯</label>
+    <input type="text" name="origin" id="origin">
+    <br>
+    <label for="img">照片</label>
+    <input type="file" name="img" id="img">
+    <br>
+    <label for="date">出生日期</label>
+    <input type="text" name="date" id="date">
+    <br>
+    <label for="political">政治面貌</label>
+    <input type="text" name="political" id="political">
+    <br>
+    <label for="education">学历</label>
+    <input type="text" name="education" id="education">
+    <br>
+    <label for="marriage">婚姻状况</label>
+    <input type="text" name="marriage" id="marriage">
+    <br>
+    <label for="professional">专业</label>
+    <input type="text" name="professional" id="professional">
+    <br>
+    <label for="health">健康状况</label>
+    <input type="text" name="health" id="health">
+    <br>
+    <label for="job">求职方向</label>
+    <input type="text" name="job" id="job">
+    <br>
+    <label for="school">毕业院校</label>
+    <input type="text" name="school" id="school">
+    <br>
+    <label for="code">邮编</label>
+    <input type="text" name="code" id="code">
+    <br>
+    <label for="phone">电话</label>
+    <input type="text" name="phone" id="phone">
+    <br>
+    <label for="email">邮箱</label>
+    <input type="email" name="email" id="email">
+    <br>
+    <input type="submit" name="submit" value="提交" id="sub">
+</form>
+</body>
+</html>

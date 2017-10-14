@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<script>
+    var oCanvas = document.getElementById("myCanvas");
+    var ctx = oCanvas.getContext("2d");
+
+    function Block(x,y,w,h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.color = getRandColor();
+    }
+    Block.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x,this.y,this.w,this.h);
+    }
+
+    var brickArr = [];
+    //创建60块砖对象
+    for(var i = 0; i < 6; i++){
+        for(var j = 0; j < 10; j++){
+            var brickObj = new Block((j+1)*42,(i+1)*22,40,20);
+            brickArr.push(brickObj);
+        }
+    }
+
+   //创建板子
+
+    var board = new Block(200,oCanvas.height - 30,160,30);
+    oCanvas.onmousedown = function (ev) {
+        var ev = ev || window.event;
+
+        var offsetX = ev.offsetX - board.x;
+        oCanvas.onmousemove = function (e) {
+            var e = e || window.event;
+            var lessX = e.offsetX - offsetX;
+            if(lessX <= 0 ){
+                lessX = 0;
+            }else if(lessX > oCanvas.width - board.w){
+                lessX = oCanvas.width - board.w;
+            }
+            board.x = lessX;
+        }
+    }
+
+
+    document.onmouseup = function () {
+        document.onmousemove = null;
+    }
+
+    var ball = {
+        x:250,
+        y:oCanvas.height - board.h - 15,
+        r:15,
+        speedX :3,
+        speedY: 3
+    }
+    ball.draw = function () {
+        ctx.beginPath();
+        ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
+        ctx.fill();
+    }
+    ball.move = function () {
+        ball.x += ball.speedX;
+        ball.y -= ball.speedY;
+
+    }
+    var timer = setInterval(function () {
+        ctx.clearRect(0,0,oCanvas.width,oCanvas.height);
+        for(var i =0; i < brickArr.length;i++){
+            brickArr[i].draw();
+
+        }
+        board.draw();
+        ball.draw();
+        ball.move();
+
+        if(ball.x - ball.r <= 0 || ball.x + ball .r >= oCanvas.width){
+            ball.speedX = -ball.speedX;
+        }
+        if(ball.y - ball.r <= 0 || isTouch(ball,board)){
+            ball.speedY = -ball.speedY;
+        }
+
+        for(var i = 0; i < brickArr.length; i++){
+            if(isTouch(ball,brickArr[i])){
+                brickArr.splice(i,1);
+                ball.speedY *= -1;
+                i--;
+                break;
+            }
+        }
+        if(ball.y + ball.r >= oCanvas.height){
+            clearInterval(timer);
+            alert("game over");
+        }
+
+    },10);
+
+    function isTouch(obj1,obj2) {
+        var firstLeft = obj1.x - obj1.r;
+        var firstRight = obj1.x + obj1.r;
+        var firstTop = obj1.y - obj1.r;
+        var firstBottom = obj1.y + obj1.r;
+
+        var secondLeft = obj2.x;
+        var secondRight = obj2.x + obj2.w;
+        var secondTop = obj2.y ;
+        var secondBottom = obj2.y + obj2.h;
+
+        var a = firstLeft <= secondRight;
+        var b = firstRight >= secondLeft;
+        var c = firstTop <= secondBottom;
+        var d = firstBottom >= secondTop;
+
+        if(a && b && c && d){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
+    function  getRandColor() {
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+
+</script>
+</body>
+</html>

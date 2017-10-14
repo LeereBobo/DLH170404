@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       #big{
+           border:5px solid black;
+           width:800px;
+           height:800px;
+           position: relative;
+       }
+        #small{
+            background-color: red;
+            width:100px;
+            height:100px;
+            position: absolute;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div id="big">
+    <div id="small"></div>
+</div>
+<script>
+    var oBig = document.getElementById("big");
+    var oSmall = document.getElementById("small");
+
+    oSmall.onmousedown = function () {
+        oSmall.onmousemove = function (e) {
+            var e  = e|| window.event;
+            oSmall.style.left = e.clientX - oSmall.offsetWidth / 2 + "px";
+            oSmall.style.top = e.clientY - oSmall.offsetHeight / 2 + "px";
+              if(oSmall.offsetLeft <= 0){
+                  oSmall.style.left = 0;
+              }
+              if(oSmall.offsetLeft >= oBig.clientWidth - oSmall.offsetWidth){
+                  oSmall.style.left = oBig.clientWidth - oSmall.offsetWidth + "px";
+              }
+            if(oSmall.offsetTop <= 0){
+                oSmall.style.top = 0;
+            }
+            if(oSmall.offsetTop >= oBig.clientHeight- oSmall.offsetHeight){
+                oSmall.style.top = oBig.clientHeight - oSmall.offsetHeight+ "px";
+            }
+        }
+    }
+    oBig.onmouseup = function () {
+        oSmall.onmousemove = null;
+    }
+
+</script>
+</body>
+</html>

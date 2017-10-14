@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" id="table"></table>
+<button onclick="up()">上一页</button>
+<button onclick="down()">下一页</button>
+<script>
+    var oTable = document.getElementById("table");
+    var pageNum = 1;
+    getData(pageNum);
+    function up() {
+        if (pageNum == 1) {
+            return false;
+        }
+        pageNum--;
+        getData(pageNum);
+
+    }
+    function down() {
+        pageNum++;
+        getData(pageNum);
+    }
+
+    function getData(pageNum) {
+        var url = "02接口.php?pageNum=" + pageNum;
+        ajax_get(url, function (result) {
+            oTable.innerHTML = "";
+            var dataArr = JSON.parse(result);
+            var theTr = document.createElement("tr");
+            oTable.appendChild(theTr);
+            for (var key in dataArr[0]) {
+                var theTh = document.createElement("th");
+                theTh.innerHTML = key;
+                theTr.appendChild(theTh);
+            }
+            for (var i = 0; i < dataArr.length; i++) {
+                var aTr = document.createElement("tr");
+                oTable.appendChild(aTr);
+                for (var key in  dataArr[i]) {
+                    var otherTd = document.createElement("td");
+                    aTr.appendChild(otherTd);
+                    otherTd.innerHTML = dataArr[i][key];
+                }
+
+            }
+        });
+
+    }
+
+
+    function ajax_get(url, callback) {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get", url, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            console.log(xhr.readyState);
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    callback(xhr.responseText);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

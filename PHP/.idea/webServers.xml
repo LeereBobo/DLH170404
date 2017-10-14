@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ea43c882-6c57-4ba3-9573-50a4f94ea5a7" name="PHPSever" url="http://localhost/0404PHP">
+        <fileTransfer port="0" mountedRoot="$PROJECT_DIR$/../../../htdocs/0404PHP" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
