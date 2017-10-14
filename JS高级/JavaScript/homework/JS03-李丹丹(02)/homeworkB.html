@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#info{
+				width:200px;
+				height:200px;
+				background-color:red;
+				color:white;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="info"></div>
+		
+		<script type="text/javascript">
+			var 	resultDiv = document.getElementById("info");
+			var userName = prompt("请输入用户名:");
+			var password = prompt("请输入密码:");
+			var isLogin = false;
+			if (userName == "222"){
+				if(password == 3333){
+					isLogin = true;
+				}
+			}
+			if(isLogin == true){
+				resultDiv.innerHTML = "登录成功";
+			}else{
+				resultDiv.innerHTML = "账号或密码错误";
+			}
+			resultDiv.style.display = "block";
+		</script>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.all{
+				width:500px;
+				border:1px solid black;
+				margin:0 auto;
+			}
+			#bottom{
+				overflow:hidden;
+			}
+			#bottom div{
+				width:100px;
+				height:100px;
+				float:left;
+				line-height: 100px;
+				text-align: center;
+				font-size:80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class= "all">
+			<button id = "btn">按钮</button>
+			<div id = "bottom">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn");
+			var oBottom = document.getElementById("bottom");
+			var oBottoms = oBottom.getElementsByTagName("div");
+			var colorArr = ["red", "yellow", "blue", "green", "black"];
+		    var textArr  = ["红", "黄", "蓝", "绿", "黑"];
+			//随机两组0~4 不重复的五个数
+			function getRandom (max, min){
+				return Math.floor(Math.random() * (max - min +1) + min);
+			}
+			function getRandomArr(){
+				var arr= [];
+				
+				while(arr.length != 5){
+					var ran = getRandom(4,0);
+					var isRepeat = true;
+					for(var i = 0 ; i < arr.length; i++){
+						if(arr[i] == ran){
+							
+							isRepeat = false;
+							break;
+						}
+					}
+					if ( isRepeat == true){
+
+						arr.push(ran);
+					}
+				}
+				return arr;
+			}
+			
+			function changeColorAndText(){
+				var colorIndex = getRandomArr();
+				var textIndex = getRandomArr();
+				
+				for(var i = 0; i < oBottoms.length; i++){
+
+					oBottoms[i].innerHTML = textArr[textIndex[i]];
+					oBottoms[i].style.color = colorArr[colorIndex[i]];
+				}
+			}
+			
+			oBtn.onclick = function (){
+				changeColorAndText();
+			}
+			changeColorAndText();
+		</script>
+	</body>
+</html>

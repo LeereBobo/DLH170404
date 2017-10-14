@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			#list {
+				position: relative;
+				margin: 0 auto;
+			}
+			
+			#list>li {
+				border: 1px solid darkgray;
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 188px;
+				padding: 5px;
+				transition: all 1s;
+			}
+			
+			#list li img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="list"></ul>
+
+		<script type="text/javascript">
+			var oList = document.getElementById("list");
+			var oLi = document.getElementsByTagName("li");
+			var imgs = ["image/1.jpg", "image/2.jpg", "image/3.jpg", "image/4.jpg",
+				"image/5.jpg", "image/6.jpg", "image/7.jpg", "image/8.jpg", "image/9.jpg",
+				"image/10.jpg", "image/11.jpg", "image/12.jpg", "image/13.jpg", "image/14.jpg",
+				"image/15.jpg", "image/16.jpg", "image/17.jpg", "image/18.jpg", "image/19.jpg",
+				"image/20.jpg"
+			];
+
+			var col = 200;
+			var margin = 10;
+			var colsH = [];
+
+			function loadimg() {
+				for(var i = 0; i < imgs.length; i++) {
+					var newLi = document.createElement("li");
+					var newImg = new Image();
+					newImg.src = imgs[i];
+					newLi.style.opacity = 0;
+					newLi.appendChild(newImg);
+					oList.appendChild(newLi);
+
+				}
+			}
+			loadimg();
+
+			function creatfall() {
+				var innerW = document.documentElement.clientWidth;
+				var cols = parseInt(innerW / (col + margin));
+				oList.style.width = cols * (col + margin) - margin + "px";
+
+				for(var i = 0; i < cols; i++) {
+					colsH[i] = 0;
+				}
+
+				for(var i = 0; i < oLi.length; i++) {
+					var minIndex = getMinIndex();
+					oLi[i].style.top = colsH[minIndex] + margin + "px";
+					oLi[i].style.left = minIndex * (col + margin) + "px";
+					oLi[i].style.opacity = 1;
+					colsH[minIndex] += margin + oLi[i].offsetHeight;
+				}
+			}
+
+			function getMinIndex() {
+				var minIndex = 0;
+				var minH = colsH[0];
+				for(var i = 0; i < colsH.length; i++) {
+
+					if(minH > colsH[i]) {
+						minH = colsH[i];
+						minIndex = i;
+					}
+				}
+				return minIndex;
+			}
+
+			window.onload = function() {
+				creatfall();
+			}
+			window.onresize = function() {
+				creatfall();
+			}
+			
+			window.onscroll = function(){
+				var winH = document.documentElement.clientHeight;
+				var stopH = document.body.scrollTop;
+				var pageH = document.documentElement.scrollHeight;
+				
+				if(stopH + winH == pageH){
+					loadimg();
+					creatfall();
+				}
+			}
+		</script>
+	</body>
+
+</html>

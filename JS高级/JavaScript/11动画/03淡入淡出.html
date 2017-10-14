@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../index.js"></script>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height:100px;
+				background-color: red;
+				/*0 ~ 1*/
+				/*0 ~ 100*/
+				opacity: 0.7;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			
+			//透明度从0.7 到 0.3  即70 到 30
+			oDiv1.onmouseover = function(){
+			
+				clearInterval(oDiv1.timer);
+				oDiv1.timer = setInterval(function(){
+					var attrValue = getStyle(oDiv1,"opacity") * 100;
+					var iTarget = 30;
+					
+					var speed = 5;
+					var speedEnd = (iTarget - attrValue) / speed;
+					speedEnd = speedEnd > 0 ? Math.ceil(speedEnd) : Math.floor(speedEnd);
+					if(attrValue == iTarget ){
+						clearInterval(oDiv1.timer);
+					}else{
+						oDiv1.style.opacity = (attrValue + speed) / 100;
+					}
+				},20);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--定义一个整数,判断奇偶,并输出“某某是奇数”或者“某某 是偶数”-->
+		
+		<input type="number" id="number"/>
+		<button id="btn">点击判断</button>
+	
+		<script type="text/javascript">
+			var oNumber = document.getElementById("number");
+			var oBtn = document.getElementById("btn");
+		
+			
+		oBtn.onclick = function (){
+			var a = oNumber.value % 2;
+			if(a == 1){
+				alert("a为奇数");
+			}else{
+				alert("a为偶数");
+			}
+		}
+		</script>
+	</body>
+</html>

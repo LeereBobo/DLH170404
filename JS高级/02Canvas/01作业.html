@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 3. 判断字符串是否数字串
+    var str = "24343454543";
+    var re = /^\d+$/g;
+    //返回符合条件的子字符串 返回数组
+    //str.match(re);
+    //var tf = re.test(str);
+   // console.log(tf);
+
+
+    //原型
+    String.prototype.isNumStr = function () {
+        var re = /^\d+$/g;
+       // var re1 = new RegExp("^\d+$","g"); =  var re = /^\d+$/g;
+        var tf = re.test(this);
+        return tf;
+    }
+    console.log( str.isNumStr());
+
+</script>
+</body>
+</html>

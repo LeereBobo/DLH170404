@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:200px;
+				height:200px;
+				
+				background-color: red;
+				margin-bottom:10px;
+				position:absolute;
+				left:800px;
+				top:0;
+				border-radius: 50%;
+			}
+			#btn{
+				width:100px;
+				height:30px;
+				text-align: center;
+				margin-top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1" ></div>
+		<button id="btn">按钮</button>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oBtn = document.getElementById("btn");
+			var timer = 0 ;
+			function startMove(obj,speed,iTarget){
+				
+				timer = setInterval(function(){
+					var  speedEnd = (iTarget - obj.offsetLeft) / speed;
+					//如果速度大于0  向上取整,如果速度小于0,向下取整
+					//保证最后速度为1或者-1的均匀运动
+					speedEnd = speedEnd > 0 ? Math.ceil(speedEnd) : Math.floor(speedEnd);
+					//console.log(speedEnd);
+					
+					
+					if(obj.offsetLeft == iTarget){
+						clearInterval(timer);
+					}else{
+						console.log("距离左侧的距离" + obj.offsetLeft + "speedEnd的值是" + speedEnd);
+						//offsetLeft 取整 没有小数
+					obj.style.left = obj.offsetLeft + speedEnd + "px";
+					}
+				},20);
+			}
+			oBtn.onclick = function(){
+				clearInterval(timer);
+				startMove(oDiv1,90000000000,0);
+			}
+			
+		</script>
+	</body>
+</html>

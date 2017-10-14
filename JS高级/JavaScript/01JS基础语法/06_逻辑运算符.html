@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//逻辑运算符 与或非
+			var a = 3 < 7;//true
+			var b = 4 > 5;//false
+			var c = 6 >10;//false
+			var d = 3 > 1;//true
+			
+			//与 &&取地址符 全真才为真,有一假则为假
+			var x = a && b;//false
+			console.log(x);
+			var y = a && b && c;//false
+			console.log(y);
+			var z = a && d;//true
+			console.log(z);
+			
+			//或 || 有一个为真则为真,全假为假
+			
+			var xx = a || b;
+			console.log(xx);
+			var yy = b || d;
+			console.log(yy);
+			var zz = b || c;
+			console.log(zz);
+			//非!, 取反
+			var m = !a ;
+			console.log(m);
+		</script>
+	</body>
+</html>

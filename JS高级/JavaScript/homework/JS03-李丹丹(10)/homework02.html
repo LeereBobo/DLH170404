@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+			ul{
+				background-color: green;
+				width:600px;
+				height:50px;
+				line-height: 50px;
+				text-align: center;
+				list-style-type: none;
+				
+			}
+			#nav{
+				position: absolute;
+				left:0;
+				top:0;
+				z-index: 999;
+				
+			}
+			#nav .navHeader {
+				display: inline-block;
+				color:black;
+				position: relative;
+				margin:0 40px;
+				display: inline-block;
+				background-color: green;
+				width: 100px;
+				
+			}
+			.hid{
+				
+				width:100px;
+				/*height:100px;*/
+				position: absolute;
+				top:-150px;
+				left:0;
+				z-index: -10;
+				
+			}
+			.hid li{
+				background-color: lightgray;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<ul id = "nav">
+			<li class="navHeader">首页
+			<ul class = "hid">
+				<li>AABB</li>
+				<li>BBCC</li>
+				<li>BBCC</li>
+			</ul>
+			</li>
+			
+			<li class="navHeader">产品
+			<ul class = "hid">
+				<li>AABB</li>
+				<li>BBCCdd</li>
+				<li>BBCCdd</li>
+				<li>BBCCdd</li>
+			</ul>
+			</li>
+			<li class="navHeader">关于
+			<ul class = "hid">
+				<li>AABBdd</li>
+				<li>BBCC</li>
+			</ul>
+			</li>
+		</ul>
+		
+		<script type="text/javascript">
+			var oNavHeader = document.getElementsByClassName("navHeader");
+			var oHid = document.getElementsByClassName("hid");
+			for(var i = 0; i < oNavHeader.length; i++){
+				oNavHeader[i].word = oHid[i];
+				oNavHeader[i].onmouseover = function(){
+					lineMover(this.word,"top", 5,50);
+				}
+				oNavHeader[i].onmouseout = function(){
+					lineMover(this.word,"top", -5,-150);
+				}
+			}
+			
+			function lineMover(obj, attr, speed, iTarget) {
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function() {
+				var attrValue = parseInt(getStyle(obj, attr));
+				if(Math.abs(iTarget - attrValue) < Math.abs(speed)) {
+					obj.style[attr] = iTarget + "px";
+				} else {
+					obj.style[attr] = attrValue + speed + "px";
+				}
+			}, 20);
+
+		}
+
+		function getStyle(obj, attr) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[attr];
+			} else {
+				return getComputedStyle(obj)[attr];
+			}
+		}
+		</script>
+	</body>
+</html>

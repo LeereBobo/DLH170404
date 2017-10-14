@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 320px;
+				height: 480px;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+				background: url(img/bg.jpg) no-repeat;
+			}
+			
+			#score {
+				position: absolute;
+				left: 150px;
+				top: 30px;
+			}
+			
+			#logo-head {
+				position: absolute;
+				top: 200px;
+				left: 50px;
+				animation: head 1s linear;
+				animation-direction: alternate-reverse;
+				animation-iteration-count: infinite;
+			}
+			
+			@-webkit-keyframes head {
+				from {
+					top: 200px;
+				}
+				to {
+					top: 100px;
+				}
+			}
+			
+			#logo-bird {
+				width: 44px;
+				height: 26px;
+				position: absolute;
+				top: 210px;
+				left: 240px;
+				background: url(img/bird0.png) no-repeat;
+				background-size: 44px 26px;
+				animation: bird 1s linear;
+				animation-direction: alternate-reverse;
+				animation-iteration-count: infinite;
+			}
+			
+			@-webkit-keyframes bird {
+				from {
+					top: 210px;
+					background: url(img/bird0.png) no-repeat;
+				}
+				to {
+					top: 100px;
+					background: url(img/bird1.png) no-repeat;
+				}
+			}
+			
+			#start {
+				position: absolute;
+				left: 40%;
+				top: 300px;
+			}
+			
+			#iBanner {
+				width: 650px;
+				position: absolute;
+				top: 419px;
+				left: 0;
+			}
+			
+			#moveBrid {
+				width: 44px;
+				height: 26px;
+				position: absolute;
+				left: 60px;
+				top: 200px;
+				background: url(img/bird1.png) no-repeat;
+				display: none;
+			}
+			
+			#wrap #wrap_small {
+				position: absolute;
+				top: 0;
+				left: 320px;
+				/*border: 1px solid black;*/
+				width: 62px;
+				height: 100%;
+			}
+			
+			#wrap_up {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 30%;
+				background: url(img/up_mod.png) repeat-y;
+			}
+			
+			#wrap_down {
+				width: 100%;
+				height: 45%;
+				background: url(img/down_mod.png) repeat-y;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			
+			#wrap_down img {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#wrap_up img {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!--分数-->
+			<div id="score">
+				<img src="img/0.jpg" />
+			</div>
+			<!--FiapplyBrid-->
+			<div id="logo">
+				<!--fiapply-->
+				<div id="logo-head">
+					<img src="img/head.jpg" />
+				</div>
+				<!--小鸟-->
+				<div id="logo-bird">
+
+				</div>
+				<!--开始-->
+				<div id="start">
+					<img src="img/start.jpg" />
+				</div>
+			</div>
+			<!--移动的小鸟-->
+			<div id="moveBrid">
+				<!--<img src="img/up_bird0.png" />-->
+			</div>
+			<!--草坪-->
+			<div id="iBanner">
+				<img src="img/banner.jpg" width="320" />
+			</div>
+
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var oWrap = document.getElementById("wrap");
+		var oStart = document.getElementById("start");
+		var oLogo = document.getElementById("logo");
+		var oIBanner = document.getElementById("iBanner");
+		var oMoveBrid = document.getElementById("moveBrid");
+		var oWrapSmall = document.getElementById("wrap_small");
+		var bridStop = true; //记录小鸟是否碰壁
+		//点击开始按钮
+		bannerMove();
+		
+
+		//每次点击鼠标上小鸟上升
+		oWrap.onclick = function() {
+			
+			oMoveBrid.style.top = oMoveBrid.offsetTop - 50 + "px";
+			
+			console.log(oMoveBrid.offsetTop);
+			if(oMoveBrid.offsetTop <= 0) {
+				alert("游戏结束");
+			}
+			oWrap.onmousedown = function(){
+				oMoveBrid.style.background = "url(img/up_bird1.png)";
+			}
+			oWrap.onmouseup = function(){
+				oMoveBrid.style.background = "url(img/down_bird1.png)";
+			}
+			
+		}
+		oStart.onclick = function() {
+			oLogo.style.display = "none";
+			oMoveBrid.style.display = "block";
+			bridMove();
+			creatColumn();
+			
+			
+		}
+
+		//点击开始后小鸟开始向下动
+		function bridMove() {
+			clearInterval(bridTimer);
+			var bridTimer = 0;
+			bridTimer = setInterval(function() {
+				oMoveBrid.style.top = oMoveBrid.offsetTop + 2 + "px";
+				
+				if(oMoveBrid.offsetTop >= 410) {
+					alert("游戏结束");
+					clearInterval(bridTimer);
+				}
+			}, 20);
+		}
+		//底部草坪动
+		function bannerMove() {
+			var bannerTimer = 0;
+			oIBanner.innerHTML += oIBanner.innerHTML;
+			var oIBannerOne = oIBanner.children[0].offsetWidth;
+			bannerTimer = setInterval(function() {
+				oIBanner.style.left = oIBanner.offsetLeft - 3 + "px";
+				if(oIBanner.offsetLeft <= -oIBannerOne) {
+					oIBanner.style.left = 0;
+
+				}
+
+			}, 20);
+		}
+
+		//每3秒创建一根柱子
+		//每隔柱子移动的定时器是自己的自定义属性
+		//柱子每隔一段时间,改变距离左侧的位置,每次减少2
+		//当柱子距离左侧的距离为-62时,移除此柱子
+
+		function creatColumn() {
+			var columnTimer = 0;
+
+			columnTimer = setInterval(function() {
+
+				//包含上下边柱子
+				var oWrapSmall = document.createElement("div");
+				oWrapSmall.id = "wrap_small";
+				oWrap.appendChild(oWrapSmall);
+				//上边柱子的div
+				var WrapUp = document.createElement("div");
+				WrapUp.id = "wrap_up";
+				oWrapSmall.appendChild(WrapUp);
+
+				//上边柱子的图片
+				var imgUp = new Image;
+				imgUp.src = "img/up_pipe.png";
+				WrapUp.appendChild(imgUp);
+
+				//下边柱子的div
+				var WrapDown = document.createElement("div");
+				WrapDown.id = "wrap_down";
+				oWrapSmall.appendChild(WrapDown);
+
+				//下边柱子的图片
+				var imgDown = new Image;
+				imgDown.src = "img/down_pipe.png";
+				WrapDown.appendChild(imgDown);
+
+				// 获取上下柱子高度
+				heightUp = getRandom();
+				heightDown = 360 - heightUp;
+				WrapDown.style.height = heightDown + "px";
+				WrapUp.style.height = heightUp + "px";
+				//让每个上下柱子每个一段时间向左滚动
+
+				setInterval(function() {
+					oWrapSmall.style.left = oWrapSmall.offsetLeft - 5 + "px";
+					if(oWrapSmall.offsetLeft <= -62) {
+						oWrap.removeChild(oWrapSmall);
+					}
+				}, 20);
+				
+				if(oMoveBrid.offsetTop <= heightUp && oMoveBrid.offsetTop >= (360- heightDown)){
+					bridStop = false;
+					alert("游戏结束");
+				}
+
+			}, 1000);
+
+		}
+
+		//随机函数
+		function getRandom() {
+			return Math.floor(Math.random() * (240 - 120 + 1) + 120);
+
+		}
+	</script>
+
+</html>

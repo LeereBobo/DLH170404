@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1{
+				width:200px;
+				height:200px;
+				background-color: yellow;
+			}
+			.div2{
+				background-color: green;
+				width:300px;
+				height:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			
+			//1.获取属性的值
+			
+			console.log(oDiv1.id);
+			var theId = oDiv1.getAttribute("id");
+			console.log(theId);
+			
+			//2.设置属性的值
+			
+			oDiv1.className = "div1";
+			oDiv1.setAttribute("class","div2");//给oDiv1设置类名为div2
+			oDiv1.count = 10;//这种设置方法不能再行间样式显示
+			//设置自定义属性的值  在行间样式中显示
+			oDiv1.setAttribute("count","10");
+			oDiv1.onclick = function(){
+				this.className = "div2";
+			}
+			
+			//3.删除属性
+			//oDiv1.className  = "";(常用)
+			oDiv1.removeAttribute("class");
+			
+			
+		</script>
+	</body>
+</html>

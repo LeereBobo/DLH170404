@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//search
+			var str = "ert 333 444 hhhhu  8i8y8yy jjjyyy";
+			//寻找y在字符串中的第一个位置
+			//如果字符不存在,返回-1
+			console.log(str.search("y"));
+			console.log(str.search(/y/));
+			
+			//  \d 0 ~ 9 任意数字
+			//寻找数字子在字符中  第一个出现的位置
+			console.log(str.search(/\d/));
+			
+			//match()
+			//如果有匹配,返回匹配字符串
+			//如果没有匹配,返回null
+			var str1 = "hgjkjk 9038590 0-459504-d";
+			var str2 = "dfjdkl";
+			var re = /\d+/g;
+			// + 量词,最少一个,没有上限
+			// g 查找字符串中所有满足条件的
+			console.log(️str1.match(re));
+			console.log(str2.match(re));
+			
+			
+			//replace
+			var str3 = "akjdjlg raioApi 9089084";
+			//匹配字符串中的a 忽略大小写  
+			var re = /a/ig;
+			//把字符串中的A和a替换成P
+			console.log(str3.replace(re,"P"));
+			
+			var str4 = "一江春水向东流";
+			// 竖线 代表 或的意思
+			var re4 = /一|向|流/g;
+			console.log(str4.replace(re4,""));
+		</script>
+	</body>
+</html>

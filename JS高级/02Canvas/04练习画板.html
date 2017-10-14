@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        canvas{
+            border:1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<canvas width="500px" height="500" id = "myCanvas"></canvas>
+<button id=" btn">橡皮擦</button>
+<script>
+    var oCanvas  = document.getElementById("myCanvas");
+    var oBtn = document.getElementById("btn");
+    var ctx = oCanvas.getContext("2d");
+
+    oCanvas.onmousedown = function (e) {
+        var e = e || window.event;
+        ctx.beginPath();
+        ctx.moveTo(e.clientX,e.clientY);
+        oCanvas.onmousemove = function (ev) {
+            var ev = ev || window.event;
+            ctx.lineTo(ev.clientX,ev.clientY);
+            ctx.strokeStyle = "green";
+            ctx.stroke();
+        }
+    }
+
+    oCanvas.onmouseup = function () {
+        oCanvas.onmousemove = null;
+    }
+
+    //橡皮擦
+    oBtn.onmousedown = function () {
+        oCanvas.onmousemove = function (ev) {
+            var ev = ev || window.event;
+            ctx.clearRect(ev.offsetX,ev.offsetY,10,10);
+        }
+    }
+    oBtn.onmouseup = function (){
+        oCanvas.onmousemove = null;
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--1.铁路托运行李规定:
+行李重不超过50公斤的,托运费按0.15 元每公斤计算,
+ 如果超过50公斤,超出部分每公斤加收0.1 元。使用input标签输入行李的公斤数，算出需要的托运费是说好-->
+     
+     <script type="text/javascript">
+     	var x = 50;//行李公斤数;
+     	var money = 0;
+     	if(x <= 50 && x >0){
+     		money = x * 0.15;
+     	}else if( x > 50){
+     		money = 50 * 0.15 + (x -50) * 0.25;
+     	}
+     </script>
+	</body>
+</html>

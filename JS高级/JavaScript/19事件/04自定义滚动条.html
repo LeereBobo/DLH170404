@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	    <style type="text/css">
+	    	#wrap {
+	    		position: relative;
+	    		margin:auto;
+	    		width:500px;
+	    		height:50px;
+	    		background-color: lightgray;
+	    		border-radius: 25px;
+	    	}
+	    	#div1{
+	    		background-color: pink;
+	    		width:50px;
+	    		height:50px;
+	    		border-radius: 25px;
+	    		position: absolute;
+	    		left:0;
+	    		top:0;
+	    	}
+	    	#div2{
+	    		width:0;
+	    		height:0;
+	    		background-color: pink;
+	    		position: absolute;
+	    		left:400px;
+	    		top:400px;
+	    		
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="div1">
+				
+			</div>
+		</div>
+		<div id="div2">
+			
+		</div>
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			
+			
+			
+			oDiv1.onmousedown = function(ev){
+				oDiv1.onmousemove = function(ev){
+					var ev = ev || window.event;
+					var leftType = ev.clientX >= oDiv1.offsetWidth / 2 + oWrap.offsetLeft;
+					var rightType = ev.clientX <= oWrap.offsetLeft + oWrap.offsetWidth - oDiv1.offsetWidth / 2;
+					if(leftType&&rightType){
+					oDiv1.style.left = ev.clientX - oWrap.offsetLeft - oDiv1.offsetWidth / 2 + "px";
+					var radioL =  oDiv1.offsetLeft  / (oWrap.clientWidth - oDiv1.offsetWidth);
+					
+					
+						console.log(radioL)
+						//最大移动到300
+						oDiv2.style.width =300 * radioL +"px";
+						oDiv2.style.height = 300 * radioL +"px";
+						oDiv2.style.marginLeft = -oDiv2.offsetWidth / 2 + "px";
+						oDiv2.style.marginTop = -oDiv2.offsetHeight / 2 + "px";
+						
+						
+				
+					}
+					
+				}
+				
+			}
+			
+			oDiv1.onmouseup = function(){
+			oDiv1.onmousemove = null;
+			
+			}
+		</script>
+	</body>
+</html>

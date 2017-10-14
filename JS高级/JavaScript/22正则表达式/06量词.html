@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//{n,m}最少n次 最多m次(常用)
+			//{n, }最少n个 最多不限
+			//{ , m}最少不限 最多几个(有问题)
+			//{n} 最少几次(常用)
+			// + 相当于{1, }(常用)
+			// * 相当于{0,} (可能会有问题)
+			// ? 相当于{0,1}
+			var str1 = "102434457878  u sdfku4225657634366jdh uuuuu";
+			var re = /\d{2,5}/g;
+			var re1 = /[a-z]{3,5}/g;
+			var re2 = /2{3,}/g;
+			var re3 = /u{,3}/g;
+			var re4 = /2{2}/g;
+			var re5 = /2+/g;
+			var re6 = /u*/g;
+			var re7 = /u?/g;
+			console.log(str1.match(re7));
+			
+			//匹配QQ号 5到11位 首位不能为0
+			// ^ 代表从头开始判断  
+			// $ 到结尾
+			var str2 = " 00012438438958898490580938908304";
+			var re8 = /[1-9]{1}\d{4,10}/g;
+			var re9 = /^[1-9]\d{4,10}$/;
+			console.log(str2.match(re8));
+			console.log(re9.test(str2));
+		</script>
+	</body>
+
+</html>

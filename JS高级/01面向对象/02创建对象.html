@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj = new Object();
+    obj.name = "哦哦哦";
+    obj.sex = "不详";
+    obj.eat = function () {
+        console.log(this.name + "会吃饭");
+    }
+    obj.sleep = function () {
+        console.log(this.name + "会睡觉");
+    }
+    console.log(obj.name);
+    obj.eat();
+    obj.sleep();
+
+    var obj1 = new Object();
+    obj1.name = "(๑•ᴗ•๑)孟梦";
+    obj1.sex = "不知道..";
+    obj1.eat = function () {
+        console.log(this.name + "会吃饭");
+    }
+    obj1.sleep = function () {
+        console.log(this.name + "会睡觉");
+    }
+
+    function person (name,sex) {
+        var obj = new Object();
+        obj.name = name;
+        obj.sex = sex;
+        obj.eat = function () {
+            console.log(this.name + "会吃饭");
+        }
+        obj.sleep = function () {
+            console.log(this.name + "会睡觉");
+        }
+        return obj;
+    }
+
+    var person1 = person("赵四","男");
+    console.log(person1.name);
+    person1.eat();
+
+    var person2 = person("沙皮","男");
+    console.log(person2.name);
+    person2.sleep();
+
+    // 1.创建对象没有 new
+    // 2.两个对象调用相同的方法,最后不相等
+    console.log(person1.eat == person2.eat);//false
+    console.log(person1.eat);
+    console.log(person2.eat);
+    var a = function () {
+        console.log("abc");
+    }
+    var b = function () {
+        console.log("abc");
+    }
+
+    console.log(a == b);//false a b 的存储地址不同
+
+//    \\转义字符
+    var c = new Function("console.log(\"abc\");");
+</script>
+</body>
+</html>

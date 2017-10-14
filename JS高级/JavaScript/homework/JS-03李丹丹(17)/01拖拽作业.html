@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 600px;
+				height: 600px;
+				border: 5px solid black;
+				margin: 20px auto;
+			}
+			
+			#box {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oBox = document.getElementById("box");
+
+			oWrap.onmousedown = function(ev) {
+				oWrap.onmousemove = function(ev) {
+					var ev = ev || window.event;
+					console.log(oWrap.offsetTop);
+					if(ev.clientX >= (oWrap.offsetLeft + 30) && ev.clientX <= (oWrap.offsetLeft + 580)) {
+						oBox.style.left = ev.clientX - oBox.offsetWidth / 2 + "px";
+					}
+					if(ev.clientY >= (oWrap.offsetTop + 30) && ev.clientY <= (oWrap.offsetTop + 580)) {
+						oBox.style.top = ev.clientY - oBox.offsetHeight / 2 + "px";
+					}
+				}
+			}
+			oWrap.onmouseup = function(ev) {
+				oWrap.onmousemove = null;
+			}
+		</script>
+	</body>
+
+</html>

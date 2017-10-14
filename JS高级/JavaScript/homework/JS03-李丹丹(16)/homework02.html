@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 500px;
+				height: 500px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#div2 {
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 50px;
+				top: 50px;
+			}
+			
+			#div3 {
+				width: 300px;
+				height: 300px;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			
+			#div4 {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				left: 150px;
+				top: 150px;
+			}
+			
+			#div5 {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 200px;
+				top: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+		<div id="div4"></div>
+		<div id="div5"></div>
+	</body>
+	<script type="text/javascript">
+		var oDivs = document.getElementsByTagName("div");
+		var oDiv1 = document.getElementById("div1");
+		var divColor = ["red", "orange", "yellow", "green", "blue"];
+		setInterval(function() {
+			var j = 0;
+			for(var i = 0; i < oDivs.length; i++) {
+				oDivs[i].style.backgroundColor = divColor[j];
+				if(j <= 4) {
+					j++;
+				} else {
+					j--;
+				}
+			}
+		}, 400);
+
+		//		setInterval(function() {
+		//			var oneColor = oDivs[0].style.backgroundColor
+		//			for(var i = 0 ; i < oDivs.length - 1; i++){
+		//			
+		//			oDivs[i].style.backgroundColor = oDivs[i + 1].style.backgroundColor;
+		//				
+		//			}
+		//			oDivs[4].style.backgroundColor = oneColor;
+		//		},400);
+	</script>
+
+</html>

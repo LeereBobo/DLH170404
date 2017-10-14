@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #myCanvas
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+    var oCanvas = document.getElementById("myCanvas");
+
+    oCanvas.width = document.documentElement.clientWidth;
+    oCanvas.height = document.documentElement.clientHeight;
+
+    var ctx = oCanvas.getContext("2d");
+
+
+    //图片加载
+    //根据图片路径->创建图片对象(JSON)
+    //所有图片都加载完成 ->开始游戏
+
+    var imgSrc = {
+        "bgImg"  :"img/background.png",
+        "plane1" :"img/hero_fly_1.png",
+        "plane2" :"img/hero_fly_2.png",
+        "bullet" :"img/bullet1.png",
+        "enemy1":"img/enemy1_fly_1.png",
+        "enemy2":"img/enemy2_fly_1.png",
+        "enemy3":"img/enemy3_fly_1.png"
+    };
+
+    //图片的个数
+    var imgCount = 0;
+    for(var i in imgSrc){
+        imgCount++;
+    }
+
+    //创建图片对象
+
+    //存储img对象的json key值与imgSrc相同
+    var imgObj = {};
+    var imgCompleteNum = 0;//图片加载完成的个数
+
+    for(var name in imgSrc){
+        var src = imgSrc[name];
+        //创建图片对象
+        var theImg = new Image();
+        theImg.src = src;
+        //第二种：给img对象添加自定义属性
+        theImg.name = name;
+        theImg.onload = function () {
+            imgCompleteNum++;
+            imgObj[this.name] = this;
+            if(imgCompleteNum == imgCount){
+                complete();
+            }
+        }
+
+        //第一种方法
+        /*theImg.onload = (function (theName) {
+         return function () {
+         imgObj[theName] = this;
+         //当三张图片都加载完成，开始绘制
+         //加载完成的个数和图片的个数相等
+         imgCompleteNum++;
+         if (imgCount == imgCompleteNum){
+         complete();
+         }
+         }
+         })(name);*/
+
+
+
+
+    }
+    var planeObj = null;
+    var bulletArr = [];//存放子弹的数组
+    var enemyArr = [];//存放敌机的数组
+    //图片加载完成，调用方法，将图片绘制在画布上
+    function complete() {
+
+        //获取三个img对象
+        var bgImg  = imgObj["bgImg"];
+        var plane1 = imgObj["plane1"];
+        var plane2 = imgObj["plane2"];
+        var bullet = imgObj["bullet"];
+        var enemy1 = imgObj["enemy1"];
+        var enemy2 = imgObj["enemy3"];
+        var enemy3 = imgObj["enemy2"];
+
+        var bgY = 0;
+        function drawBg() {
+            ctx.beginPath();
+            ctx.drawImage(bgImg,0,bgY,oCanvas.width,oCanvas.height);
+            ctx.drawImage(bgImg,0,bgY-oCanvas.height,oCanvas.width,oCanvas.height);
+
+
+            bgY++;
+            if (bgY == oCanvas.height){
+                bgY = 0;
+            }
+        }
+        planeObj = new Plane(plane1);
+        var temp = 0;//定时器的次数
+        //画飞机和背景
+        function drawAll() {
+            ctx.clearRect(0,0,oCanvas.width,oCanvas.height);
+            //画背景
+            drawBg();
+            //画飞机
+            planeObj.draw();
+            if (temp % 10 == 0){
+                planeObj.img = plane1;
+            } else  {
+                planeObj.img = plane2;
+            }
+            //画子弹
+            if(temp % 30 == 0){
+                var theBullet = new Bullet(bullet);
+                bulletArr.push(theBullet);
+            }
+            for(var i in bulletArr){
+                bulletArr[i].move();
+                if(bulletArr[i].isClear()){
+                    bulletArr.splice(i,1);
+                    i--;
+                }else{
+                    bulletArr[i].draw();
+                }
+            }
+
+            //创建敌机
+            var theEnemy = null;
+            if(temp % 100 == 0){
+                theEnemy = new Enemy(enemy1,2,5);
+                if(temp % 300 == 0){
+                    theEnemy = new Enemy(enemy2,4,3);
+                }
+                if(temp % 500 == 0){
+                    theEnemy = new Enemy(enemy3,6,2);
+                }
+                enemyArr.push(theEnemy);
+            }
+            for(var i in enemyArr){
+                enemyArr[i].move();
+                if(enemyArr[i].isClear()){
+                    enemyArr.splice(i,1);
+                    i--;
+                }else{
+                    enemyArr[i].draw();
+                }
+            }
+
+            for(var i = 0; i < bulletArr.length; i++){
+                for(var j = 0; j < enemyArr.length; j++){
+                    if(isTouch(bulletArr[i],enemyArr[j])){
+                        //碰撞  子弹移出
+                        bulletArr.splice(i,1);
+                        i--;
+                        //敌机血量减少
+                        enemyArr[j].blood--;
+                        if(enemyArr[j].blood == 0){
+                            enemyArr.splice(j,1);
+                            j--;
+                        }
+                        //一个子弹只能撞到一个敌机
+                        //如果子弹与敌机撞到 不可能在去撞其他敌机 直接结束敌机的循环
+                        //进行下一个子弹的判断
+                        break;
+                    }
+                }
+            }
+            var isOver = false;//记录游戏是否结束
+            //飞机和战机的碰撞检测
+            for(var i  in enemyArr){
+                if(isTouch(enemyArr[i],planeObj)){
+                    isOver = true;
+                    setTimeout(function () {
+                        alert("游戏结束啦");
+                    },0.1);
+                    break;
+                }
+            }
+
+            temp++;
+            if(!isOver){
+                window.requestAnimationFrame(drawAll);
+            }
+
+        }
+
+        drawAll();
+    }
+
+
+
+    function Plane(img) {
+        this.img = img;
+        this.w = img.width;
+        this.h = img.height;
+        this.x = (oCanvas.width - img.width)/2;
+        this.y = oCanvas.height - img.height;
+    }
+
+    Plane.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.drawImage(this.img,this.x,this.y,this.w,this.h);
+    }
+
+    function Bullet(img) {
+        this.img = img;
+        this.speed = 3;
+        this.w = img.width;
+        this.h = img.height;
+        this.x = planeObj.x + planeObj.w / 2 - this.w / 2;
+        this.y = planeObj.y;
+    }
+    Bullet.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.drawImage(this.img,this.x,this.y,this.w,this.h);
+    }
+    Bullet.prototype.move = function () {
+        this.y -= this.speed;
+    }
+    Bullet.prototype.isClear = function () {
+        if(this.y <= 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //碰撞检测
+    function isTouch(obj1,obj2) {
+        var firstLeft = obj1.x;
+        var firstRight = obj1.x + obj1.w;
+        var firstTop = obj1.y;
+        var firstBottom = obj1.y + obj1.h;
+
+        var secondLeft = obj2.x;
+        var secondRight = obj2.x + obj2.w;
+        var secondTop = obj2.y;
+        var secondBottom = obj2.y + obj2.h;
+
+        var a =  firstRight>= secondLeft;
+        var b = firstLeft <= secondRight;
+        var c = firstTop <= secondBottom;
+        var d = firstBottom >= secondTop;
+
+        if(a && b && c && d){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //战机出现
+    oCanvas.addEventListener("touchstart",function (e) {
+
+        var e = e || window.event;
+        e.preventDefault();
+        //获取手指按下的点
+        var touchX = e.touches[0].clientX;
+        var touchY = e.touches[0].clientY;
+
+        var a = touchX > planeObj.x;
+        var b = touchX < planeObj.x + planeObj.w;
+        var c = touchY > planeObj.y;
+        var d = touchY < planeObj.y + planeObj.h;
+        //手指距离飞机左侧的距离
+        var lessX = touchX - planeObj.x;
+        var lessY = touchY - planeObj.y;
+        if(a && b && c && d){
+            oCanvas.addEventListener("touchmove",move);
+            function  move(e) {
+                var e = e || e.window.event;
+                var moveX = e.touches[0].clientX;
+                var moveY = e.touches[0].clientY;
+                planeObj.x = moveX - lessX;
+                planeObj.y = moveY - lessY;
+            }
+            oCanvas.addEventListener("touchend",function () {
+                oCanvas.removeEventListener("touchmove",move);
+            })
+        }
+
+    })
+
+    //随机函数
+    function getRandom(min,max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    //敌机的类
+    function Enemy(img,blood,speed) {
+        this.img = img;
+        this.x = getRandom(0,oCanvas.width - img.width);
+        this.y = -img.height;
+        this.w = img.width;
+        this.h = img.height;
+        this.blood = blood;
+        this.speed = speed;
+    }
+    Enemy.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.drawImage(this.img,this.x,this.y,this.w,this.h);
+    }
+    Enemy.prototype.move = function () {
+        this.y += this.speed;
+    }
+    Enemy.prototype.isClear = function () {
+        if(this.y > oCanvas.height){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

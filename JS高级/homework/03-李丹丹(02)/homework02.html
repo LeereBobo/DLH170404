@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*分数类的属性有：分子, 分母
+     分数类的方法有：打印分数, 分数约分, 两个分数相加, 两个分数相减, 两个分数相乘, 两个分数相除*/
+    function Score (numberator,denominator) {
+        this.numberator = numberator;
+        this.denominator = denominator;
+
+        //打印分数
+        this.print = function () {
+            if(numberator == denominator){
+                console.log("1");
+            }else{
+                console.log(numberator+"/"+denominator);
+            }
+
+        }
+    }
+
+
+
+
+
+    //分数约分
+    Score.prototype.reduction = function (numberator,denominator) {
+        var min = 0;
+        var max = 0;
+        var remainder = 0;
+        if(numberator > denominator){
+            max = numberator;
+            min = denominator;
+        }else{
+            max =  denominator;
+            min =  numberator;
+        }
+        while(max % min != 0){
+            remainder = max % min;
+            if(remainder >= min){
+                max = remainder;
+            }else{
+                max = min;
+                min = remainder;
+            }
+        }
+        if(numberator == denominator){
+            console.log("1");
+        }else {
+            console.log((numberator / min) + "/" + (denominator / min));
+        }
+
+    }
+
+    //分数相加
+    Score.prototype.add = function (score2) {
+        var resultTop = this.numberator * score2.denominator + score2.numberator * this.denominator;
+        var resultBottom = this.denominator * score2.denominator ;
+        this.reduction(resultTop,resultBottom);
+    }
+
+    //分数相减
+    Score.prototype.reduce  = function (score2) {
+        var resultTop = Math.abs((this.numberator * score2.denominator - score2.numberator * this.denominator));
+        var resultBottom = this.denominator * score2.denominator ;
+        this.reduction(resultTop,resultBottom);
+    }
+
+    //分数相乘
+    Score.prototype.mul  = function (score2) {
+        var resultTop = this.numberator *  score2.numberator ;
+        var resultBottom = this.denominator * score2.denominator ;
+        this.reduction(resultTop,resultBottom);
+    }
+
+    //分数相除
+    Score.prototype.divide  = function (score2) {
+        var resultTop = this.numberator *  score2.denominator ;
+        var resultBottom = this.denominator * score2.numberator ;
+        this.reduction(resultTop,resultBottom);
+    }
+
+
+    var score2 = new Score(2,3);
+    var score1 = new Score(3,9);
+    score1.print();
+
+    score1.reduction(3,9);
+    score1.add(score2);
+    score1.reduce(score2);
+    score1.mul(score2);
+    score1.divide(score2);
+
+
+</script>
+</body>
+</html>

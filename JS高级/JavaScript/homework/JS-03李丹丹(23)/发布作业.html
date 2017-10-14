@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#all {
+				width: 600px;
+				margin: 0 auto;
+				border: 2px solid black;
+				text-align: center;
+				padding: 40px 0;
+				position: relative;
+			}
+			
+			#btn {
+				background-color: #f6c977;
+				position: absolute;
+				top: 200px;
+				left: 140px;
+			}
+			
+			.content {
+				background-color: lightgray;
+				border-radius: 4px;
+				width: 320px;
+				margin: 10px auto;
+				height: 50px;
+				position: relative;
+				margin-top: 30px;
+			}
+			
+			.close {
+				position: absolute;
+				left: 300px;
+				top: 8px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="all">
+			<textarea name="text" rows="10" cols="50" id="texts"></textarea>
+			<button id="btn">发布</button>
+			<div id="div1">
+				
+			</div>
+		</div>
+
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#texts").focus(function(){
+					$("#btn").css("background-color","orange");
+				})
+				$("#texts").blur(function(){
+					$("#btn").css("background-color","#f6c977");
+				})
+				$("#btn").click(function() {
+					if($("#texts").val().length > 0) {
+						$("#div1").append("<div class='content'>" + $("#texts").val() + "</div>");
+					}
+					$("#texts").val("");
+					$(".content").append("<div class='close'>" + "X" + "</div>");
+					$(".close").click(function() {
+						$(this).parent().remove();
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width = device-width initial-scale = 1" />
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background-color: paleturquoise;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+
+		</div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+
+			oDiv1.addEventListener("touchstart", function(e) {
+				window.addEventListener("touchmove", theMove, false);
+
+				function theMove(e) {
+					var e = e || window.event;
+					//取消浏览器的默认时间
+					e.preventDefault();
+					var finger = e.touches[0];
+					oDiv1.style.left = finger.clientX - oDiv1.offsetWidth / 2 + "px";
+					oDiv1.style.top = finger.clientY - oDiv1.offsetHeight / 2 + "px";
+				}
+
+			}, false);
+
+			oDiv1.addEventListener("touchend", function() {
+				window.removeEventListener("touchmove", theMove,false);
+			}, false);
+			
+			
+			
+			/*
+			 第二种
+			 * oDiv1.addEventListener("touchstart", function(e) {
+				var e = e || window.event;
+				//取消浏览器的默认事件
+				e.preventDefault();
+				var finger = e.touches[0];
+				var fx_div1 = finger.clientX;
+				var fy_div1 = finger.clientY;
+				var div1L = oDiv1.offsetLeft;
+				var div1T = oDiv1.offsetTop;
+				window.addEventListener("touchmove", theMove, false);
+
+				function theMove(e) {
+					var e = e || window.event;
+					var moveFinger = e.touches[0];
+					var fx = moveFinger.clientX;
+					var fy = moveFinger.clientY;
+					var lessx = fx - fx_div1;
+					var lessy = fy - fy_div1;
+					oDiv1.style.left = lessx + div1L + "px";
+					oDiv1.style.top = lessy + div1T + "px";
+				}
+				window.addEventListener("touchend", function() {
+					window.removeEventListener("touchmove", theMove,false);
+				}, false);
+			}, false);
+			 * */
+		</script>
+	</body>
+
+</html>

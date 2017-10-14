@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width:420px;
+				padding-top:300px;
+				margin:0 auto;
+				overflow: hidden;
+				border:1px solid black;
+			}
+			#wrap>div{
+				width:50px;
+				height:50px;
+				float:left;
+				margin:0 10px;
+				position: relative;
+			}
+			#wrap>div div:nth-child(1){
+				width:50px;
+				height:50px;
+				background-color: black;
+				opacity: 0.5;
+				position: absolute;
+				top:0;
+				left:0;
+				z-index: 2;
+			}
+			#wrap > div div:nth-child(2){
+				width:50px;
+				height:50px;
+				text-align: center;
+				line-height: 50px;
+				color: white;
+				position: absolute;
+				top:0;
+				left:0;
+				z-index: 1;
+			}
+			#wrap>div div:nth-child(3){
+				width:50px;
+				height:250px;
+				position: absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+			
+		</div>
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oDivs = oWrap.children;
+			var colorArr = ["red", "orange", "darkgray", "darkcyan", "darkgoldenrod", "darkslategray"];
+			var textArr = ["A","S","D","J","K","L"];
+			var numArr = [65, 83, 68, 74, 75, 76];
+			for(var i = 0; i < textArr.length; i++){
+				var newDivB = document.createElement("div");
+				var newDivS1 = document.createElement("div");
+				var newDivS2 = document.createElement("div");
+				var newDivS3 = document.createElement("div");
+				newDivS2.innerHTML = textArr[i];
+				newDivS2.style.backgroundColor = colorArr[i];
+				newDivS3.style.backgroundColor = colorArr[i];
+				newDivB.appendChild(newDivS1);
+				newDivB.appendChild(newDivS2);
+				newDivB.appendChild(newDivS3);
+				oWrap.appendChild(newDivB);
+			}
+			var maxH = oDivs[0].children[2].offsetHeight;
+			
+			document.onkeydown = function(ev){
+				var ev = ev || window.event;
+				for(var i = 0 ;i < oDivs.length; i++){
+					if(ev.keyCode == numArr[i]){
+						linearMove(oDivs[i].children[2],"top",-10,-maxH,oDivs[i].children[0],0.5);
+					}
+				}
+			}
+			document.onkeyup = function  (ev){
+				var ev = ev || window.event;
+				
+				for(var i = 0 ; i < oDivs.length; i++){
+					linearMove(oDivs[i].children[2],"top",10,0,oDivs[i].children[0],0.5);
+				}
+			}
+			
+			function getStyle(obj,attr){
+				if(obj.currentStyle){
+					return obj.currentStyle[attr];
+				}else{
+					return getComputedStyle(obj)[attr];
+				}
+			}
+			
+			function linearMove(obj,attr,speed,iTarget,obj1,opac){
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function(){
+					var attrValue = parseInt(getStyle(obj,attr));
+					if(Math.abs(iTarget - attrValue) < Math.abs(speed)){
+						obj.style[attr] = iTarget + "px";
+						clearInterval(obj.timer);
+					}else{
+						obj.style[attr] = attrValue + speed + "px";
+						obj1.style["opacity"] = opac - opac * Math.abs((obj.offsetTop + speed) / obj.offsetHeight);
+					}
+					 
+					
+				},30);
+			}
+		</script>
+	</body>
+</html>

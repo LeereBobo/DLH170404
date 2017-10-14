@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 200px;
+				height: 500px;
+				border: 5px solid paleturquoise;
+				display: none;
+				margin: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">按钮</button>
+		<div id="div1">
+
+		</div>
+		<div id="text">
+			<p>不如意事常八九,可与语人无二三</p>
+			<p>不如意事常八九,可与语人无二三</p>
+			<p>不如意事常八九,可与语人无二三</p>
+			<p>不如意事常八九,可与语人无二三</p>
+			<p>不如意事常八九,可与语人无二三</p>
+			<p>不如意事常八九,可与语人无二三</p>
+			<p>不如意事常八九,可与语人无二三</p>
+		</div>
+
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn");
+			var oDiv1 = document.getElementById("div1");
+			var oText = document.getElementById("text");
+			var oPs = document.getElementsByTagName("p");
+
+			oBtn.onclick = function() {
+				oDiv1.style.display = "block";
+			}
+			oText.onclick= function(){
+				oDiv1.style.display = "none";
+			}
+
+			//			for(var i = 0 ; i < oPs.length ; i++){
+			//				oPs[i].onclick = function(){
+			//					oDiv1.style.display = "none";
+			//				}
+			//			}
+		</script>
+	</body>
+
+</html>

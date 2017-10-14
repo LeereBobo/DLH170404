@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<p>美女</p>
+		<input type="text" id="girlHand" placeholder="美女的手指数" disabled="" />
+		<input type="text" id="girlSay" placeholder="美女说的数" disabled="" />
+		<p>帅哥</p>
+		帅哥的手指数:
+		<select id="boyHand">
+			<option value="0">0</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+		</select>
+		帅哥说的数:
+		<select id="boySay">
+			<option value="0">0</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="15">15</option>
+			<option value="20">20</option>
+		</select><br />
+		<input type="button" value="Come On!" onclick="game()" />
+
+		<script type="text/javascript">
+			/*
+			 * <15,20>游戏, 美女的”手指数”和”说的数”是随机产生的, 帅哥的”手指数”和”说的数”由用户输入
+			 */
+			function game() {
+				//获取帅哥输入的数字
+				var num3 = document.getElementById("boyHand").value;
+				var num4 = document.getElementById("boySay").value;
+				if(num3 == "") {
+					alert("你的手在干什么!");
+					return;
+				}
+				if(num4 == "") {
+					alert("你的嘴在干什么!");
+					return;
+				}
+				//把字符串转成数字
+				num3 -= 0;
+				num4 -= 0;
+
+				var arr = [0, 5, 10, 15, 20];
+
+				//获取美女的输入框
+				var girlHandInput = document.getElementById("girlHand");
+				var girlSayInput = document.getElementById("girlSay");
+				//美女随机产生数字
+				var num1 = 0; //手指
+				var num2 = 0; //说
+				do {
+					num1 = Math.floor(Math.random() * 3) * 5
+					num2 = Math.floor(Math.random() * 5) * 5;
+				} while (num1 > num2 || num2 - num1 > 10)
+
+				girlHandInput.value = num1;
+				girlSayInput.value = num2;
+
+				//判断结果
+				if(num1 + num3 == num2 && num1 + num3 == num4) {
+					alert("平局!");
+				} else if(num1 + num3 == num2) {
+					alert("美女赢!");
+				} else if(num1 + num3 == num4) {
+					alert("帅哥赢!");
+				} else {
+					alert("再来一局!");
+				}
+			}
+		</script>
+	</body>
+
+</html>

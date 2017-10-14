@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 div {
+				border: 2px solid red;
+				width: 100px;
+				height: 300px;
+				display: none;
+				position: absolute;
+				top: 50px;
+				left: 0;
+			}
+			
+			.active {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+			<input type="button" name="" id="" value="1" class="active" />
+			<input type="button" name="" id="" value="2" />
+			<input type="button" name="" id="" value="3" />
+			<div style="display: block;">111111</div>
+			<div>222222</div>
+			<div>333333</div>
+		</div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		
+		//JS
+		
+//			var oDiv1 = document.getElementById("div1");
+//			var buttons = document.getElementsByTagName("input");
+//			var oDivs = oDiv1.getElementsByTagName("div");
+//
+//			for(var i = 0; i < buttons.length; i++) {
+//				buttons[i].index = i;
+//				
+//
+//				buttons[i].onclick = function() {
+//
+//					for(var j = 0; j < buttons.length; j++) {
+//						buttons[j].className = "";
+//						oDivs[j].style.display = "none";
+//					}
+//					this.className = "active";
+//					oDivs[this.index].style.display = "block";
+//
+//				}
+//			}
+			
+			
+			//JQ
+			
+			$(function(){
+				$("#div1 input").click(function(){
+					$("#div1 input").attr("class","");
+					$("#div1 div").css("display","none");
+					$(this).addClass("active");
+					$("#div1 div").eq($(this).index()).css("display","block");
+				})
+			})
+			
+			
+
+		
+		</script>
+	</body>
+
+</html>

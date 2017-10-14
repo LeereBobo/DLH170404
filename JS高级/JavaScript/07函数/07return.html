@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		var sum = 0; 
+			function getNum () {
+				for (var i = 0 ; i < 20 ; i++){
+					var a = Math.floor(Math.random()*11+50);
+					sum += a;
+					console.log(a);
+					
+				}
+				return sum ;//返回sum 结束函数
+			}
+			//var sum = getNum();
+			//console.log(sum);
+			
+			
+			function sum2 () {
+				var a = 10;
+				var b = 10;
+				console.log("lalalal");
+				return;//可以单独使用 终止函数向下执行
+				console.log("hahahha");
+				var c = a + b;
+				return c;
+				
+			}
+			sum2();
+			
+			/*
+			 
+			 * 函数:代表某一个功能的代码,帮助程序减少代码量,优化代码
+			 * 
+			 * function 函数名(参数列表){
+			 * 	函数体
+			 * return 返回值
+			 * }
+			 * function是函数的标识符
+			 * 函数名:见名知意  代表函数可以实现功能  不能数字和标点开始
+			 * 参数列表:可以是多个,通常叫做形式参数
+			 * 返回值:有返回值的参数在调用时需要使用变量接收
+			 *        注意:return 使用的位置
+			 * 
+			 * 参数列表和返回值,不是每个函数必须要有
+			 * 
+			 * 
+			 * */
+		</script>
+	</body>
+</html>

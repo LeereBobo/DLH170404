@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#all {
+				width:400px;
+				height:600px;
+				background-color: lightgray;
+				margin: auto;
+				position: relative;
+				text-align: center;
+				padding-top:3px;
+				border:1px solid lightgray;
+			}
+			#sorce{
+				width:40px;
+				height:20px;
+				padding:3px;
+				margin:40px auto;
+				border-radius: 50%;
+				background-color: darkgray;
+				text-align: center;
+				line-height: 20px;
+			}
+			.blocks{
+				position: absolute;
+				top:0;
+				background-color:darkgray;
+				width:100px;
+				height:150px;
+			}
+			#content{
+				color:white;
+				font-size: 40px;
+				margin:160px 0;
+			}
+			#start,#restart{
+				background-color: lawngreen;
+				border-radius: 4px;
+				padding:10px 30px;
+				color: white;
+				border:1px solid darkgray;
+				cursor: pointer;
+				outline: none;
+			}
+			#gameOver{
+				position: absolute;
+				top:260px;
+				left:120px;
+				display: none;
+			}
+			#over{
+				font-size:30px;
+				color:white;	
+			}
+			#allsore{
+				font-size:20px;
+				color:white;	
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<div id="sorce">0</div>
+			<div id = "blockAll">
+				<!--<div class="blocks"></div>-->
+			</div>
+			<div id="content">
+				<div>别踩白块</div>
+				<button id = "start">开始</button>
+			</div>
+			<div id="gameOver">
+				<div id = "over">Game  over</div>
+				<div id="allsore">分数:0</div>
+				<button id = "restart">重新开始</button>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var oStart = document.getElementById("start");
+			var oAll = document.getElementById("all");
+			var oContent = document.getElementById("content");
+			var oSorce = document.getElementById("sorce");
+			var oAllBlock = document.getElementById("blockAll");
+			var blockTimer = null;
+			var topTimer = null;
+			var speed = 10 ; 
+			var sorce = 0;
+			
+			
+			oStart.onclick = function(){
+				oAll.style.backgroundColor = "white";
+				oContent.innerHTML = "";
+				
+				 creatBlock();
+			}
+			
+				
+				
+			function creatBlock(){
+				blockTimer = setInterval(function(){
+				var newDiv = document.createElement("div");
+				newDiv.className = "blocks"; 
+				console.log(newDiv);
+				oAllBlock.appendChild(newDiv);
+				newDiv.style.left = getRandom(3,0) * 100 + "px";
+				topTimer = setInterval(function(){
+					newDiv.style.top +=  speed +"px";
+					
+				},200);
+					
+				
+					newDiv.onclick = function(){
+						oAllBlock.removeChild(this);
+						sorce++;
+					}
+				},1000);
+				
+			}
+			
+			function getRandom(max,min){
+				return  Math.floor(Math.random() * (max - min + 1) + min);
+			}
+		</script>
+	</body>
+</html>

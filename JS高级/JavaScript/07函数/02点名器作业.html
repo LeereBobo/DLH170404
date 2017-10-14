@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#all{
+				border:1px dashed black;
+				width:400px;
+				height:600px;
+				margin:auto;
+				text-align: center;
+				
+			}
+			#name1{
+				font-size: 50px;
+				margin:100px 0 200px 0;
+				padding:10px;
+			}
+			#start{
+				background-color: black;
+				color:white;
+				padding:20px 40px;
+				margin:10px;
+				cursor: pointer;
+			}
+			#stop{
+				background-color: black;
+				color:white;
+				padding:20px 40px;
+				margin:10px;
+				cursor: pointer;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="all">
+			<div id="name1">老师</div>
+			<div id="btn">
+				<button id="start">开始</button>
+				<button id="stop">结束</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var oName1 = document.getElementById("name1");
+			var oStart = document.getElementById("start");
+			var oStop = document.getElementById("stop");
+			var arr = ["赵瑞铜", "张为", "高鑫", "李丹丹", "康俊鹏", "梁家军", "张霆", "张德威", "宇百东", "于凯瑞", "刘珈麟", "霍金鑫", "李晓芮", "张泽雨", "齐峰", "王洪阳"];
+			var timer = null;
+			var index = 0; 
+			oStart.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//随机下标
+					var index = Math.floor(Math.random()*15);
+					//根据随机的下标获取随机的人名
+					var name = arr[index];
+					//将随机的人名放入div中
+					oName1.innerHTML = name;
+				},10);
+			}
+			oStop.onclick = function (){
+				clearInterval(timer);
+			}
+		</script>
+	</body>
+
+</html>

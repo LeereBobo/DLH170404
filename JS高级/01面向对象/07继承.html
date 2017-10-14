@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //定义一个Person类,属性name age
+    //原型方法 showName showAge
+    function Person (name,age,sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    Person.prototype.showName = function () {
+        console.log(this.name);
+    }
+    Person.prototype.showAge = function () {
+        console.log(this.age);
+    }
+    var aPerson = new Person ("孙悟空","500");
+    aPerson.showAge();
+
+    function Student(name,age,score) {
+        //继承第一步,通过call方法实现继承父类中的属性
+        //this 是new创建出来的对象
+        //this后的属性的顺序和属性中的顺序保持一致
+        Person.call(this,name,age);
+        this.score = score;
+    }
+    //继承第二步,交换原型,直接赋值
+    //会把父类中的原型方法直接自动赋值给子类
+    Student.prototype  = Person.prototype;
+    var dog = new Student("沙皮","3岁","98");
+    console.log(dog.name);
+    dog.showName();
+</script>
+</body>
+</html>

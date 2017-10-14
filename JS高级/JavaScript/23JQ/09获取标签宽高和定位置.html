@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#all{
+				width:100px;
+				height:100px;
+				background-color: red;
+				/*margin:50px;
+				padding:40px;
+				border:10px solid blueviolet;*/
+				position: absolute;
+				top:50px;
+				left:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			
+		</div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//内容的宽高
+				console.log( "打印宽啦   " + $("#all").width());//100
+				console.log( "打印高啦   " + $("#all").height());//100
+				
+				//内容 +  padding = clientWidth/height
+				console.log($("#all").innerWidth());//180
+				console.log($("#all").innerHeight());//180
+				
+				//内容 + padding + border = offsetWidth/height
+				console.log($("#all").outerWidth());//200
+				console.log($("#all").outerHeight());//200
+				
+				//获取定位值
+				console.log($("#all").offset().left);//300
+				console.log($("#all").offset().top);//50
+				
+				console.log($("#all").css("left"));//300px
+				console.log($("#all").css("top"));//50px
+			});
+		</script>
+	</body>
+</html>

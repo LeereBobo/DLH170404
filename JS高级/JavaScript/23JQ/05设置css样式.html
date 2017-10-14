@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width:300px;
+				height:300px;
+				background-color: paleturquoise;
+			}
+			.all{
+				margin:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all" >
+			
+		</div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#all").css("background-color","red");
+				
+				$("#all").css({"background-color":"black","width":"50px","height":"50px"});
+				
+				//添加或移出一个css类名
+				$("#all").addClass("all");
+				
+				$("#all").removeClass("all");
+				
+				//判断某个元素是否具有某个类名
+				var isHave = $("#all").hasClass("all");
+				console.log(isHave);
+			})
+				
+			
+		</script>
+	</body>
+</html>

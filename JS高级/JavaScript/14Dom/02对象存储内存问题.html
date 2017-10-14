@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr =[2,3,4,5];
+			
+			var a = arr[0];
+			var arr1 = arr;
+			arr[0] = 10;
+			console.log(arr);//[10,3,4,5]   arr和arr[1]放到了同一个地址,所以第一个值都变了
+			console.log(arr1);//[10,3,4,5]
+			
+			//解决办法,循环赋值
+			for(var i = 0 ; i < arr.length; i++;){
+				arr1[i] = arr[i];
+			}
+		</script>
+	</body>
+</html>

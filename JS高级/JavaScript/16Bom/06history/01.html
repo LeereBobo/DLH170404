@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				/*height:50px;*/
+				font-size: 50px;
+				text-align: center;
+				color:white;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div >
+			我是第一个网页
+		</div>
+		<a href="02.html">去02</a>
+		<button onclick="goForWord()">前进 </button>
+		<script type="text/javascript">
+			//history 对象   包含浏览器的历史(url)集合
+			/*history 方法:
+			 
+			 * history.back() 后退 与在浏览器中点击后退按钮效果相同
+			 * history.forward() 前进  
+			 * history.go() 进入历史的某个界面 可以传参
+			 * */
+			
+			function goForWord(){
+				history.forward(3);
+			}
+			
+			
+		</script>
+	</body>
+</html>

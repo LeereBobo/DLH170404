@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				margin: 0 auto;
+				border-collapse: collapse;
+				text-align: center;
+				border: 1px  solid rgb(220,239,255);
+			}
+			tr th{
+				background-color: rgb(220,239,255);
+				opacity: 0.6;
+				font-size:16px;
+				border-top:2px  solid rgb(220,239,255);
+			}
+			.imgs{
+				overflow: hidden;
+			}
+			.imgs img,.imgIntroduce{
+				float: left;
+			}
+			.imgIntroduce{
+				line-height: 80px;
+				font-size: 12px;
+				margin-left:10px;
+			}
+			#last {
+				background-color: lightgray;
+				font-size: 14px;
+				cursor: pointer;
+				opacity: 0.6;
+				transition: all 1s;
+			}
+			#last:hover{
+				opacity: 0.9;
+			}
+			.deletes{
+				overflow: hidden;
+			}
+			div:nth-child(1) {
+				float:left;
+				
+			}
+			a{
+				color:black;
+				text-decoration: none;
+			}
+			a:hover{
+				color:red;
+				text-decoration:inherit;
+			}
+			
+			div:nth-child(2){
+				float: right;
+			}
+			span:nth-child(2):hover{
+				color:red;
+			}
+			.count{
+				width:30px;
+				text-align: center;
+			}
+			.countDown,.countUp{
+				padding:0 5px;
+				opacity: 0.4;
+				background-color: lightgray;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table border=" " cellspacing="" cellpadding="30">
+			<tr>
+				<th>
+					<input type="checkbox" name="" id="allCheck" value="" />
+					全选</th>
+				<th>商品</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+			
+		   <tr>
+				<td><input type="checkbox" name="" class="oCheck" value="" /></td>
+				<td class = "imgs">
+				<img src="images/1.jpg" width="100" height="80"/>
+				<span class = "imgIntroduce">恩率同款</span></td>
+				
+				<td class="price">5999.88</td>
+				<td>
+					<span class = "countDown">-</span>
+					<input type="text" name="" class ="count" value="1" />
+					<span class="countUp">+</span>
+				</td>
+				<td><span>2334</span></td>
+				<td>删除</td>
+			</tr>
+			
+			<tr>
+				<td><input type="checkbox" name="" class="oCheck" value="" /></td>
+				<td class = "imgs">
+				<img src="images/2.jpg" width="100" height="80"/>
+				<span class = "imgIntroduce">冰冰同款</span></td>
+				
+				<td class="price">3888.50</td>
+				<td>
+					<span class="countDown">-</span>
+					<input type="text" name="" class="count" value="1" />
+					<span class = "countUp">+</span>
+				</td>
+				<td><span>2334</span></td>
+				<td>删除</td>
+			</tr>
+			
+			<tr>
+				<td><input type="checkbox" name="" class="oCheck" value=""/></td>
+				<td class = "imgs">
+				<img src="images/3.jpg" width="100" height="80"/>
+				<span class = "imgIntroduce">萌宠,买我买我</span></td>
+				
+				<td class="price">1428.50</td>
+				<td>
+					<span class="countDown">-</span>
+					<input type="text" name="" class="count" value="1" />
+					<span class="countUp">+</span>
+				</td>
+				<td><span>2334</span></td>
+				<td>删除</td>
+			</tr>
+			
+			<tr>
+				<td><input type="checkbox" name="" class="oCheck" value="" /></td>
+				<td class = "imgs">
+				<img src="images/4.jpg" width="100" height="80"/>
+				<span class = "imgIntroduce">志玲同款</span></td>
+				
+				<td class="price">8860.60</td>
+				<td>
+					<span class = "countDown">-</span>
+					<input type="text" name="" class="count" value="1" />
+					<span class = "countUp">+</span>
+				</td>
+				<td><span>2334</span></td>
+				<td>删除</td>
+			</tr>
+			
+			<tr id="last">
+				<td>
+					<input type="checkbox" name="" class="oCheck" value="" />
+				     全选
+				</td>
+				<td class = "deletes" colspan="4">
+					<div> <a href="">删除</a></div>
+					<div>已选商品 <span style = "color:red;">4</span> 件
+						<span > ︽ </span>  合计: ¥ <span style = "color:red;"> 111 </span>
+					</div>
+					
+				</td>
+				
+		
+				<td>结算</td>
+			</tr>
+			
+		</table>
+		
+		<script type="text/javascript">
+			var oCountDown = document.getElementsByClassName("countDown");
+			var oCountUp = document.getElementsByClassName("countUp");
+			var oCount = document.getElementsByClassName("count");
+			var num = 0;
+			
+			for(var i = 0; i < oCountDown.length; i++){
+				oCount[i].index = oCount[i].value;
+			oCountDown[i].onclick = function(){
+				
+				num--;
+				console.log(oCount[i].index );
+				
+			}
+			oCountUp[i].onclick = function(){
+				num++;
+				//oCount[i].value = num;
+			}
+			
+			}
+		</script>
+	</body>
+</html>

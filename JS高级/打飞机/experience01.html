@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    var oCanvas = document.getElementById("myCanvas");
+    oCanvas.width = document.documentElement.clientWidth;
+    oCanvas.height = document.documentElement.clientHeight;
+    var ctx = oCanvas.getContext("2d");
+
+    var imgSrc = {
+        "bgImg"  :"img/background.png",
+        "plane1" :"img/hero_fly_1.png",
+        "plane2" :"img/hero_fly_2.png",
+        "bullet1" :"img/bullet1.png",
+        "bullet2" :"img/bullet2.png",
+        "enemy1":"img/enemy1_fly_1.png",
+        "enemy2":"img/enemy2_fly_1.png",
+        "enemy3":"img/enemy3_fly_1.png",
+        "hero3":"img/hero3.png",
+        "hero4":"img/hero4.png",
+        "hero5":"img/hero5.png"
+
+    };
+
+    var imgCount = 0;
+    var imgCompleteCount = 0;
+    var imgObj = {};
+
+    for(var i in imgSrc){
+        imgCount++;
+    }
+
+    for(var name in imgSrc){
+        var theImg = new Image();
+        theImg.src = imgSrc[name];
+        theImg.name = name;
+        theImg.onload = function () {
+            imgCompleteCount++;
+            imgObj[this.name] = this;
+            if(imgCount == imgCompleteCount){
+                complete();
+            }
+        }
+    }
+    var planeObj = null;
+    function complete() {
+        var bgImg = imgObj["bgImg"];
+        var plane1 = imgObj["plane1"];
+        var plane2 = imgObj["plane2"];
+        var bullet = imgObj["bullet1"];
+        var enemy1 = imgObj["enemy1"];
+        var enemy2 = imgObj["enemy2"];
+        var enemy3 = imgObj["enemy3"];
+        var hero3 = imgObj["hero3"];
+        var hero4 = imgObj["hero4"];
+        var hero5 = imgObj["hero5"];
+
+
+
+        var bgY = 0;
+
+        function drawBg() {
+            ctx.beginPath();
+            ctx.drawImage(bgImg,0,bgY,oCanvas.width,oCanvas.height);
+            ctx.drawImage(bgImg,0,bgY - oCanvas.height,oCanvas.width,oCanvas.height);
+            bgY++;
+            if(bgY >= oCanvas.height ){
+                bgY = 0;
+            }
+        }
+        planeObj = new Plane(plane1);
+        var bulletArr =[];
+        var enemyArr = [];
+        var temp = 0;
+        function drawAll() {
+            ctx.clearRect(0,0,oCanvas.width,oCanvas.height);
+            drawBg();
+            planeObj.draw();
+
+            temp++;
+
+
+            if(temp % 10 == 0){
+                planeObj.img = plane1;
+            }else{
+                planeObj.img = plane2;
+            }
+
+            if(temp % 20 == 0 ){
+                var theBullet = new  Bullet(bullet);
+                bulletArr.push(theBullet);
+            }
+            for(var i in bulletArr){
+
+                bulletArr[i].move();
+                if(bulletArr[i].isClear()){
+                    bulletArr.splice(i,1);
+                    i--;
+                }else{
+                    bulletArr[i].draw();
+                }
+            }
+
+
+
+            if(temp % 100 == 0){
+                var enemyObj = new Enemy(enemy1,5,3);
+                if(temp % 300 == 0){
+                    var enemyObj = new Enemy(enemy2,3,4);
+                }
+                if(temp % 500 == 0){
+                    var enemyObj = new Enemy(enemy3,2,3);
+                }
+
+
+                enemyArr.push(enemyObj);
+            }
+            for(var i in enemyArr){
+                enemyArr[i].move();
+                if( enemyArr[i].isClear()){
+                    enemyArr.splice(i,1);
+                    i--;
+                }else{
+                    enemyArr[i].draw();
+                }
+            }
+
+            for(var i in bulletArr){
+                for(var j in enemyArr){
+                    if(isTouch(bulletArr[i],enemyArr[j])){
+                        bulletArr.splice(i,1);
+                        i--;
+                        enemyArr[j].blood--;
+                    }
+                    if(enemyArr[j].blood == 0){
+                        enemyArr.splice(j,1);
+                        j--;
+                    }
+                    break;
+                }
+            }
+            var isTouchs = true;
+            for(var i in enemyArr){
+                if(isTouch(enemyArr[i],planeObj)){
+                    enemyArr.splice(i,1);
+                    i--;
+                    isTouch = false;
+                    setTimeout(function () {
+                        alert("游戏结束啦");
+                    },0.1);
+                }
+            }
+            if(isTouchs){
+                window.requestAnimationFrame(drawAll);
+            }
+        }
+        drawAll();
+    }
+
+    function Plane(img) {
+        this.img = img ;
+        this.w = img.width;
+        this.h = img.height;
+        this.x = (oCanvas.width - this.w) / 2;
+        this.y = oCanvas.height - this.h;
+    }
+    Plane.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.drawImage(this.img,this.x,this.y,this.w,this.h);
+    }
+
+    oCanvas.addEventListener("touchstart",function (e) {
+        var e = e || window.event;
+        var finger = e.touches[0];
+        var a = finger.clientX > planeObj.x;
+        var b = finger.clientX < planeObj.x + planeObj.y;
+        var c = finger.clientY > planeObj.y;
+        var d = finger.clientY < planeObj.y + planeObj.h;
+        if(a&&b&&c&&d){
+            oCanvas.addEventListener("touchmove",move);
+            function move(ev) {
+                var ev = ev || window.event;
+                var finger = ev.touches[0];
+                planeObj.x = finger.clientX - planeObj.w / 2;
+                planeObj.y = finger.clientY - planeObj.h / 2;
+            }
+        }
+        oCanvas.addEventListener("touchend",function () {
+            oCanvas.removeEventListener("touchmove",move);
+        },false);
+    },false);
+
+    function Bullet(img) {
+        this.img = img;
+        this.w = img.width;
+        this.h = img.height;
+        this.x = planeObj.x + planeObj.w / 2 - this.w / 2;
+        this.y = planeObj.y;
+        this.speed = 2;
+    }
+    Bullet.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.drawImage(this.img,this.x,this.y,this.w,this.h);
+    }
+    Bullet.prototype.move = function () {
+        this.y -= this.speed;
+    }
+    Bullet.prototype.isClear = function () {
+        if(this.y <= 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function getRandom(min,max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    function Enemy(img,speed,blood) {
+        this.img = img;
+        this.blood = blood;
+        this.w = img.width;
+        this.h = img.height;
+        this.speed = speed;
+        this.x = getRandom(0,oCanvas.width - this.w);
+        this.y = 0;
+    }
+    Enemy.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.drawImage(this.img, this.x, this.y,this.w,this.h);
+    }
+    Enemy.prototype.move = function () {
+        this.y += this.speed;
+    }
+    Enemy.prototype.isClear = function () {
+        if(this.y >= oCanvas.height){
+            return true;
+        }
+    }
+
+
+//    function Enemy(img,speed,blood) {
+//        this.img = img;
+//        this.blood = blood;
+//        this.w = img.width;
+//        this.h = img.height;
+//        this.speed = speed;
+//        this.x = getRandom(0,oCanvas.width - this.w);
+//        this.y = 0;
+//    }
+//    Enemy.prototype.draw = function () {
+//        ctx.beginPath();
+//        ctx.drawImage(this.img, this.x, this.y,this.w,this.h);
+//    }
+//    Enemy.prototype.move = function () {
+//        this.y += this.speed;
+//    }
+//    Enemy.prototype.isClear = function () {
+//        if(this.y >= oCanvas.height){
+//            return true;
+//        }
+//    }
+
+
+    function isTouch(obj1,obj2) {
+        var firstLeft = obj1.x;
+        var firstRight = obj1.x + obj1.w;
+        var firstTop = obj1.y;
+        var firstBottom = obj1.y + obj1.h;
+
+        var secondLeft = obj2.x;
+        var secondRight = obj2.x + obj2.w;
+        var secondTop = obj2.y;
+        var secondBottom = obj2.y + obj2.h;
+
+        var a = firstLeft <= secondRight;
+        var b = firstRight >= secondLeft;
+        var c = firstTop <= secondBottom;
+        var d = firstBottom >=secondTop;
+
+        if(a && b && c && d){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+</script>
+</body>
+</html>

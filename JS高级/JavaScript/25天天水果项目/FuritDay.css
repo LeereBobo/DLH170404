@@ -1,0 +1,834 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+/*左浮动*/
+
+.left {
+	float: left;
+}
+
+
+/*右浮动*/
+
+.right {
+	float: right;
+}
+
+.clear-float::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+/*头部样式*/
+
+header {
+	background-color: rgb(234, 234, 234);
+	height: 30px;
+}
+
+
+/*城市*/
+
+.contain1 {
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.contain {
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.header-add {
+	line-height: 30px;
+}
+
+.header-add img {
+	margin-top: 3px;
+}
+
+.header-left span {
+	font-size: 12px;
+	color: darkgray;
+	margin-left: 5px;
+}
+
+.header-left a {
+	font-size: 12px;
+	text-decoration: none;
+	color: rgb(85, 145, 25);
+}
+
+.header-left a:hover {
+	text-decoration: underline;
+}
+
+
+/*上海移入移出*/
+
+#shMOver {
+	background-color: white;
+	box-shadow: 2px 2px 2px lightgray;
+	padding: 10px;
+	height: 400px;
+	overflow: scroll;
+	display: none;
+	position: fixed;
+	top: 28px;
+	left: 12%;
+	z-index: 2;
+}
+
+.header-left .header-city #shMOver a {
+	font-size: 13px;
+	color: black;
+	text-decoration: none;
+}
+
+.header-left .header-city #shMOver a:hover {
+	color: rgb(87, 146, 43);
+	text-decoration: underline;
+}
+
+.header-left .header-city #shMOver div {
+	color: darkgray;
+	font-size: 15px;
+}
+
+.header-left .header-city #shMOver p {
+	background: url(img/WX20170629-105952.png) no-repeat 150px;
+	border-bottom: 1px solid rgb(234, 234, 234);
+	margin: 10px 5px;
+}
+
+.header-left .header-city #shMOver p a {
+	font-size: 13px;
+}
+
+.header-left .header-city #shMOver p a:hover {
+	color: rgb(85, 145, 25);
+	text-decoration: none;
+}
+
+.header-left .header-city #shMOver .hotCity {
+	background-color: rgb(234, 234, 234);
+	padding: 0 3px;
+}
+
+.oul {
+	display: none;
+}
+
+.oul li {
+	list-style: none;
+	border-bottom: 1px dotted rgb(234, 234, 234);
+	margin-left: 10px;
+	font-size: 13px;
+}
+
+.oul li:hover {
+	color: rgb(85, 145, 25);
+}
+
+
+/*登录注册*/
+
+.header-right {
+	text-align: center;
+	line-height: 30px;
+}
+
+.header-right img {
+	margin-top: 5px;
+}
+
+.header-right .header-login a {
+	font-size: 12px;
+	color: darkgray;
+	text-decoration: none;
+	margin: 0 5px;
+}
+
+#fruitNotice {
+	height: 30px;
+}
+
+.header-right .header-login span {
+	margin: 0 5px;
+}
+
+.header-right .header-login a:hover {
+	color: rgb(243, 129, 0);
+	text-decoration: underline;
+}
+
+.header-right-phone {
+	margin: 0 5px;
+}
+
+.header-right div,
+.header-right {
+	font-size: 12px;
+	color: darkgray;
+}
+
+.phonenum div {
+	font-weight: bolder;
+}
+
+.notice {
+	background-color: white;
+	position: absolute;
+	top: 30px;
+	right: 21%;
+	z-index: 2;
+	box-shadow: 2px 2px 2px lightgray;
+	display: none;
+}
+
+.notice div {
+	border-bottom: 1px dotted lightgray;
+	margin: 5px 0;
+}
+
+.header-right .header-login .notice span a {
+	background-color: red;
+	border-radius: 3px;
+	padding: 0 5px;
+}
+
+.header-right .header-login .notice span a:hover {
+	text-decoration: none;
+}
+
+.header-right .header-login .notice a:hover {
+	color: rgb(85, 145, 25);
+}
+
+#phoneMove {
+	position: fixed;
+	top: 28px;
+	right: 16%;
+	display: none;
+	z-index: 2;
+}
+
+
+/*导航栏*/
+
+
+/*logo*/
+
+nav {
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.nav-logo img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.nav-logo ul {
+	margin-left: 150px;
+	margin-top: 50px;
+}
+
+.nav-logo ul li {
+	list-style: none;
+	font-size: 13px;
+	color: darkgray;
+	padding: 0 30px;
+}
+
+.nav-logo ul li:hover {
+	background-color: lightgray;
+	cursor: pointer;
+}
+
+.nav-logo ul li:nth-child(1) {
+	color: rgb(85, 145, 25);
+	margin-bottom: 50px;
+}
+
+.line {
+	width: 100px;
+	height: 2px;
+	margin-top: 20px;
+	background-color: rgb(85, 145, 25);
+	position: absolute;
+	top: 85%;
+	left: 29.5%;
+}
+
+.nav-logo ul li:nth-child(2),
+.nav-logo ul li:nth-child(4) {
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+}
+
+
+/*搜索*/
+
+#search {
+	outline: none;
+	border: none;
+	margin-top: 50px;
+	border-bottom: 1px solid darkgray;
+	padding-bottom: 5px;
+	background: url(img/ED83DBD6AE0BB8BBD068BFE2C474D5C3.jpg) no-repeat 110px;
+}
+
+nav {
+	position: relative;
+}
+
+
+/*购物小车下面隐藏的商品*/
+
+.arrow {
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid rgb(255, 255, 255);
+	position: absolute;
+	top: -10px;
+	left: 250px;
+}
+
+#shopping-box {
+	display: none;
+	position: absolute;
+	top: 65px;
+	right: 120px;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 0 45px rgba(175, 175, 175, 0.75);
+	width: 300px;
+	/* 	padding:10px 0;*/
+	height: 60px;
+	/*	overflow: scroll;*/
+	margin: 50px 0;
+	z-index: 2;
+	text-align: center;
+	line-height: 60px;
+	color: darkgray;
+	font-size: 14px;
+}
+
+
+/*将商品添加到购物车里*/
+
+#shopping-hidden {
+	display: none;
+	position: absolute;
+	top: 65px;
+	right: 120px;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 0 45px rgba(175, 175, 175, 0.75);
+	width: 340px;
+	height: 230px;
+	/* 	padding:10px 0;*/
+	overflow: scroll;
+	margin: 50px 0;
+	z-index: 2;
+	/*	text-align: center;*/
+	color: darkgray;
+	font-size: 14px;
+}
+
+.account,
+.accountA {
+	color: black;
+	text-align: center;
+}
+
+#hiddenNum,
+#hiddenPrice {
+	color: rgb(85, 145, 25);
+}
+
+.account {
+	margin-bottom: 30px;
+}
+
+.account span:nth-child(2) {
+	margin-left: 110px;
+}
+
+#shopping-hidden a {
+	text-decoration: none;
+	color: white;
+	background-color: rgb(85, 145, 25);
+	padding: 10px 100px;
+	border-radius: 4px;
+	font-size: 18px;
+}
+.hiddenImg{
+	float: left;
+}
+
+.hiddenImg img {
+	width: 70px;
+	height: 70px;
+	margin-left: 30px;
+	margin-top: 5px;
+	box-shadow: 2px 2px 2px lightgray;
+}
+
+.hiddenContent {
+	width: 200px;
+	margin-bottom: 50px;
+	margin-left: 15px;
+	float: left;
+}
+
+.hiddenContent div {
+	margin-top: 5px;
+}
+
+#countLeast,
+#countAdd {
+	background-color: rgb(234, 234, 234);
+	padding: 0 6px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+#deleteOne {
+	color: black;
+	margin-left: 70px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.hiddenContent input {
+	width: 20px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.hotFruit {
+	font-size: 12px;
+	color: darkgrey;
+	margin-top: 5px;
+}
+
+.hotFruit a {
+	font-size: 12px;
+	color: darkgrey;
+	text-decoration: none;
+}
+
+.shoppingImg {
+	margin-top: 50px;
+	margin-left: 15px;
+}
+
+.hotFruit a:hover {
+	text-decoration: underline;
+}
+
+
+/*折叠导航栏*/
+
+.nav-shrink {
+	width: 39px;
+	height: 42px;
+	margin-top: 50px;
+	margin-left: 5px;
+	display: none;
+	border-radius: 28px;
+	background-color: rgb(83, 145, 25);
+}
+
+.nav-shrink div {
+	width: 30px;
+	height: 2px;
+	line-height: 42px;
+	margin: 8px auto;
+	background-color: white;
+}
+
+
+/*折叠隐藏的导航栏*/
+
+#nav-hidden {
+	width: 180px;
+	background-color: rgb(230, 230, 230);
+	padding: 10px 0;
+	position: absolute;
+	top: 95%;
+	right: 0;
+	z-index: 4;
+	opacity: 0.7;
+	display: none;
+}
+
+#nav-hidden div {
+	margin: 10px 0;
+	padding: 3px 15px;
+}
+
+#nav-hidden div:hover {
+	background-color: rgb(245, 245, 245);
+	cursor: pointer;
+}
+
+#nav-hidden div:nth-child(1) {
+	background-color: rgb(245, 245, 245);
+	cursor: pointer;
+}
+
+#nav-hidden div span {
+	color: darkgray;
+	font-size: 15px;
+	margin-right: 50px;
+}
+
+
+/*今日必买*/
+
+.mustBuy {
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 40px;
+}
+
+.mustBuy div {
+	margin: 5px;
+}
+
+.mustBuy div img {
+	width: 290px;
+	height: 130px;
+}
+
+
+/*果园推荐*/
+
+.commend {
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 20px;
+}
+
+.pushWord {
+	margin-top: 15px;
+}
+
+.pushWord a {
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
+}
+
+.pushWord a:hover {
+	text-decoration: underline;
+}
+
+.commend-rigthImg {
+	width: 940px;
+}
+
+.commend-rigthImg div {
+	margin-right: 5px;
+}
+
+.commend-rigthImg div img {
+	width: 225px;
+	height: 247px;
+}
+
+.commend-leftImg img:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: all 1s;
+}
+
+.commend-rigthImg div img:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: all 1s;
+}
+
+.reducePrice {
+	position: relative;
+}
+
+.reducePrice span {
+	color: white;
+	padding: 2px 4px;
+	background-color: red;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.reducePrice .priceImg img {
+	width: 34px;
+	height: 34px;
+}
+
+.eveyPrice a {
+	width: 160px;
+	color: darkgray;
+	font-size: 13px;
+	display: block;
+	text-decoration: none;
+}
+
+.wrapPrice {
+	width: 225px;
+	height: 38px;
+	margin: 10px 0;
+}
+
+.globalPrice {
+	position: relative;
+	margin-right: 10px;
+}
+
+.globalPrice img {
+	width: 230px;
+	height: 250px;
+}
+
+.globalPrice img:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: all 1s;
+}
+
+.globalPrice span {
+	color: white;
+	padding: 2px 4px;
+	background-color: red;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.globalPrice .priceImg img {
+	width: 34px;
+	height: 34px;
+}
+
+.global-everyPrice {
+	width: 230px;
+}
+
+.globalFurit {
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 20px;
+}
+
+
+/*全球原产地*/
+
+.global-shopping {
+	border-bottom: 1px solid lightgray;
+	margin-bottom: 50px;
+}
+
+.global-shopping .global-descipt p:nth-child(1) {
+	font-size: 20px;
+}
+
+.global-shopping .global-descipt p:nth-child(2) {
+	font-size: 16px;
+}
+
+.global-shopping .global-descipt {
+	width: 154px;
+	height: 75px;
+	padding-top: 10px;
+}
+
+.global-all {
+	padding: 15px 0;
+	margin-right: 30px;
+}
+
+.global-border1 {
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	padding-right: 10px;
+}
+
+.global-border2 {
+	padding-right: 10px;
+	border-right: 1px solid lightgray;
+}
+
+
+/*天天热线电话*/
+
+.guide a {
+	display: block;
+	text-decoration: none;
+	color: lightgray;
+	font-size: 13px;
+	margin: 15px 0;
+}
+
+.hotPhone {
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 10px;
+}
+
+.hotPhone div {
+	margin-right: 43px;
+}
+
+.guide a:hover {
+	color: rgb(86, 141, 27);
+	text-decoration: underline;
+}
+
+
+/*版权*/
+
+.aCopyright {
+	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 50px;
+}
+
+.aCopyright div:nth-child(1) {
+	font-size: 13px;
+	color: lightgray;
+}
+
+.aCopyright div:nth-child(2) {
+	font-size: 13px;
+	color: rgb(86, 141, 27);
+	margin: 10px 0;
+}
+
+
+/*滚动图片*/
+
+.scrollImg {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+
+/*加入购物车成功*/
+
+#addSuccess {
+	width: 520px;
+	height: 300px;
+	box-shadow: 2px 2px 2px lightgray;
+	background-color: white;
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -260px;
+	z-index: 10;
+}
+
+#delete {
+	width: 520px;
+	height: 40px;
+	background-color: rgb(229, 229, 229);
+	text-align: right;
+}
+
+#deleteImg {
+	cursor: pointer;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.successImg img {
+	margin: 15px 80px 0 80px;
+}
+
+#allCount {
+	width: 400px;
+	margin: 10px auto 40px auto;
+}
+
+#allCount div {
+	display: inline-block;
+	font-size: 20px;
+	color: lightgrey;
+	font-weight: 200;
+}
+
+#allCount div:nth-child(2),
+#allCount div:nth-child(4) {
+	color: orange;
+}
+
+.isSelect {
+	width: 350px;
+	font-size: 15px;
+	margin: 0 auto;
+}
+
+.isSelect span:nth-child(1) {
+	color: green;
+	background-color: rgb(243, 255, 231);
+	padding: 10px 30px;
+	border-radius: 10px;
+	margin: 0 40px;
+	cursor: pointer;
+}
+
+.isSelect span:nth-child(2) {
+	color: white;
+	background-color: rgb(85, 145, 25);
+	padding: 10px 40px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.mask {
+	background-color: black;
+	opacity: 0.3;
+	z-index: 8;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+
+/*响应式布局*/
+
+@media only screen and (max-width:1200px) {
+	.nav-logo ul li {
+		display: none;
+	}
+	.line {
+		display: none;
+	}
+	.nav-shrink {
+		display: block;
+	}
+}
+
+@media only screen and (max-width:800px) {
+	.nav-search {
+		display: none;
+	}
+	.shoppingImg {
+		display: none;
+	}
+	.nav-shrink {
+		display: none;
+	}
+}

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="FuritDay.css"/>
+    <link rel="stylesheet" type="text/css" href="swiper.min.css"/>
+    <style>
+        .swiper-pagination-bullet {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--头部-->
+<header>
+    <div class="contain1 clear-float">
+        <!--地址-->
+        <div class="header-add left">
+            <div class="header-left clear-float">
+                <img src="img/973EFA11-538D-4FE7-B54B-F0EAD6770846.png" class="left"/>
+                <div class="header-city left" id="shCity">
+                    <span id="showCity">上海</span>
+                    <img src="img/WX20170628-092204.png"/>
+
+                    <!--上海的移入移出-->
+                    <div id="shMOver">
+                        <div>热门城市:</div>
+                        <div class="hotCity">
+                            <a href="#" class="clickCity">上海</a>
+                            <a href="#" class="clickCity">广州</a>
+                            <a href="#" class="clickCity">北京</a>
+                            <a href="#" class="clickCity">苏州</a>
+                            <a href="#" class="clickCity">南京</a>
+                            <a href="#" class="clickCity">深圳</a>
+                        </div>
+                        <div>选择城市:</div>
+                        <p class="selectCity">
+                            <a href="#" class="ulCity">上海</a>
+                        </p>
+                        <ul class="oul"></ul>
+                        <p class="selectCity">
+                            <a href="#" class="ulCity">上海崇明</a>
+                        </p>
+                        <ul class="oul"></ul>
+                        <p class="selectCity">
+                            <a href="#">江苏</a>
+                        </p>
+                        <ul class="oul">
+                            <li class="liCity">常州</li>
+                            <li class="liCity">淮安</li>
+                            <li class="liCity">连云港</li>
+                        </ul>
+                        <p class="selectCity">
+                            <a href="#">浙江</a>
+                        </p>
+                        <ul class="oul">
+                            <li class="liCity">杭州</li>
+                            <li class="liCity">湖州</li>
+                            <li class="liCity">嘉兴</li>
+                            <li class="liCity">金华</li>
+                            <li class="liCity">宁波</li>
+                            <li class="liCity">绍兴</li>
+                        </ul>
+                        <p class="selectCity">
+                            <a href="#">南京</a>
+                        </p>
+                        <ul class="oul">
+                            <li class="liCity">江宁区</li>
+                            <li class="liCity">六合区</li>
+                            <li class="liCity">玄武区</li>
+                            <li class="liCity">秦淮区</li>
+                        </ul>
+                        <p class="selectCity">
+                            <a href="#">北京</a>
+                        </p>
+                        <ul class="oul">
+                            <li class="liCity">东城区</li>
+                            <li class="liCity">西城区</li>
+                            <li class="liCity">朝阳区</li>
+                            <li class="liCity">二龙路</li>
+                        </ul>
+                        <p class="selectCity">
+                            <a href="#">河北</a>
+                        </p>
+                        <ul class="oul">
+                            <li class="liCity">石家庄</li>
+                            <li class="liCity">廊坊</li>
+                            <li class="liCity">唐山</li>
+                            <li class="liCity">承德</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <span>满百包邮(环交内)</span>
+                <a href="#">星夜达</a>
+            </div>
+
+        </div>
+        <!--登录注册-->
+        <div class="header-right  right">
+            <div class="header-login left">
+                <a href="#">[登录]</a>
+                <a href="#">[注册有惊喜]</a>
+                <div id="fruitNotice" style="display: inline-block;">
+                    果园公告
+                    <!--果园公告移入移出-->
+                    <div class="notice" id="notices">
+                        <div>
+                            <a href="#">全仓充值活动调整公告</a>
+                        </div>
+                        <div>
+                            <a href="#">全仓充值活动调整公告</a>
+                        </div>
+                        <div>
+                            <a href="#">全仓充值活动调整公告</a>
+                            <span><a href="" style="color:white;">new</a> </span>
+                        </div>
+                        <div>
+                            <a href="#">查看更多 &gt;</a>
+                        </div>
+                    </div>
+                </div>
+                |
+                <a href="#">券卡兑换</a>|
+
+            </div>
+            <div class="header-right-phone left">
+                <img src="img/WX20170628-091849.png" class="left"/>
+
+                <div class="left" id="phoneFruit">
+                    手机果园
+                    <!--手机果园的移入移出-->
+                    <div id="phoneMove">
+                        <a href="#"><img src="img/WX20170628-111708.png"/></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="phonenum left">
+                <img src="img/WX20170628-091902.png" alt="" class="left"/>
+                <div class="left">400-720-0070</div>
+            </div>
+
+        </div>
+    </div>
+</header>
+<!--导航栏-->
+<nav>
+    <div class="contain1  clear-float">
+        <!--导航栏logo-->
+
+        <div class="nav-logo left ">
+            <ul class="left">
+                <div class="left"><img src="img/WX20170628-091558.png"/></div>
+                <li class="left">
+                    <div>首页</div>
+                    <div>Home</div>
+                </li>
+
+                <li class="left">
+                    <div>鲜果</div>
+                    <div>Friut</div>
+                </li>
+
+                <li class="left">
+                    <div>生鲜</div>
+                    <div>Fresh</div>
+                </li>
+                <li class="left">
+                    <div>礼品</div>
+                    <div>Gift</div>
+                </li>
+                <li class="left">
+                    <div>会员中心</div>
+                    <div>VIP Club</div>
+                </li>
+            </ul>
+            <div class="line left"></div>
+        </div>
+        <!--折叠 导航栏-->
+        <div class="right nav-shrink" id="navShink">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <!--折叠导航栏隐藏-->
+        <div id="nav-hidden">
+            <div><span>首页</span><span>Home</span></div>
+            <div><span>鲜果</span><span>Fruit</span></div>
+            <div><span>生鲜</span><span>Fresh</span></div>
+            <div><span>礼品</span><span>Gift</span></div>
+            <div><span style="margin-right:10px;">会员中心</span><span>VIP&nbsp;Club</span></div>
+        </div>
+        <div class="right shoppingImg"><img src="img/7A707F4FBBF2AF5DC5E17AB39A1918AF.jpg" id="shoppingSrc"/></div>
+
+        <!--搜索和购物车-->
+        <div class="nav-search right">
+
+            <input type="text" name="search" id="search" value="奇异果" placeholder="请输入关键字"/>
+            <div class="hotFruit">
+                <span>热门:</span>
+                <a href="#">橙子</a>
+                <a href="#">提子</a>
+                <a href="#">樱桃</a>
+                <a href="#">苹果</a>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="shopping-box">
+        <div class="arrow"></div>
+        <div>购物车中还没有商品，赶紧选购吧！</div>
+    </div>
+    <!--点击购物小车时加入导航栏的购物车的下面-->
+    <div id="shopping-hidden">
+        <div class="arrow"></div>
+        <div class="clear-float" id="allFruit">
+            <!--<div class=" hiddenImg left">
+                <img src="img/img1/1-270x270-2126-78RU62HD.jpg" alt="" />
+            </div>
+            <div class=" hiddenContent left">
+                <div>新奇士</div>
+                <div>58.90</div>
+                <span id="countLeast">-</span>
+                <input type="text" name="" id="myInput" value="1" />
+                <span id="countAdd">+</span>
+                <span id="deleteOne">删除</span>
+            </div>-->
+
+
+        </div>
+        <div class="account">
+            共计&nbsp;<span id="hiddenNum"></span>&nbsp;件商品
+            <span>商品小计</span>
+            <span id="hiddenPrice"></span>
+        </div>
+        <div class="accountA">
+            <a href="#">立即结算</a>
+        </div>
+    </div>
+</nav>
+<!--轮播图片-->
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="img/img1/轮播图/161726a2d3fa4327967475807cfd7fb9.jpg"/></div>
+        <div class="swiper-slide"><img src="img/img1/轮播图/202f7abd200cf4602f3b4d6201be1683.jpg"/></div>
+        <div class="swiper-slide"><img src="img/img1/轮播图/372bd5c049f39eb598ece6d8ee53af85.jpg"/></div>
+        <div class="swiper-slide"><img src="img/img1/轮播图/785c16dca5e71a9d58ab19178edcc7ca.jpg"/></div>
+        <div class="swiper-slide"><img src="img/img1/轮播图/88313f5976eb07054e0f7daa22a36f68.jpg"/></div>
+        <div class="swiper-slide"><img src="img/img1/轮播图/a8cff1551c891a94d86618cd44434f72.jpg"/></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+    <!-- 如果需要导航按钮 -->
+    <!--<div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>-->
+    <!-- 如果需要滚动条 -->
+    <div class="swiper-scrollbar"></div>
+</div>
+
+<!--今日必买-->
+<section class="contain clear-float mustBuy">
+    <div class="left"><img src="img/img1/daac37efae77633ef73cb6564f60f192.jpg"/></div>
+    <div class="left"><img src="img/img1/83733c939d8a40cdae4443d8a5f6e6b4.jpg"/></div>
+    <div class="left"><img src="img/img1/9ecb337faa748f634e2a2d58ede2a767.jpg"/></div>
+    <div class="left"><img src="img/img1/80ef21bd0115bed70ea7d0df04dfcfc5.jpg"/></div>
+</section>
+<!--果园推荐-->
+<div class="contain clear-float commend">
+    <div class="pushWord clear-float">
+        <div class="left"><img src="img/img1/t1.png"/></div>
+        <div class="right">
+            <a href="#">更多&nbsp; &gt;</a>
+        </div>
+    </div>
+    <div class="clear-float">
+        <div class="commend-leftImg left">
+            <img src="img/img1/4c80e12790f5616ec69f9da160c4f139.jpg"/>
+        </div>
+        <div class="commend-rigthImg right clear-float">
+            <div class="left reducePrice">
+                <img src="img/img1/1-270x270-23680-26HDFCXH.jpg" class="fruitImg"/>
+                <span>已省30元</span>
+                <div class="clear-float wrapPrice">
+                    <div class="eveyPrice left">
+                        <a href="#" class="fruitIndouce">美国西北樱桃(限购1份)</a>
+                        <a href="#" class="everPrice">￥29.90/1磅</a>
+                    </div>
+                    <div class="priceImg right">
+                        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+                    </div>
+                </div>
+            </div>
+            <div class="left reducePrice">
+            <img src="img/img1/1-270x270-2501-X276SUR7.jpg " class="fruitImg"/>
+            <span>已省10元</span>
+            <div class="clear-float wrapPrice ">
+                <div class="eveyPrice left ">
+                    <a href="#" class="fruitIndouce">新奇士美国瓦伦西亚橙</a>
+                    <a href="#" class="everPrice ">￥58.00/12个</a>
+                </div>
+                <div class="priceImg right ">
+                    <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+                </div>
+            </div>
+        </div>
+        <div class="left reducePrice ">
+        <img src="img/img1/1-270x270-2126-78RU62HD.jpg" class="fruitImg"/>
+        <span>第二件省20元</span>
+        <div class="clear-float wrapPrice">
+            <div class="eveyPrice left">
+                <a href="#" class="fruitIndouce">佳沛新西兰绿奇异果</a>
+                <a href="#" class="everPrice">￥49.90/6个</a>
+            </div>
+            <div class="priceImg right">
+                <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+            </div>
+        </div>
+    </div>
+    <div class="left reducePrice">
+    <img src="img/img1/1-270x270-2509-3S2DFYF3.jpg " class="fruitImg"/>
+    <span>第二份减10元</span>
+    <div class="clear-float wrapPrice ">
+        <div class="eveyPrice left ">
+            <a href="#" class="fruitIndouce">南非葡萄柚</a>
+            <a href="#" class="everPrice ">￥39.90/6个</a>
+        </div>
+        <div class="priceImg right ">
+            <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+        </div>
+    </div>
+</div>
+<div class="left reducePrice ">
+<img src="img/img1/1-270x270-2545-P36HR8S6.jpg" class="fruitImg"/>
+<span>第二件29.9元</span>
+<div class="clear-float wrapPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">小龙虾</a>
+        <a href="#" class="everPrice">￥79.90/净虾2斤</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left reducePrice">
+<img src="img/img1/1-270x270-2569-HTBYSCT2.jpg " class="fruitImg"/>
+<span>两份省20元</span>
+<div class="clear-float wrapPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">金奇葡萄</a>
+        <a href="#" class="everPrice ">￥69.90/6个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left reducePrice ">
+<img src="img/img1/1-270x270-2219-TDFP6C96.jpg" class="fruitImg"/>
+<div class="clear-float wrapPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">海南榴莲</a>
+        <a href="#" class="everPrice">￥39.90/2斤</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left reducePrice">
+<img src="img/img1/1-270x270-23024-HRC6R8SW.jpg " class="fruitImg"/>
+<div class="clear-float wrapPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">越南苹果</a>
+        <a href="#" class="everPrice ">￥39.90/4斤</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--全球鲜果-->
+<div class="contain clear-float globalFurit ">
+    <div class="pushWord clear-float ">
+        <div class="left "><img src="img/img1/t2.png "/></div>
+        <div class="right "><a href="#">更多&nbsp; &gt;</a></div>
+    </div>
+    <div class="global clear-float ">
+        <div class="left globalPrice ">
+        <img src="img/1-270x270-2077-X4AWA58W.jpg" class="fruitImg"/>
+        <!--<span>第二件省20元</span>-->
+        <div class="clear-float global-everyPrice">
+            <div class="eveyPrice left">
+                <a href="#" class="fruitIndouce">海南芒果</a>
+                <a href="#" class="everPrice">￥29.90/6个</a>
+            </div>
+            <div class="priceImg right">
+                <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+            </div>
+        </div>
+    </div>
+    <div class="left globalPrice">
+    <img src="img/1-270x270-19-YATB7835.jpg " class="fruitImg"/>
+    <!--<span>第二件省20元</span>-->
+    <div class="clear-float global-everyPrice ">
+        <div class="eveyPrice left ">
+            <a href="#" class="fruitIndouce">非洲香蕉</a>
+            <a href="#" class="everPrice ">￥19.90/6近</a>
+        </div>
+        <div class="priceImg right ">
+            <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+        </div>
+    </div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-2117-FWYAAKWS.jpg" class="fruitImg"/>
+<span>换购</span>
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">新西兰皇后红玫瑰苹果</a>
+        <a href="#" class="everPrice">￥39.90/6个</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-2251-SRXU15Y1.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">平谷油桃</a>
+        <a href="#" class="everPrice ">￥29.90/6个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-2384-2X7YU3WP.jpg" class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">维多利亚青提</a>
+        <a href="#" class="everPrice">￥19.90/斤</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-2505-TTH8YFT7.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">非洲香蕉</a>
+        <a href="#" class="everPrice ">￥19.90/6个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-19-YATB7835.jpg" class="fruitImg"/>
+<span>已省20元</span>
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">深井冰椰青</a>
+        <a href="#" class="everPrice">￥39.90/2个</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-2654-9C1CX4DK.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">墨西哥牛油果</a>
+        <a href="#" class="everPrice ">￥49.90/3个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-7-DAT4H3FS.jpg" class="fruitImg"/>
+<span>第二件省20元</span>
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">墨西哥牛油果</a>
+        <a href="#" class="everPrice">￥49.90/3个</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-2077-X4AWA58W.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">佳沛新西兰绿奇异果</a>
+        <a href="#" class="everPrice ">￥49.90/6个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+<!--生鲜美食-->
+<div class="contain clear-float globalFurit ">
+    <div class="pushWord clear-float ">
+        <div class="left "><img src="img/t3.png "/></div>
+        <div class="right "><a href="#">更多&nbsp; &gt;</a></div>
+    </div>
+    <div class="global clear-float ">
+        <div class="left globalPrice ">
+        <img src="img/1-270x270-15271-6T6XB9W4.jpg" class="fruitImg"/>
+        <span>第二件9.0元</span>
+        <div class="clear-float global-everyPrice">
+            <div class="eveyPrice left">
+                <a href="#" class="fruitIndouce">避风塘豆豉凤爪</a>
+                <a href="#" class="everPrice">￥29.90/250g</a>
+            </div>
+            <div class="priceImg right">
+                <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+            </div>
+        </div>
+    </div>
+    <div class="left globalPrice">
+    <img src="img/1-270x270-16189-F4D4YWAD.jpg " class="fruitImg"/>
+    <span>买2送1</span>
+    <div class="clear-float global-everyPrice ">
+        <div class="eveyPrice left ">
+            <a href="#" class="fruitIndouce">加拿大特级西冷牛排</a>
+            <a href="#" class="everPrice ">￥72.00/200g</a>
+        </div>
+        <div class="priceImg right ">
+            <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+        </div>
+    </div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-184-3AC2W1T9.jpg" class="fruitImg"/>
+<span>买1送1</span>
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">越南巴沙鱼柳</a>
+        <a href="#" class="everPrice">￥25.80/300g</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-199-K1S6XC28.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">智利爱阁鸡翅中</a>
+        <a href="#" class="everPrice ">￥65.90/1000g</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-229-TC9H73C9.jpg" class="fruitImg"/>
+<span>第二件立省20元</span>
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">丹麦皇冠谷饲猪脚</a>
+        <a href="#" class="everPrice">￥25.90/400g</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-316-AS7R2CAD.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">新西兰牛脊骨</a>
+        <a href="#" class="everPrice ">￥39.90/500g</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-2384-2X7YU3WP.jpg" class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">平谷油桃</a>
+        <a href="#" class="everPrice">￥39.90/2斤</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-317-FX7P388P.jpg " class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">新西兰去骨小牛腿肉块</a>
+        <a href="#" class="everPrice ">￥45.00/500g</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-5843-R7WBC1RP.jpg" class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">草鸡蛋</a>
+        <a href="#" class="everPrice">￥14.80/6个</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-2148-5DBH1T9F.jpg " class="fruitImg"/>
+<!--	<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">佳沛新西兰绿奇异果</a>
+        <a href="#" class="everPrice ">￥49.90/6个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<img src="img/24e034ac5fe6999433c57b23ab325562.jpg " width = "1200"/>
+</div>
+
+</div>
+<!--礼品卡劵-->
+<div class="contain clear-float globalFurit ">
+    <div class="pushWord clear-float ">
+        <div class="left "><img src="img/t4.png "/></div>
+        <div class="right "><a href="#">更多&nbsp; &gt;</a></div>
+    </div>
+    <div class="global clear-float ">
+        <div class="left globalPrice ">
+        <img src="img/1-270x270-435-6ST9T6DT.jpg" class="fruitImg"/>
+        <span>果园礼包</span>
+        <div class="clear-float global-everyPrice">
+            <div class="eveyPrice left">
+                <a href="#" class="fruitIndouce">诚心诚意礼盒</a>
+                <a href="#" class="everPrice">￥178.00/1盒</a>
+            </div>
+            <div class="priceImg right">
+                <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+            </div>
+        </div>
+    </div>
+    <div class="left globalPrice">
+    <img src="img/1-270x270-427-9T27X1DA.jpg " class="fruitImg"/>
+    <span>果园礼包</span>
+    <div class="clear-float global-everyPrice ">
+        <div class="eveyPrice left ">
+            <a href="#" class="fruitIndouce">爱的回报礼盒</a>
+            <a href="#" class="everPrice ">￥188.00/1盒</a>
+        </div>
+        <div class="priceImg right ">
+            <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+        </div>
+    </div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-449-52HXSH7F.jpg" class="fruitImg"/>
+<!--<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">别克英朗节气水果礼盒</a>
+        <a href="#" class="everPrice">￥160.00/盒</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice">
+<img src="img/1-270x270-511-R4AFSY1K.jpg " class="fruitImg"/>
+<!--	<span>第二件省20元</span>-->
+<div class="clear-float global-everyPrice ">
+    <div class="eveyPrice left ">
+        <a href="#" class="fruitIndouce">越南红心火龙果礼盒</a>
+        <a href="#" class="everPrice ">￥49.90/6个</a>
+    </div>
+    <div class="priceImg right ">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png " class="priceImgSrc "/>
+    </div>
+</div>
+</div>
+<div class="left globalPrice ">
+<img src="img/1-270x270-620-W32WRCYT.jpg" class="fruitImg"/>
+<span style="background-color: lightgreen;">新品</span>
+<div class="clear-float global-everyPrice">
+    <div class="eveyPrice left">
+        <a href="#" class="fruitIndouce">佳沛新西兰绿奇异果</a>
+        <a href="#" class="everPrice">￥49.90/6个</a>
+    </div>
+    <div class="priceImg right">
+        <img src="img/57DA7AB517D10B67CA29200F96E5A137.png" class="priceImgSrc"/>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+<!--全球源产地-->
+<div class="contain clear-float global-shopping">
+    <div class="left global-all ">
+        <div class="left"><img src="img/D6C371BC-6A3B-42A7-B7D9-F14348C87113.png"/></div>
+        <div class="left global-descipt">
+            <p>会员权益</p>
+            <p>100%源产地直购保证</p>
+        </div>
+    </div>
+    <div class="left global-all global-border1">
+        <div class="left"><img src="img/A006DCCD-C6B8-453F-A456-2B7960C46BE0.png"/></div>
+        <div class="left global-descipt">
+            <p>自建物流</p>
+            <p>100%源产地直购保证</p>
+        </div>
+    </div>
+    <div class="left global-all global-border2">
+        <div class="left"><img src="img/6A8EE9B6-905B-45B0-ACAA-3F0FF33E8B17.png"/></div>
+        <div class="left global-descipt">
+            <p>48小时退货</p>
+            <p>100%源产地直购保证</p>
+        </div>
+    </div>
+    <div class="left global-all">
+        <div class="left"><img src="img/639E89F2-0729-452D-9633-4FDDEBE20075.png"/></div>
+        <div class="left global-descipt">
+            <p>全球原产地直购</p>
+            <p>100%源产地直购保证</p>
+        </div>
+    </div>
+
+</div>
+<!--天天电话-->
+<div class="contain clear-float hotPhone">
+    <div class="left">
+        <div><img src="img/img1/logo.svg" width="315" height="82"/></div>
+        <div><img src="img/img1/guan_tel.png" alt=""/></div>
+        <div>
+            <span>电话客服</span>
+            <span>09:00-21:00</span>
+        </div>
+        <div>
+            <span>在线客服</span>
+            <span>08:00-24:00</span>
+        </div>
+    </div>
+    <div class="left">
+        <img src="img/img1/guan_ewcode1.jpg" alt=""/>
+    </div>
+    <div class="left">
+        <img src="img/img1/guan_ewcode2.jpg"/>
+    </div>
+    <div class="left guide">
+        <span>购物指南</span>
+        <a href="">新用户注册</a>
+        <a href="">在线下单</a>
+        <a href="">支付方式</a>
+    </div>
+    <div class="left guide">
+        <span>配送说明</span>
+        <a href="">运费说明</a>
+        <a href="">发票说明</a>
+        <a href="">运费方式</a>
+    </div>
+    <div class="left guide">
+        <span>售后服务</span>
+        <a href="">退换货规则</a>
+        <a href="">服务保证承诺</a>
+        <a href="">验货与签收</a>
+
+    </div>
+    <div class="left guide">
+        <span>企业服务</span>
+        <a href="">企业订购</a>
+        <a href="">公司简介</a>
+        <a href="">定制专区</a>
+    </div>
+</div>
+<!--版权所有-->
+<div class="contain aCopyright">
+    <div>版权所有 ©2017上海天天鲜果电子商务有限公司 保留所有权利 | 沪ICP备12042163</div>
+    <div>天天果园 &nbsp; &nbsp;&nbsp;鲜果网购</div>
+    <div>
+        <img src="img/img1/guan_shgs.gif" width="47" height="47"/>
+        <img src="img/img1/guan_wgdjp.png" width="47" height="47"/>
+    </div>
+</div>
+<div class="scrollImg">
+    <img src="img/img1/kf.png"/>
+</div>
+<!--加入购物车成功-->
+<div id="addSuccess">
+    <div id="delete">
+        <img src="img/AC89735F2728B375F4AD0727DA59260E.png" id="deleteImg"/>
+    </div>
+    <div class="successImg">
+        <img src="img/BBBE12ED-BA3D-4BE8-BC92-46309478D987.png">
+    </div>
+    <div id="allCount">
+        <div>购物车中共</div>
+        &nbsp;
+        <div id="shopNum"></div>
+        &nbsp;
+        <div>件商品 | 商品小计</div>
+        &nbsp;
+        <div id="wrapPrice"></div>
+    </div>
+    <div class="isSelect">
+        <span id="isContinue">继续购物</span>
+        <span>去结算</span>
+    </div>
+</div>
+
+
+<script src="swiper.min.js " type="text/javascript " charset="utf-8 "></script>
+<script type="text/javascript ">
+    //轮播图
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 1000,
+        //direction: 'vertical',
+        loop: true, //循环
+
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        //					paginationClickable: true,
+
+        // 如果需要前进后退按钮
+        //			nextButton: '.swiper-button-next',
+        //			prevButton: '.swiper-button-prev',
+
+        // 如果需要滚动条
+        scrollbar: '.swiper-scrollbar'
+    })
+</script>
+<script src="FruitDay.js " type="text/javascript " charset="utf-8 "></script>
+</body>
+
+</html>

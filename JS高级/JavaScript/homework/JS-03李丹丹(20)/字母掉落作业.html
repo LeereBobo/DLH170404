@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				background-color: black;
+			}
+			
+			#all {
+				position: relative;
+				height: 100%;
+			}
+			
+			.letter {
+				position: absolute;
+				font-size: 50px;
+				top: 0;
+				color: pink;
+			}
+			
+			#start,
+			#times {
+				color: pink;
+				font-size: 15px;
+				outline: none;
+				display: inline-block;
+			}
+			
+			#sorces {
+				color: pink;
+				font-size: 15px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="start">开始</button>
+		<div id="times">时间:30</div>
+		<div id="sorces">分数为:0</div>
+		<div id="all">
+			<!--<div class="letter">
+
+			</div>-->
+		</div>
+
+		<script type="text/javascript">
+			var oStart = document.getElementById("start");
+			var oAll = document.getElementById("all");
+			var oTimers = document.getElementById("times");
+			var oSorces = document.getElementById("sorces");
+			var downTimer = null;
+			var letterTimer = null;
+			var sorce = 0;
+			var count = 30;
+			var arr = [];
+
+			oStart.onclick = function() {
+					timerDown();
+					letterDown();
+				}
+				//时间倒计时
+			function timerDown() {
+				letterTimer = setInterval(function() {
+					count--;
+					if(count == 0) {
+						cleartimer();
+						alert("游戏结束,分数为:" + sorce);
+					}
+					oTimers.innerHTML = "时间:" + count;
+				}, 1000);
+			}
+
+			function letterDown() {
+				downTimer = setInterval(function(ev) {
+					var letterNum = getRandom(65, 90);
+					letters = String.fromCharCode(letterNum);
+
+					var newDiv = document.createElement("div");
+					newDiv.className = "letter";
+					oAll.appendChild(newDiv);
+					newDiv.innerHTML = letters;
+
+					newDiv.style.left = getRandom(0, document.body.clientWidth) + "px";
+					newDiv.thetop = 0;
+					newDiv.letter = letterNum;
+
+					newDiv.timer = setInterval(function() {
+						newDiv.thetop += getRandom(5, 10);
+						newDiv.style.top = newDiv.thetop + "px";
+						if(newDiv.thetop >= document.body.clientHeight) {
+							oAll.removeChild(newDiv);
+							clearInterval(newDiv.timer);
+						}
+					}, 100);
+
+					document.onkeydown = function() {
+						var ev = ev || window.event;
+						for(var i = 0; i < oAll.children.length; i++) {
+							if(ev.keyCode == oAll.children[i].letter) {
+								sorce++;
+								oSorces.innerHTML = "分数为:" + sorce;
+								oAll.removeChild(oAll.children[i]);
+							}
+						}
+					}
+				}, 1000);
+			}
+
+			//清除定时器
+			function cleartimer() {
+				var timer = setInterval(function() {
+					for(var i = 1; i < timer; i++) {
+						clearInterval(i);
+					}
+				}, 10);
+			}
+
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+		</script>
+	</body>
+
+</html>

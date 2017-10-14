@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//键盘抬起
+			document.onkeyup = function(ev){
+				var ev = ev || window.event;
+//				65～90为26个大写英文字母，97～122号为26个小写英文字母
+//              获取键盘按键的按键码
+				//console.log(ev.keyCode);
+				//通过字符的Ascii码转化成对应的字母
+				//console.log(String.fromCharCode(ev.keyCode));
+				//console.log("键盘抬起事件");
+			}
+			//鼠标按下  如果不抬起,会一直响应事件
+			document.onkeydown = function (ev){
+				//console.log("键盘按下事件")
+				console.log(ev.keyCode);
+			}
+			
+			//onkeyPress  不响应系统功能按键
+			//可以识别大小写
+			document.onkeypress = function(ev){
+				//console.log("鼠标按压事件");
+				console.log(ev.keyCode);
+			}
+		</script>
+	</body>
+</html>

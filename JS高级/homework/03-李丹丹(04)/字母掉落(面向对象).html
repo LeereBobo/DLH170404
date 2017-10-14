@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: pink;
+        }
+
+        button {
+            border: none;
+            color: white;
+            font-size: 30px;
+            outline: none;
+            background-color: pink;
+            cursor: pointer;
+        }
+
+        span {
+            font-size: 20px;
+            color: white;
+            margin-left: 15px;
+        }
+
+
+    </style>
+</head>
+<body>
+<button id="btn">开始</button>
+<span id="score">分数:0</span>
+<span id="time">倒计时:30</span>
+<canvas id="myCanvas"></canvas>
+<script>
+    var oBtn = document.getElementById("btn");
+    var oScore = document.getElementById("score");
+    var oTime = document.getElementById("time");
+    var oCanvas = document.getElementById("myCanvas");
+    var ctx = oCanvas.getContext("2d");
+    var oScores = 0;
+    var createTimer = 0;
+    var timer = 0;
+    var timers = 30;
+    var moveTimer = null;
+
+    //    画布的宽 高
+    oCanvas.width = document.documentElement.clientWidth;
+    oCanvas.height = document.documentElement.clientHeight;
+
+    //    随机函数
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * ( max - min + 1) + min);
+    }
+
+    //
+
+    //    字母的属性
+    function Letter() {
+        this.letter = String.fromCharCode(getRandom(65, 90));
+        this.x = getRandom(0, oCanvas.width);
+        this.y = 0;
+        this.speedY = getRandom(1, 5);
+        var rgb_r = getRandom(0, 255);
+        var rgb_g = getRandom(0, 255);
+        var rgb_b = getRandom(0, 255);
+        var rgb_a = getRandom(0, 10) / 10;
+        //rgba(134,23,435,0.3)
+        this.color = "rgba(" + rgb_r + "," + rgb_g + "," + rgb_b + "," + rgb_a + ")";
+    }
+    //    字母移动
+    Letter.prototype.move = function () {
+        this.y += this.speedY;
+//        if (this.y >= oCanvas.height) {
+//            ctx.clearRect(0, 0, oCanvas.width, oCanvas.height);
+//        }
+    }
+    //    在画布上画字母
+    Letter.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.font = getRandom(35,50)+"px Arial";
+        ctx.fillStyle = this.color;
+        ctx.fillText(this.letter, this.x, this.y, oCanvas.width);
+    }
+    var letterArr = [];
+
+    //    点击按钮开始
+    oBtn.onclick = function () {
+//倒计时
+        timer = setInterval(function () {
+            timers--;
+            oTime.innerHTML = "倒计时:" + timers;
+            if(timers == 0){
+                clearInterval(timer);
+                clearInterval(createTimer);
+            }
+        },1000);
+
+
+//        letterArr.push(letter);
+        createTimer = setInterval(function () {
+            clearInterval(moveTimer);
+
+            var letter = new Letter();
+            letterArr.push(letter);
+            moveTimer = setInterval(function () {
+                ctx.clearRect(0, 0, oCanvas.width, oCanvas.height);
+                for (var i = 0; i < letterArr.length; i++) {
+                    letterArr[i].draw();
+                    letterArr[i].move();
+                }
+            },30);
+
+        },500);
+
+        document.onkeydown = function (ev) {
+            var ev = ev || window.event;
+            for(var i = 0; i < letterArr.length; i++){
+                console.log(letterArr[i]);
+                if(String.fromCharCode(ev.keyCode) == letterArr[i].letter){
+                    letterArr.splice(i,1);
+                    oScores++;
+                    oScore.innerHTML = "分数为 : " + oScores;
+                }
+            }
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#all {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				border: 1px solid black;
+			}
+			
+			#all img {
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="all">
+
+		</div>
+
+		<script type="text/javascript">
+			var oAll = document.getElementById("all");
+
+			var arr = [{
+				top: "0",
+				left: "0"
+			}, {
+				top: "0",
+				left: "100"
+			}, {
+				top: "0",
+				left: "200"
+			}, {
+				top: "100",
+				left: "0"
+			}, {
+				top: "100",
+				left: "100"
+			}, {
+				top: "100",
+				left: "200"
+			}, {
+				top: "200",
+				left: "0"
+			}, {
+				top: "200",
+				left: "100"
+			}, {
+				top: "200",
+				left: "200"
+			}];
+			createWolf();
+
+			function createWolf() {
+				var newImg = document.createElement("img");
+				oAll.appendChild(newImg);
+				var index = getRandom(8, 0);
+				var positionJson = arr[index];
+				newImg.style.top = positionJson["top"] + "px";
+				newImg.style.left = positionJson["left"] + "px";
+				var i = 0; //图片是第几张
+				var count = 0; //记录定时器走过的次数  11次为1个循环
+				var timer = null;
+				timer = setInterval(function() {
+
+					if(count < 6) {
+						//h0 ~ h5
+						newImg.src = "img/h" + i + ".png";
+						i++;
+					} else if(count >= 6 && count < 12) {
+						//h4 ~ h0
+						i--;
+						newImg.src = "img/h" + i + ".png";
+
+					} else {
+						//清除定时器
+						//随机一个新的位置
+						clearInterval(timer);
+						oAll.removeChild(newImg);
+						//随机一个新的位置
+						createWolf();
+					}
+					count++;
+				}, 150);
+			}
+
+			//			setInterval(function(){
+			//				
+			//			},2000);
+
+			function getRandom(max, min) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+		</script>
+	</body>
+
+</html>

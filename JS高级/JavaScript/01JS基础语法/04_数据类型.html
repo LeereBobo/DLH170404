@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1.数字->number
+			var num = -10;
+			var num1 = 3.14;
+			//typeof 获取变量的类型
+			//alert(typeof(num));
+			//2.字符串->string(字符串类型,展示文字的类型)
+			var str1 = "字符串abc123";
+			var str2 = "我今年18岁!";
+			var str3 = "12我是";
+			//alert(typeof(str3));
+			//alert(str3);=alter ("12"); 提示str3这个变量的值
+			//alert ("str3");提示str3这个字符串
+			
+			//拼接字符串
+			
+			var str4 = str2 + str1;
+			//alert(str4);
+			
+			//拓展
+			//隐式类型转换,数字+字符串是数字转换为字符串,在进行拼接
+			var str5 = "11" + 11;//"11"+"11"
+			//alert(str5);
+			//3.布尔 ->Boolean
+			//一般用于if 等条件判断,或作为条件表达式的返回值
+			//只有两个值true或者false
+			var tf = true;
+			var tf1 = false;
+			//alert(typeof(tf));
+			
+			var tf2 = 3 > 7;
+			//alert(tf2);
+			//alert(typeof(tf2));
+			
+			//4.未定义 undefined 只声明 不给值
+			 var un;
+			//alert(typeof(un));
+			
+			//5.空值 null 数组,字符串,对象,日期对象......
+			var n = null;
+			alert(typeof(n));//object(面向对象)
+			var x = 0;//不明确值的时候给一个初值0
+			var aStr = "";//不明确值的时候
+			//js是弱类型编程语言,变量根据等后值得形式来判定变量类型.
+			
+		</script>
+		
+	</body>
+</html>

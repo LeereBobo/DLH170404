@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width:200px;
+				height:200px;
+				background-color: red;
+			}
+			
+		</style>
+		<script type="text/javascript">
+		//解决代码执行顺序的问题,加载完所有的代码在执行script的内容
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+			
+			oDiv1.onclick = function(){
+				oDiv1.style.backgroundColor = "orange";
+			    }
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		
+		
+	</body>
+</html>

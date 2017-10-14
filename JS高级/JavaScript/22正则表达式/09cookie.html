@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//cookie 存储信息 存储的大小只有4kb
+			//cookie 按照键值对存储  但cookie 不是json结构 获取到的cookie是一个字符串
+			//当不设置cookie的存储时间时,关闭浏览器,会清空存储的cookie
+			document.cookie = "uesername=孙悟空";
+			document.cookie = "password = mimamama";
+			document.cookie = "username = 齐天大圣";
+			console.log(document.cookie.split(";"));
+			
+
+
+
+//取Cookie的值 1.先用;将数字分割 split(;)  结果为[uesername=,齐天大圣];
+ //            2.再用=进行分割     结果为 [uesername]   [齐天大圣]
+//             3.第一个为键,第二个为值
+
+
+			
+			//设置存储时间
+			//var nowDate = new Date();
+			//.setDate(nowDate.getDate() + 100);
+			//console.log(nowDate);
+			//document.cookie = "username = suwukog;expires =" + nowDate.toGMTString();
+			//console.log(document.cookie);
+			
+			//清除cookie  存储的时间小于当前的时间的时候,不能存储cookie
+			var nowDate = new Date();
+			nowDate.setDate(nowDate.getDate() - 1);
+			document.cookie = "username = suwukog;expires =" + nowDate.toGMTString();
+			//console.log(document.cookie);
+		</script>
+	</body>
+</html>

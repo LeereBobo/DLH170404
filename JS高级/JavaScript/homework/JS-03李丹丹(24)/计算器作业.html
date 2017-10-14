@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 408px;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			
+			#wrap #screen {
+				width: 405px;
+				height: 180px;
+				text-align: right;
+				line-height: 250px;
+				color: white;
+				font-size: 80px;
+				background-color: darkgrey;
+			}
+			
+			#wrap div {
+				float: left;
+				width: 100px;
+				height: 90px;
+				background-color: whitesmoke;
+				margin: 1px;
+				text-align: center;
+				line-height: 100px;
+				font-size: 25px;
+			}
+			
+			#wrap .mark,
+			#wrap #equal,
+			#wrap #AC{
+		 
+				background-color: rgb(213, 137, 36);
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap" style="background-color: darkgrey;">
+			<div id="screen"></div>
+			<div id="AC">AC</div>
+			<div class="mark">+/-</div>
+			<div class="mark">%</div>
+			<div class="mark">÷</div>
+			<div class="num">7</div>
+			<div class="num">8</div>
+			<div class="num">9</div>
+			<div class="mark">×</div>
+			<div class="num">4</div>
+			<div class="num">5</div>
+			<div class="num">6</div>
+			<div class="mark" id="minus">-</div>
+			<div class="num">1</div>
+			<div class="num">2</div>
+			<div class="num">3</div>
+			<div class="mark">+</div>
+			<div style="width:202px" class="num">0</div>
+			<div class="num">.</div>
+			<div id="equal">=</div>
+		</div>
+
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var oneInput = 0;
+				var twoInput = 0;
+				var result = 0;
+				var arrNum = [];
+				var arrMark = "";
+
+				//点击AC是清空计算器
+				$("#AC").click(function() {
+					arrNum = [];
+					$("#screen").html("");
+				})
+
+				//鼠标按下变色
+				$("#wrap div").mousedown(function() {
+						$(this).css("opacity", "0.5");
+					})
+					//鼠标抬起变色
+				$("#wrap div").mouseup(function() {
+					$(this).css("opacity", "1");
+				})
+
+				//每次点击把数字放在屏幕上
+
+				$(".num").click(function() {
+						arrNum.push($(this).text());
+						$("#screen").html(arrNum);
+
+					})
+					//				$("#minus").click(function() {
+					//					$("#screen").html($(this).html());
+					//				})
+
+				$(".mark").click(function() {
+					oneInput = $("#screen").html();
+					//console.log(oneInput);
+					arrNum = [];
+					arrMark = $(this).html();
+
+				})
+
+				//点击=开始结算 显示结果
+				$("#equal").click(function() {
+					twoInput = $("#screen").html();
+					//console.log(oneInput);
+					console.log(arrMark);
+					//判断运算符 运算结果
+					switch(arrMark) {
+						case "+":
+							result = parseFloat(oneInput) + parseFloat(twoInput);
+
+							break;
+						case "-":
+							result = parseFloat(oneInput) - parseFloat(twoInput);
+							break;
+						case "×":
+							result = parseFloat(oneInput) * parseFloat(twoInput);
+							break;
+						case "÷":
+							result = parseFloat(oneInput) / parseFloat(twoInput);
+							break;
+						case "%":
+							result = parseFloat(oneInput) % parseFloat(twoInput);
+							break;
+						default:
+							break;
+					}
+
+					//将运算结果显示在屏幕上.并清空屏幕
+					$("#screen").html(result);
+					arrNum = [];
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

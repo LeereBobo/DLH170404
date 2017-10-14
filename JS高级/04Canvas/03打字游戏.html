@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: lightgray;
+        }
+        div {
+            color: white;
+        }
+
+        #content {
+            position: absolute;
+            width: 500px;
+        }
+
+        .game {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #start {
+            background-color: white;
+            border: 0;
+            font-size: 20px;
+            width: 80px;
+            height: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="content">
+    <div class="game">
+        <input type="button" name="start" id="start" value="开始"/>
+        <span>分数:</span>
+        <span id="score">0</span>
+        <span>倒计时:</span>
+        <span id="times">30</span>
+    </div>
+</div>
+<canvas id="myCanvas"></canvas>
+</body>
+
+<script>
+
+    var oBtn = document.getElementById("start");
+    var oScore = document.getElementById("score");
+    var oTime = document.getElementById("times");
+
+    var oCanvas = document.getElementById("myCanvas");
+    var ctx = oCanvas.getContext("2d");
+    oCanvas.width = document.documentElement.clientWidth;
+    oCanvas.height = document.documentElement.clientHeight;
+
+    function rand(min, max) {
+        return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+
+    //大小 颜色 速度 位置 哪儿个字母
+    function Letter(fontSize) {
+
+        this.x = rand(0, oCanvas.width - fontSize);
+        this.y = 0;
+        this.speed = rand(1, 5);
+        this.value = String.fromCharCode(rand(65, 90));
+        this.color = "pink";
+        this.fontSize = fontSize;
+    }
+
+
+    Letter.prototype.draw = function () {
+        ctx.beginPath();
+        //"Bold 40px Arial"
+        ctx.font = "Bold " + this.fontSize + "px Arial";
+        ctx.fillStyle = this.color;
+        ctx.fillText(this.value, this.x, this.y);
+    }
+    Letter.prototype.move = function () {
+        this.y += this.speed;
+    }
+    //是否清除，判断当前对象是否在屏幕外部
+    Letter.prototype.isClear = function () {
+        if(this.y > oCanvas.height){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    var letterArr = [];
+    var index = 0;//记录定时器走的次数
+    oBtn.onclick = function () {
+        var letterTimer = setInterval(function () {
+            ctx.clearRect(0, 0, oCanvas.width, oCanvas.height);
+            //定时器没走20次 创建一个字母
+            if (index % 20 == 0) {
+                var letter = new Letter(60);
+                letterArr.push(letter);
+            }
+
+            for (var i = 0; i < letterArr.length; i++) {
+                letterArr[i].move();
+                if(letterArr[i].isClear()){
+                    letterArr.splice(i,1);
+                    i--;
+                } else {
+                    letterArr[i].draw();
+                }
+            }
+            index++;
+        }, 10);
+
+        var timer = setInterval(function () {
+            oTime.innerHTML = oTime.innerHTML - 1;
+
+            if (oTime.innerHTML == 0) {
+                clearInterval(letterTimer);
+                clearInterval(timer);
+                alert("时间到,分数是：" + oScore.innerHTML);
+                //当前界面重新加载
+                window.location.reload();
+            }
+
+        }, 1000);
+
+
+    }
+
+
+    //键盘事件
+    /**
+     * 获取按下的按键对应的字母
+     * 判断 有相同的在数组中删除
+     * */
+    document.onkeydown = function (e) {
+        var e = e || window.event;
+        var str = String.fromCharCode(e.keyCode);
+        for (var i = 0; i < letterArr.length; i++) {
+            if (letterArr[i].value == str) {
+                letterArr.splice(i, 1);
+                oScore.innerHTML = parseInt(oScore.innerHTML) + 1;
+                //删除的是 第一个下落相同的字母
+                break;
+            }
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>

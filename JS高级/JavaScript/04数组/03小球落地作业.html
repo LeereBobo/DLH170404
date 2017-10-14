@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--一个球从100m高度自由落下，每次落地后反跳回原来高度的一半，
+		再落下，再反弹。求它在第10次落地时，共经过多少米？第10次反弹多高-->
+		
+		
+		<script type="text/javascript">
+			 var h = 100;//起始高度
+			 var total = 0;
+			 //落地在弹起为一次
+			 for (var i = 10; i > 0 ; i--){
+			 	
+			 	total = h + h / 2 + total;
+			 	h = h / 2;
+			 	/*
+			 	 * 100 空中掉落的位置
+			 	 落地弹起第一次  100+ 100/2;
+			 	 
+			 	 50 空中掉落的位置
+			 	 落地弹起第二次  50 + 50/2
+			 	 
+			 	 25 空中掉落的位置
+			 	 落地弹起第三次 25 + 25/2
+			 	 
+			 	 * */
+			 }
+			 total = total - h;
+			 console.log( "共经过"+ total +"米");
+			 console.log( "第十次的高度为:" + h);
+			 
+		</script>
+	</body>
+</html>

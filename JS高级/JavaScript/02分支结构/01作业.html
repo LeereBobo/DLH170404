@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var money = 137;//定义钱数137美元
+			//mongey % 20 花掉20元钱的时候 剩余的钱
+			//count20 花掉20的张数
+			var count20 = (money - money%20) / 20;
+			
+			//10快钱:剩余的钱
+			//第一种:所有的钱减掉花去的钱
+			//var temp = money - 20 * count20;
+			//第二种:剩余的钱
+			var temp = money % 20;
+			//count10 花掉10元的张数
+			var count10 = (temp - temp % 10) / 10;
+			
+			//count5
+			temp = temp % 10;
+			var count5 = (temp - temp % 5) / 5;
+			temp = temp % 5;
+			
+			var coount1 = (temp - temp % 1) / 1;
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

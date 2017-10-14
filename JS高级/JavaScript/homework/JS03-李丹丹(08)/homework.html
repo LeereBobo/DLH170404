@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -300px;
+			}
+			
+			div {
+				font-size: 80px;
+				display: inline-block;
+				margin: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>蓝</div>
+		<div>绿</div>
+		<div>黄</div>
+		<div>红</div>
+		<div>黑</div>         
+		<button id="btn">更换</button>
+		<script type="text/javascript">
+			var colorArr = [ "black","yellow", "blue", "green", "red"];
+			var textArr = ["红", "黄", "蓝", "绿", "黑"];
+
+			var oBtn = document.getElementById("btn");
+			var oDivs = document.getElementsByTagName("div");
+			
+             for(var k = 0 ; k <oDivs.length;k++){
+             	oDivs[k].style.color =  colorArr[k];
+             }
+            
+			oBtn.onclick = function() {
+				var arr = [];
+				//取0-4之间的5个随机不重复的数
+				while(arr.length != 5) {
+					var ran = Math.floor(Math.random() * 5);
+					var tf = true;
+					for(var i = 0; i < arr.length; i++) {
+						if(arr[i] == ran) {
+							tf = false;
+							break;
+						}
+					}
+					if(tf == true) {
+						arr.push(ran);
+					}
+				}
+				console.log(arr);
+
+				for(var j = 0; j < oDivs.length; j++) {
+					var num = arr[j];
+					oDivs[j].innerHTML= textArr[num];
+					//oDivs[j].style.color = colorArr[num];
+				}
+				var arr1 =[];
+				while(arr1.length != 5) {
+					var ran = Math.floor(Math.random() * 5);
+					var tf = true;
+					for(var i = 0; i < arr1.length; i++) {
+						if(arr1[i] == ran) {
+							tf = false;
+							break;
+						}
+					}
+					if(tf == true) {
+						arr1.push(ran);
+					}
+				}
+				for(var j1 = 0; j1 < oDivs.length; j1++) {
+					var num1 = arr1[j1];
+					
+					oDivs[j1].style.color = colorArr[num1];
+				}
+			}
+		</script>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+				

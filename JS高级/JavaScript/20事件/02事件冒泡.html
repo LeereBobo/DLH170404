@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:700px;
+				height:500px;
+				border:5px solid plum;
+				padding:20px;
+			}
+			#div2{
+			  width:300px;
+			  height:300px;
+			  background-color: palegreen;
+			}
+			#div3{
+				position: fixed;
+				width:200px;
+				height:200px;
+				background-color: pink;
+				top:0;
+				right:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3">
+					
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var oDiv3 = document.getElementById("div3");
+			
+			function theClick(){
+				console.log(this.id);
+			}
+			
+			//事件冒泡  当点击子元素时,会响应点击,并且冒泡给父元素接收到点击
+			//如果没有绑定点击事件的处理函数,并不是元素没有接收到事件,
+			//是元素接收到事件后发现没有绑定处理函数
+			oDiv1.onclick = theClick;
+//			oDiv2.onclick = theClick;
+			oDiv3.onclick = theClick;
+			
+		</script>
+	</body>
+</html>

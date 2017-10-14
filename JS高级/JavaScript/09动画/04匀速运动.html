@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:200px;
+				height:100px;
+				background-color: greenyellow;
+				position: absolute;
+				top:0;
+				left:0;
+				border-radius:200px ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			
+			//每0.03s  向右移动1px
+			//在800px的位置停止
+			var timer = setInterval(function(){
+				
+				if(oDiv1.offsetLeft == 800){
+					clearInterval(timer);
+				}else{
+					oDiv1.style.left = oDiv1.offsetLeft + 1 + "px";
+				}
+			},0.50);
+			
+			
+			
+		</script>
+	</body>
+</html>

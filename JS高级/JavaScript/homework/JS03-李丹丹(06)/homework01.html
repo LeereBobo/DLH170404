@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#main{
+				text-align: center;
+				border:1px dashed black;
+				width:400px;
+				height:600px;
+				position:absolute;
+				left:50%;
+				top:20%;
+				margin-left:-200px;
+			}
+			#name{
+				font-size:50px;
+				padding:5px;
+				margin-top:200px;
+			}
+			button{
+				width:80px;
+				height:40px;
+				margin:250px 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--1.人名放到数组中 16个人 下标0 ~ 15
+	        2.定时器 随机0 ~ 15 随机数 
+		      通过随机数 当做下标取人名
+	        3.人名放在div中-->
+	        <div id = "main">
+	        	<div id = "name">老师</div>
+	        <button id = "btn1">开始</button>
+	        <button id = "btn2">停止</button>
+	        </div>
+	        <script type="text/javascript">
+	        
+	        	var arr = ["张为","高鑫","李丹丹","康俊鹏","梁家军","张霆","张德威","宇百东","于凯瑞","刘珈麟","霍金鑫","李晓芮","张泽雨","齐峰","王洪阳"];
+	        	
+	        	var oName = document.getElementById("name");
+	        	var oBtn1 = document.getElementById("btn1");
+	        	var oBtn2 = document.getElementById("btn2");
+	        	var timer = 0;
+	        	
+	        	oBtn1.onclick = function(){
+	        		timer = setInterval(function(){
+	        			var j = Math.floor(Math.random()*15);
+	        			oName.innerHTML = arr[j];
+	        		},10);
+	        	}
+	        	oBtn2.onclick = function(){
+	        		clearInterval(timer);
+	        	}
+	        	
+	        </script>
+	</body>
+</html>

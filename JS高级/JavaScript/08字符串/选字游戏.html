@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#main {
+				width: 400px;
+				height: 600px;
+				border: 1px solid red;
+				padding: 10px;
+				margin: 0 auto;
+			}
+			#time,
+			#count {
+				display: inline-block;
+				font-size: 25px;
+			}
+			#count {
+				margin-left: 180px;
+			}
+			#word {
+				text-align: center;
+				font-size: 80px;
+				margin: 70px 0;
+			}
+			#descript {
+				font-size: 25px;
+				width: 250px;
+				margin: auto;
+			}
+			.color {
+				display: inline-block;
+				font-size: 60px;
+				margin: 100px 7px 0 7px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="time">剩余时间:30</div>
+			<div id="count">完成:0</div>
+			<div id="word">黑</div>
+			<div id="descript">根据上面的字的颜色从下面选择正确的字，选择正确自动开始</div>
+			<div class="color">绿</div>
+			<div class="color">黄</div>
+			<div class="color">黑</div>
+			<div class="color">蓝</div>
+			<div class="color">红</div>
+		</div>
+		<script type="text/javascript">
+			var oTime = document.getElementById("time");
+			var oCount = document.getElementById("count");
+			var oWord = document.getElementById("word");
+			var oDescript = document.getElementById("descript");
+			var oColor = document.getElementsByClassName("color");
+			var timer = 0;
+			var colorTop = ["red", "blue", "black", "yellow", "green"];
+			var colorBot = ["红", "蓝", "黑", "黄", "绿"];
+			var flag = true;
+			var sorce = 0;
+			var keyNum = 0;
+			//计时器开始计时
+			function jishiqi() {
+				clearInterval(timer);
+				var num = 29;
+				timer = setInterval(function() {
+					oTime.innerHTML = "剩余时间:" + (num -= 1);
+					if(num == -1) {
+						alert("游戏结束");
+						clearInterval(timer);
+						num = 29;
+						oTime.innerHTML = "剩余时间:30";
+					}
+				}, 1000);
+			}
+			//最后一排字点击时随意颜色和字的顺序
+			function daLuan() {
+				var  arr =[];
+				var arr1 =[];
+				//取0-4之间的5个随机不重复的数
+				while(arr.length != 5) {
+					var ran = Math.floor(Math.random() * 5);
+					var tf = true;
+					for(var i = 0; i < arr.length; i++) {
+						if(arr[i] == ran) {
+							tf = false;
+							break;
+						}
+					}
+					if(tf == true) {
+						arr.push(ran);
+					}
+				}
+				while(arr1.length != 5) {
+					var ran = Math.floor(Math.random() * 5);
+					var tf = true;
+					for(var i = 0; i < arr1.length; i++) {
+						if(arr1[i] == ran) {
+							tf = false;
+							break;
+						}
+					}
+					if(tf == true) {
+						arr1.push(ran);
+					}
+				}
+				for(var j1 = 0; j1 < oColor.length; j1++) {
+					var num1 = arr1[j1];
+					oColor[j1].style.color = colorTop[num1];
+				}
+				
+				for(var j = 0; j < oColor.length; j++) {
+					//var num = arr[j];
+					oColor[j].innerHTML = colorBot[arr[j]];
+					oColor[j].word = arr[j];
+				}
+			}
+			daLuan();
+			//给中间的字随机颜色和字
+			function freshShow() {
+				var run1 = Math.floor(Math.random() * 5);
+				oWord.innerHTML = colorBot[run1];
+				var run2 = Math.floor(Math.random() * 5);
+				oWord.style.color = colorTop[run2];
+				keyNum = run2;
+			}
+			freshShow();
+			//给最后一排字付给颜色
+//			for(var k = 0; k < oColor.length; k++) {
+//				oColor[k].style.color = colorTop[arr1[k]];
+//				oColor[k].innerHTML = colorBot[arr[k]];
+//				oColor[k].word = arr[k];
+//			}
+
+			//给最后一排字添加点击事件
+			for(var i = 0; i < oColor.length; i++) {
+				oColor[i].onclick = function() {
+					if(keyNum == this.word) {
+						if(flag) {
+							jishiqi();
+							flag = false;	
+						}
+						sorce++;
+						oCount.innerHTML = "完成:" + sorce;
+						freshShow();
+						daLuan();
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

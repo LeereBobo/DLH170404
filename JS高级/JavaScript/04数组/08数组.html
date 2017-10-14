@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 1;
+			var b = "a";
+			var tf = "true";
+			var td = true;
+			
+			//数组(array) -> object可以存放多个数据,每个数据的类型可以不同
+			var arr = [5,3.2,"hello",true,6];
+			console.log(typeof(arr));
+			console.log(arr);
+			
+			//获取数组中的元素,通过下标获取
+			//数组元素是有序的,按着添加到数组中的顺序从0开始
+			console.log(arr[0]);
+			//数组定义:array
+			var arr1 = new Array();//定义空数组,只声明,不在数组中添加数据(空数组);
+			
+			var arr2 = new Array(1,4,6,10);//声明并赋初值;
+			
+			var arr3 = [];//定义空数组,用的居多 (中括号的表现形式也叫做语法糖或字面量);
+			
+			var arr4 = [1,4,6,7,8];//声明,赋初值;
+			
+			//第一个和第二个了解,不常用
+			//一般常用后两种
+			console.log(arr3);
+			
+			//取值  语法: 变量名[下标]
+			
+			var arr5 = [5,7,7,8,4,3,3];
+			//取出下标为3的值
+			console.log("下标为3的值为:"+arr5[3]);
+			//取出数组中第三个元素的值
+			console.log("数组中的第三个元素:"+arr5[2]);
+			
+			//改变某个下标对应的值
+			arr5[4] = 0;
+			console.log(arr5);
+			
+			//获取数组中的个数
+			var count = arr5.length;//length为属性,只有对象有属性;
+			console.log(count);
+			
+			console.log(arr5[8]);//下标不存在 返回undefined;
+			
+			//打印数组中的每一个元素  遍历数组
+			
+			for(var i = 0; i<arr5.length;i++){
+				console.log("🐢"+arr5[i]);
+			}
+		</script>
+	</body>
+</html>

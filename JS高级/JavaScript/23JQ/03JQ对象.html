@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div >
+			
+		</div>
+		<div id="all">
+
+		</div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript">
+		</script>
+		<script type="text/javascript">
+		/*
+		 
+		 * jQuery 对象
+		 * 1.通过jQuery选择器获取到的都是一个jQuery对象,不是原生的JS对象
+		 * 2.jQuery对象是jQuery独有的
+		 * 3.jQuery对象 不能使用原生的DOm对象的任何方法和属性
+		 * 4.原生的Dom对象也无法适应JQ的任何方法和属性
+		 * 
+		 * */
+			var oAll = document.getElementById("all");
+			console.log(oAll);
+			//console.log($("#all"));
+			$(function() {
+				
+				var $theAll = $("#all");
+				//原生对象转化成JQ对象
+				console.log($(oAll));
+				
+				//JQ对象转原生对象
+				var a = $("div")[0];
+				console.log(a);
+			});
+		</script>
+	</body>
+
+</html>

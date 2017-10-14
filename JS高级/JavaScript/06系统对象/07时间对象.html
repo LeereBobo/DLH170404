@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//获取当前时间(年月日,星期,时间)
+			var nowDate = new  Date();
+			console.log(typeof(nowDate));
+			console.log(nowDate);
+			
+			//获取当前年份
+			var year = nowDate.getFullYear();
+			console.log(year);
+			
+			//月份 从0开始 0  ~  11
+			var month = nowDate.getMonth() + 1;
+			console.log(month);
+			
+			//日
+			var day1 = nowDate.getDate();
+			console.log(day1);
+			
+			//星期
+			var weekday = nowDate.getDay();
+			console.log(weekday);
+			
+			//小时 0 ~ 23
+			
+			var hour = nowDate.getHours();
+			console.log(hour);
+			
+			
+			//分
+			
+			var mins = nowDate.getMinutes();
+			console.log(mins);
+			
+			//秒
+			var second = nowDate.getSeconds();
+			console.log(second);
+			
+			//毫秒
+			
+			var millisecond = nowDate.getMilliseconds();
+			console.log(millisecond);
+			
+			//1970年到现在的毫秒值
+			var time = nowDate.getTime();
+			console.log(time);
+			
+			//指定(生成)时间的时间对象
+			var future = new Date(2017,10,11);
+			console.log(future);
+			var time = future.getTime();
+			console.log(time);
+		</script>
+	</body>
+</html>

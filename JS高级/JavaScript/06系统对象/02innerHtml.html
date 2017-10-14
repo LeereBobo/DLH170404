@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="div1">
+			哈哈哈
+		</div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			console.log(typeof(oDiv1));
+			console.log(oDiv1.innerHTML);
+//			oDiv1.onclick = function (){
+//				oDiv1.innerHTML += "<div>啦啦</div>";
+//			}
+			//oDiv1.innerHTML = "今天你有节后综合症吗";
+			//点击div,div1 的内容是1到100000;
+			
+			//
+			//innerHTml 标签的内容
+			oDiv1.onclick = function (){
+			var str = "";
+			 for(var i = 1; i<=100000;i++){
+			 	str =str +  ""+i ;
+			 	//oDiv1.innerHTML += i;
+				}
+			 oDiv1.innerHTML = str;
+			}
+			
+		</script>
+	</body>
+</html>

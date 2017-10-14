@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 2000px;
+				background-color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="">
+
+		</div>
+
+		<script type="text/javascript">
+			//1.滚动条滚动的距离
+			//var theTop = document.body.scrollTop;
+			//2.窗口的可视宽高
+			var winWidth = document.documentElement.clientWidth;
+			var winHeight = document.documentElement.clientHeight;
+			//3.整体页面的高度
+			var pageHeigth = document.documentElement.scrollHeight;
+			var pageWidth = document.documentElement.scrollWidth;
+
+			//网页滚动时,响应
+			window.onscroll = function() {
+				var theTop = document.body.scrollTop;
+				if(theTop + winHeight >= pageHeigth) {
+					alert("到底底部啦");
+				}
+			}
+		</script>
+	</body>
+
+</html>

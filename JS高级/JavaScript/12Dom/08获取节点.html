@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1"><div>1</div><div id="div2">2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p></div>
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			//1.获取所有的子节点
+			var div1childs = oDiv1.childNodes;
+			console.log(div1childs);
+			
+			//2.children 获取子标签节点(常用)
+			var childArr = oDiv1.children;
+			console.log(childArr);
+			
+			//3.parentNode 获取父标签  仅获取标签(常用)
+			var parentDiv = oDiv2.parentNode;
+			console.log(parentDiv);
+			
+			//4.nextsibling  获取下一个节点 (注:不仅仅是标签)
+			//div2的下一个节点是空格+换行 所以打印为#text
+			
+			var n = oDiv2.nextSibling;
+			console.log(n);
+			
+			//5.previousSibling  获取上一个节点 (注:不仅仅是标签)
+			var  p = oDiv2.previousSibling;
+			console.log(p);
+			
+			//6.firstChild 第一个子节点(注:不仅仅是标签)
+			var firstDiv = oDiv1.firstChild;
+			console.log(firstDiv);
+			
+			//7.lastChild 最后一个子节点(注:不仅仅是标签)
+			
+			var lastDiv = oDiv1.lastChild;
+			console.log(lastDiv);
+		</script>
+	</body>
+</html>

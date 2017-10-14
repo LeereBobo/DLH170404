@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#small {
+				width:50px;
+				height:50px;
+				background-color: black;
+				position: absolute;
+				z-index: 2;
+			}
+			#big{
+				width:100px;
+				height:100px;
+				background-color: black;
+				position: absolute;
+				left:50%;
+				top:50%;
+				
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div id="small">	</div>
+		<div id = "big"></div>
+		
+		<script type="text/javascript">
+			var oSmall = document.getElementById("small");
+			var oBig = document.getElementById("big");
+			
+			oSmall.onmousedown = function(ev){
+				oSmall.onmousemove = function(ev){
+					var ev = ev || window.event;
+					
+					oSmall.style.left = ev.clientX - oSmall.offsetWidth / 2  + "Px";
+					oSmall.style.top = ev.clientY - oSmall.offsetHeight / 2 + "px";
+					
+					var leftType = oSmall.offsetLeft + oSmall.offsetWidth >= oBig.offsetLeft;
+					var rightType = oSmall.offsetLeft <= oBig.offsetLeft + oBig.offsetWidth;
+					var topType = oSmall.offsetTop +oSmall.offsetHeight >= oBig.offsetTop;
+					var bottomType = oSmall.offsetTop <= oBig.offsetHeight + oBig.offsetTop;
+					if(leftType && rightType && topType && bottomType){
+						oBig.style.backgroundColor = "red";
+					}else{
+						oBig.style.backgroundColor = "black";
+					}
+				}
+			}
+			
+			oSmall.onmousetup = function(){
+				oSmall.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

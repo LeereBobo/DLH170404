@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			#wrap {
+				width: 432px;
+				margin: 300px auto;
+			}
+			
+			#wrap ul li {
+				width: 50px;
+				height: 50px;
+				border: 1px solid black;
+				float: left;
+				margin: 0 10px;
+				text-align: center;
+				line-height: 50px;
+				color: #fff;
+				background-color: black;
+				font-weight: bold;
+				position: relative;
+			}
+			
+			#wrap ul li span {
+				display: block;
+				opacity: 0.5;
+			}
+			
+			#wrap ul li p {
+				position: absolute;
+				width: 100%;
+				height: 0;
+				bottom: 51px;
+				left: 0;
+			}
+			
+			.keyA {
+				background-color: #e51c55;
+			}
+			
+			.keyS {
+				background-color: #c926a5;
+			}
+			
+			.keyD {
+				background-color: #9c4bd5;
+			}
+			
+			.keyJ {
+				background-color: #4f65c3;
+			}
+			
+			.keyK {
+				background-color: #6ccab7;
+			}
+			
+			.keyL {
+				background-color: #92d55d;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<ul>
+				<li>
+					<span class="keyA">A</span>
+					<p class="keyA"></p>
+				</li>
+				<li>
+					<span class="keyS">S</span>
+					<p class="keyS"></p>
+				</li>
+				<li>
+					<span class="keyD">D</span>
+					<p class="keyD"></p>
+				</li>
+				<li>
+					<span class="keyJ">J</span>
+					<p class="keyJ"></p>
+				</li>
+				<li>
+					<span class="keyK">K</span>
+					<p class="keyK"></p>
+				</li>
+				<li>
+					<span class="keyL">L</span>
+					<p class="keyL"></p>
+				</li>
+			</ul>
+			
+			
+			<script type="text/javascript">
+				var oWrap = document.getElementById("wrap");
+				var arySpan = oWrap.getElementsByTagName("span");
+				var aryP = oWrap.getElementsByTagName("p");
+
+				//按键数组
+				var arykeycode = [65, 83, 68, 74, 75, 76];
+
+			document.onkeydown = function(ev){
+				var evObj = ev || window.event;
+				for (var i = 0; i < arykeycode.length; i++){
+					
+					if (evObj.keyCode == arykeycode[i]){
+				
+				// 扩展属性isDown, 保存当前标签是否是按下的状态, true 按下 false 抬起
+				// !undefined 为true (但是undefined == false 这是错的)
+				if (!aryP[i].isDown){
+						startMove(aryP[i], "height", 200);
+						startOpMove(arySpan[i], 1);
+						aryP[i].isDown = true;
+					}
+				}
+			}
+		}
+			
+			document.onkeyup = function(ev){
+				
+				var evObj = ev || window.event;
+				for (var i = 0; i < arykeycode.length; i++){
+					if (evObj.keyCode == arykeycode[i]){
+						startMove(aryP[i], "height", 0);
+						startOpMove(arySpan[i], 0.5);
+						aryP[i].isDown = false;
+
+					}
+				}
+				
+				
+				
+			}
+			
+			function startOpMove(obj, value){
+				var speed = 0.01;
+				var nowNum = getStyle(obj, "opacity");
+				if (nowNum > value){
+					speed = -speed;
+				}
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function(){
+					var changeNum = getStyle(obj, "opacity");
+					obj.style.opacity = changeNum + speed;
+					if (changeNum == value){
+						clearInterval(obj.timer);
+					}
+				}, 10);
+			}
+			
+			
+			
+
+			function startMove(obj, attr, value){
+				var speed = 10;
+				var nowNum = getStyle(obj, attr);
+				// 判断当前高度如果是大于临界值, 比如现在高度50, 临界值是0, 那么也就是你想把高度缩回0, 所以速度就得是负的
+				if (nowNum > value){
+					speed = -speed;
+				}
+				
+				clearInterval(obj.timer);
+				
+				obj.timer = setInterval(function(){
+					
+					var changeNum = getStyle(obj, attr);
+					obj.style[attr] = changeNum + speed + "px";
+					// 当到达临界值, 则干掉计时器
+					if (changeNum == value){
+						clearInterval(obj.timer);
+					}
+					
+				}, 40);
+			}
+
+			function getStyle(obj, attr){
+				
+				return parseFloat(getComputedStyle(obj, null)[attr]);
+			}
+
+
+				
+		
+				
+			</script>
+		</div>
+	</body>
+
+
+</html>
+
+
+

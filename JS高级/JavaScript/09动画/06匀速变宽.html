@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height:100px;
+				background-color: red;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		<script type="text/javascript">
+			var oDiv1  = document.getElementById("div1");
+			
+				function linearMove (obj,speed,iTarget){
+				var timer = null;
+				 timer = setInterval(function(){
+					if(iTarget - obj.offsetWidth <= speed){
+						obj.style.width = iTarget + "px";
+						clearInterval(timer);
+					}else{
+						obj.style.width = obj.offsetWidth + speed + "px";
+					}
+				},20);
+			}
+			linearMove(oDiv1,19,800);
+			
+			
+		</script>
+	</body>
+</html>

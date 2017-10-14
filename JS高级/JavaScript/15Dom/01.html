@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: "微软雅黑";
+			}
+			
+			#wrap {
+				background: url(img/game_bg.jpg) 0 0 no-repeat;
+				height: 480px;
+				width: 320px;
+				position: relative;
+				margin: 0 auto;
+			}
+			
+			#score {
+				position: absolute;
+				font-weight: bold;
+				font-size: 16px;
+				color: white;
+				left: 65px;
+				top: 15px;
+			}
+			
+			#countDown {
+				position: absolute;
+				background: url(img/progress.png) 0 0 no-repeat;
+				/*background-color: red;*/
+				width: 180px;
+				height: 16px;
+				left: 63px;
+				top: 66px;
+			}
+			
+			#wolfs {
+				position: absolute;
+			}
+			
+			#menu {
+				position: absolute;
+				width: 320px;
+				text-align: center;
+				left: 0;
+				top: 200px;
+			}
+			
+			#start,
+			#handle,
+			#gameOver {
+				line-height: 50px;
+				font-size: 30px;
+				font-weight: bold;
+				color: #F60;
+				text-shadow: 0 0 5px #FFFF00;
+				display: block;
+				text-decoration: none;
+			}
+			
+			#gameOver {
+				position: absolute;
+				width: 320px;
+				text-align: center;
+				top: 200px;
+				left: 0;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrap">
+			<!--分数-->
+			<div id="score">0</div>
+			<!--倒计时-->
+			<div id="countDown"></div>
+			<!--灰太狼-->
+			<div id="wolfs">
+
+			</div>
+			<div id="menu">
+				<div id="start">开始</div>
+				<div id="handle">游戏开始说明</div>
+			</div>
+			<div id="gameOver">
+				game over!
+			</div>
+		</div>
+
+	</body>
+
+	<script type="text/javascript">
+		var oScore = document.getElementById("score");
+		var oWolfs = document.getElementById("wolfs");
+		var oStart = document.getElementById("start");
+		var oMenu = document.getElementById("menu");
+		var oCountDown = document.getElementById("countDown");
+		var oGameOver = document.getElementById("gameOver");
+		var moveTimer = null;
+		var score = 0; //记录分数
+		//出现
+		var arrPos = [{
+			l: "98px",
+			t: "115px"
+		}, {
+			l: "17px",
+			t: "160px"
+		}, {
+			l: "15px",
+			t: "220px"
+		}, {
+			l: "30px",
+			t: "293px"
+		}, {
+			l: "122px",
+			t: "273px"
+		}, {
+			l: "207px",
+			t: "295px"
+		}, {
+			l: "200px",
+			t: "211px"
+		}, {
+			l: "187px",
+			t: "141px"
+		}, {
+			l: "100px",
+			t: "185px"
+		}];
+
+		
+
+		
+		
+		
+		
+		
+	</script>
+
+</html>

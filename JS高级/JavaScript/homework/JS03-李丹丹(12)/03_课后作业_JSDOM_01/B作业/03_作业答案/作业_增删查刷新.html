@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .head {
+            width: 500px;
+            padding: 5px;
+            margin: 20px auto;
+            background-color: gray;
+            text-align: center;
+        }
+
+        input {
+            width: 90px;
+            height: 30px;
+            border: 0;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .block {
+            width: 500px;
+            height: 100px;
+            background-color: gray;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 60px;
+            line-height: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="head">
+        <input type="button" name="" id="add" value="添加"/>
+        <input type="button" name="" id="del" value="删除"/>
+        <input type="button" name="" id="more" value="大于0"/>
+        <input type="button" name="" id="less" value="小于0"/>
+        <input type="button" name="" id="reload" value="刷新"/>
+    </div>
+    <div id="number"></div>
+</div>
+</body>
+<script>
+    //生成随机数
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    //获取所需要的元素
+    var oAdd = document.getElementById("add");//新增按钮
+    var oDel = document.getElementById("del");//删除按钮
+    var oMore = document.getElementById("more");//大于0按钮
+    var oLess = document.getElementById("less");//小于0按钮
+    var oReload = document.getElementById("reload");//刷新按钮
+    var oNumber = document.getElementById("number");//存放新增div的按钮
+
+    // 定义数组用来装随机到的数字
+    var arraylist = [];
+
+    // 点击增加按钮
+    oAdd.onclick = function () {
+        // 创建div
+        var newdiv = document.createElement("div");
+        // 添加class属性
+        newdiv.className = "block";
+        // 随机数字
+        var num = getRandom(10, 100);
+        //随机为0即为负数
+        if (getRandom(0, 1) == 0) {
+            num = -num;
+        }
+        newdiv.innerHTML = num;
+        // 插入div元素
+        oNumber.appendChild(newdiv);
+        // 加入数组
+        arraylist.push(newdiv);
+        
+    }
+
+    // 点击删除按钮
+    oDel.onclick = function () {
+        // 删除最后一个插入的元素
+        oNumber.removeChild(oNumber.lastChild);
+        // 从数组中移除
+        arraylist.pop();
+    }
+
+    // 点击大于0按钮
+    oMore.onclick = function () {
+        // 先把父级元素清空
+        oNumber.innerHTML = "";
+        // 遍历找到所有大于0的数字
+        for (var i = 0; i < arraylist.length; i++) {
+            var innerNum = arraylist[i].innerHTML;
+            console.log(innerNum);
+            if (innerNum > 0) {
+                // 插入到父级
+                oNumber.appendChild(arraylist[i]);
+            }
+        }
+    }
+
+    // 点击小于0按钮
+    oLess.onclick = function () {
+        // 先把父级元素清空
+        oNumber.innerHTML = "";
+        // 遍历找到所有小于0的数字
+        for (var i = 0; i < arraylist.length; i++) {
+            var innerNum = arraylist[i].innerHTML;
+            if (innerNum < 0) {
+                // 插入到父级
+                oNumber.appendChild(arraylist[i]);
+            }
+        }
+    }
+
+    // 点击刷新按钮
+    oReload.onclick = function () {
+        // 先把父级元素清空
+        oNumber.innerHTML = "";
+        // 遍历找到所有数字
+        for (var i = 0; i < arraylist.length; i++) {
+            // 插入到父级
+            oNumber.appendChild(arraylist[i]);
+        }
+    }
+</script>
+</html>

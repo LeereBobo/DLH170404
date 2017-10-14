@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function isPrime (num) {
+				for (var i = 2; i < num; i++) {
+					if (num % i == 0) {
+						//不是素数
+						return false;
+					}
+				}
+				return true;
+			}
+			console.log("4是素数，结果："+isPrime(4));
+		</script>
+	</body>
+</html>

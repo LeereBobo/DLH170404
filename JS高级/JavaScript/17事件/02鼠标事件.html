@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+
+		</div>
+
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			//1.鼠标点击事件
+			oWrap.onclick = function() {
+				console.log("鼠标点击事件");
+			}
+
+			//用电击模拟双击  ?
+
+			//2.双击时单击事件也触发
+			oWrap.ondblclick = function() {
+				console.log("鼠标双击事件");
+			}
+
+			//3.鼠标按下时响应
+			oWrap.onmousedown = function(ev) {
+				console.log("鼠标按下事件");
+				console.log(ev); //事件对象  获取的是与此事件相关的属性值  例如  鼠标距离屏幕的位置  距离文档的位置
+				var ev = ev || window.event; //兼容IE   IE获取不到ev 用window.event获取
+				switch(ev.which) {
+					case 1:
+						console.log("左键按下");
+						break;
+					case 2:
+						console.log("滚轮按下");
+						break;
+					case 3:
+						console.log("右键按下");
+						break;
+					default:
+						break;
+				}
+			}
+
+			//4.鼠标抬起时响应
+			oWrap.onmouseup = function() {
+				console.log("鼠标抬起");
+			}
+
+			//5.鼠标移入
+			oWrap.onmouseover = function() {
+					console.log("鼠标移入事件")
+				}
+				//6.鼠标移出
+			oWrap.onmouseout = function() {
+				console.log("鼠标移出事件")
+			}
+
+			//7.鼠标在元素内移动时响应
+			oWrap.onmousemove = function() {
+				console.log("鼠标移动");
+			}
+		</script>
+	</body>
+
+</html>

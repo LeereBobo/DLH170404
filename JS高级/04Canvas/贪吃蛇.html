@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#myCanvas{
+				box-shadow: 0 0 10px red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="600" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanvas");
+			var cxt = canvas.getContext("2d");
+			
+			//创建蛇对象
+			var snake = {
+				w:40,
+				h:40,
+				x:-40,
+				y:0,
+				//保存蛇头走过的路径
+				bodyPosition:[],
+				left:false,
+				right:true,
+				top:false,
+				bottom:false,
+				headColor:"red",
+				bodyColor:"green",
+				//是否删除当前走过的位置
+				reBol : true
+			};
+			//画蛇头
+			snake.drawHead = function(){
+				cxt.fillStyle = this.headColor;
+				cxt.fillRect(this.x,this.y,this.w,this.h);
+			}
+			//保存蛇头走过的路径
+			snake.savePosition = function(){
+				this.bodyPosition.push({
+					x:snake.x,
+					y:snake.y
+				});
+				if (this.bodyPosition.length>3 && this.reBol) {
+					this.bodyPosition.shift();
+				}else{
+					this.reBol = true;
+				}
+			}
+			//画身体
+			snake.drawBody = function(){
+				cxt.beginPath();
+				//取出身体的颜色
+				cxt.fillStyle = this.bodyColor;
+				//遍历身体数组,画出所有的身体
+				for (var i=0;i<this.bodyPosition.length;i++) {
+					var pathObj = this.bodyPosition[this.bodyPosition.length-1-i];
+					cxt.fillRect(pathObj.x,pathObj.y,40,40);
+				}
+			}
+			//蛇移动的方法
+			snake.move = function(){
+				if (this.left) {
+					this.x-=this.w;
+				}else if (this.right) {
+					this.x+=this.w;
+				}else if (this.top) {
+					this.y-=this.h;
+				}else if (this.bottom) {
+					this.y+=this.h;
+				}
+				this.drawHead();
+				this.drawBody();
+				this.savePosition();
+			}
+			//食物对象
+			var food = {
+				w:40,
+				h:40,
+				x:0,
+				y:0,
+				color:"pink"
+			};
+			//随机函数
+			function rand(min,max){
+				return parseInt(Math.random()*(max-min+1)+min);
+			}
+			//食物的位置
+			food.setPosition = function(){
+				while (true){
+					var x = rand(0,canvas.width-40);
+					x = parseInt(x/40)*40;
+					var y = rand(0,canvas.height-40);
+					y = parseInt(y/40)*40;
+					//判断当前随出来的x,y能不能用
+					var isIn = false;
+					for (var i=0;i<snake.bodyPosition.length;i++) {
+						if (snake.bodyPosition[i].x == x&&snake.bodyPosition[i].y == y) {
+							isIn = true;
+						}
+					}
+					//如果能进if判断说明我们上面的x,y能用
+					if (!isIn) {
+						food.x = x;
+						food.y = y;
+						break;
+					}
+					
+				}
+			}
+			//画食物
+			food.drawFood = function(){
+				cxt.fillStyle = food.color;
+				cxt.fillRect(food.x,food.y,40,40);
+			}
+			//检测碰撞
+			function peng(obj1,obj2){
+				//对象一
+				var left1 = obj1.x;
+				var right1 = obj1.x+obj1.w;
+				var top1 = obj1.y;
+				var bottom1 = obj1.y+obj1.h;
+				//对象二
+				var left2 = obj2.x;
+				var right2 = obj2.x+obj2.w;
+				var top2 = obj2.y;
+				var bottom2 = obj2.y+obj2.h;
+				if (right1>left2&&left1<right2&&bottom1>top2&&top1<bottom2) {
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+			
+			//配合计时器让蛇动起来
+			setInterval(function(){
+				//清除所有
+				cxt.clearRect(0,0,canvas.width,canvas.height);
+				snake.move();
+				food.drawFood();
+				if (peng(snake,food)) {
+					//食物得换地方了
+					food.setPosition();
+					snake.reBol = false;
+				}
+			},200);
+			
+			
+			//方向键控制蛇
+			document.onkeydown = function(ev){
+				var evObj = ev||window.event;
+				switch (evObj.keyCode){
+					case 37:
+						if (!snake.right) {
+							snake.left = true;
+							snake.right = false;
+							snake.top = false;
+							snake.bottom = false;
+						}
+						break;
+					case 38:
+						if (!snake.bottom) {
+							snake.left = false;
+							snake.right = false;
+							snake.top = true;
+							snake.bottom = false;
+						}
+						break;
+					case 39:
+					if (!snake.left) {
+							snake.left = false;
+							snake.right = true;
+							snake.top = false;
+							snake.bottom = false;
+						}
+						break;
+					case 40:
+						if (!snake.top) {
+							snake.left = false;
+							snake.right = false;
+							snake.top = false;
+							snake.bottom = true;
+						}
+						break;
+					default:
+						break;
+				}
+				evObj.preventDefault();
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//设置wrap的宽高为100 背景颜色为红色 内容为 齐美丽  设置写点击事件 打印点齐美丽
+				$("#wrap").css({
+					width:100,
+					height:100,
+					backgroundColor:"red"
+				}).html("齐美丽").click(function(){
+					console.log("点击齐美丽");
+				})
+				
+			})
+		</script>
+	</body>
+</html>

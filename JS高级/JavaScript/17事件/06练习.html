@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1 {
+				position: relative;
+			}
+			
+			#wrap {
+				width: 10px;
+				height: 10px;
+				position: absolute;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oDiv1 = document.getElementById("div1");
+			document.onmousedown = function(ev) {
+				document.onmousemove = function(ev) {
+
+					var newDiv = document.createElement("div");
+					newDiv.id = "wrap";
+					oDiv1.appendChild(newDiv);
+
+					var ev = ev || window.event;
+					newDiv.style.left = ev.clientX - 25 + "px";
+					newDiv.style.top = ev.clientY - 25 + "px";
+					newDiv.style.backgroundColor = getRandomColor();
+				}
+			}
+			document.onmouseup = function(ev) {
+					document.onmousemove = null;
+
+				}
+				//获取随机的颜色
+			function getRandomColor() {
+				var r = getRandom(255, 0);
+				var g = getRandom(255, 0);
+				var b = getRandom(255, 0);
+				var colorString = "rgb(" + r + ", " + g + ", " + b + ")";
+				return colorString;
+			}
+
+			function getRandom(max, min) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				margin-bottom: 10px;
+			}
+			
+			#div1 {
+				background-color: red;
+			}
+			
+			#div2 {
+				background-color: plum;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--//需求 
+		//点击第一个 颜色变成黑色 
+		//并且生成20个[20,50]随机数存到数组里，并求和，在点击事件中对所求和+100
+		//点击第二个 颜色编程绿色 
+		//并且生成20个[20,50]随机数存到数组里，并求和，在点击事件中对所求和+100-->
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			
+
+			oDiv1.onclick = function() {
+				oDiv1.style.backgroundColor = "black";
+				var s = getRandom(50,30,10);
+				console.log(s +"🐱");
+			}
+			oDiv2.onclick = function() {
+				oDiv2.style.backgroundColor = "greenyellow";
+				getRandom(50,30,10);
+			}
+			
+			
+			function getRandom(max,min,n){
+				console.log("max是"+max);
+				console.log("min是"+min);
+				var arr = [];
+				var sum = 0;
+			//随机max到min之间的随机数	
+				for(var i = 0; i < n; i++) {
+					var num2 = Math.floor(Math.random() * (max - min + 1) + min);
+					arr[i] = num2;
+					//arr.push(ran);
+					sum = sum + num2;
+				}
+				//console.log(arr);
+				console.log(sum);
+				return sum; 
+			}
+		</script>
+	</body>
+
+</html>

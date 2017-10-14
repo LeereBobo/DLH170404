@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		tianqizhenhao
+		<div>你好</div><!--我是注释-->
+		
+		
+		<script type="text/javascript">
+		//节点有很多种类型(共24种)
+		//nodeType是获取节点类型
+		//1代表标签
+		//3代表文本
+		//8代表注释
+		
+		//childNodes 只获取子节点,不获取子节点的子节点
+		//获取body中的所有子节点
+		
+		var 	nodeArr = document.body.childNodes;
+		for( var i = 0 ; i < nodeArr.length; i++){
+			console.log(nodeArr[i],nodeArr[i].nodeType);
+		}
+		console.log(nodeArr);
+		</script>
+	</body>
+</html>

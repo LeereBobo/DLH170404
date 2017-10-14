@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.horse {
+				background-image: url("http://ww1.sinaimg.cn/bmiddle/6ffa5773jw1e7cyrbncnrg20c806l7l3.gif");
+				width: 100px;
+				height: 100px;
+				background-size: 100% 100%;
+				border-radius: 50%;
+				margin-bottom: 20px;
+				position: absolute;
+			}
+			
+			#div1 {
+				position: absolute;
+				left: 0;
+				top: 100px;
+			}
+			
+			#div2 {
+				position: absolute;
+				left: 0;
+				top: 220px;
+			}
+			
+			#div3 {
+				position: absolute;
+				left: 0;
+				top: 340px;
+			}
+			
+			#div4 {
+				position: absolute;
+				left: 0;
+				top: 460px;
+			}
+			
+			#div5 {
+				position: absolute;
+				left: 800px;
+				top: 100px;
+				width: 1px;
+				height: 500px;
+				background-color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<label>请输入竞猜号码:</label>
+		<input type="" name="" id="num" value="" />
+		<button id="btn">开始</button>
+		<div id="div1" class="horse"></div>
+		<div id="div2" class="horse"></div>
+		<div id="div3" class="horse"></div>
+		<div id="div4" class="horse"></div>
+		<div id="div5"></div>
+
+		<script type="text/javascript">
+			var myInput = document.getElementById("num");
+			var oBtn = document.getElementById("btn");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var oDiv3 = document.getElementById("div3");
+			var oDiv4 = document.getElementById("div4");
+			var timer = 0;
+			var count = myInput.value;
+
+			function getRadom(max, min) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			console.log(count);
+			oBtn.onclick = function() {
+				count = myInput.value;
+				console.log(count);
+				if(count >= 1 && count <= 4) {
+					timer = setInterval(function() {
+						oDiv1.style.left = oDiv1.offsetLeft + getRadom(20, 10) + "px";
+						oDiv2.style.left = oDiv2.offsetLeft + getRadom(20, 10) + "px";
+						oDiv3.style.left = oDiv3.offsetLeft + getRadom(20, 10) + "px";
+						oDiv4.style.left = oDiv4.offsetLeft + getRadom(20, 10) + "px";
+						
+						if(oDiv1.offsetLeft >= 800 ){
+							clearInterval(timer);
+							if(count == 1){
+								alert("你赢啦");
+							}else{ 
+								alert("oo输了")
+							}
+						}
+						if(oDiv2.offsetLeft >= 800 ){
+							clearInterval(timer);
+							if(count == 2){
+								alert("你赢啦");
+							}else{ 
+								alert("oo输了")
+							}
+						}
+						if(oDiv3.offsetLeft >= 800 ){
+							clearInterval(timer);
+							if(count == 3){
+								alert("你赢啦");
+							}else{ 
+								alert("oo输了")
+							}
+						}
+						if(oDiv4.offsetLeft >= 800 ){
+							clearInterval(timer);
+							if(count == 4){
+								alert("你赢啦");
+							}else{ 
+								alert("oo输了")
+							}
+						}
+
+					}, 20);
+
+				}
+			}
+		</script>
+	</body>
+
+</html>

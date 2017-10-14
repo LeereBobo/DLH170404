@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+     * 面向对象和面向过程  两种编程思想
+     * JavaScript 是面向对象的编程语言
+     * JavaScript 是不严格的面向对象语言
+     * 使用对象时,只关注对象提供的功能,不关注其内部实现
+     *
+     * 类 : 具有相同特征和行为的事物的描述
+     * 对象 : 类的一个实体
+     *
+     *
+     * 面向对象的特点
+     *   封装 : 不考虑内部实现,只考虑功能
+     *   继承 : 从已有对象上,继承出新的对象
+     *   多态 : 相同的操作,产生不同的结果
+     *
+     *   对象的组成
+     *      1.方法 函数
+     *      2.属性 变量
+     *
+     * */
+
+    var arr = [1, 2, 3];
+    console.log(typeof (arr));//object  方法
+    console.log(arr.length);//3 属性
+
+    var a = 10;//变量
+    arr.a = 1;//自定义属性  属于一个对象的变量就是属性
+    console.log(arr.a);
+
+    var arr1 = [1, 4, 5, 6];
+    console.log(arr1.a);//undefined
+
+    //函数
+    function show() {
+        alert("hello word");
+    }
+    //对象的方法
+    arr.show = function () {
+        alert("124");
+    }
+    arr.show();//124
+
+
+</script>
+</body>
+</html>

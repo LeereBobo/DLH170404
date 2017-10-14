@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function abc (a,b){
+				return a + b;
+			}
+			
+			function abd(fn){
+				var x = fn(1,2);
+				console.log(x);
+			}
+			abd(abc);
+			console.log(abc);//整个abc函数
+			console.log(typeof(abc));//function
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--// 1. 定义一个数组, 给8个数字(大小自己看着来) 然后计算数组里所有元素的和-->
+		
+		<script type="text/javascript">
+			var arr = [4,5,8,5,3,8,3,9];
+			var sum = 0;
+			for(var i = 0;i < arr.length; i++){
+				sum = arr[i] + sum;
+			}
+			console.log(sum);
+			
+//2. 随机产生10个数字, 然后添加到数组里, 
+// 然后求出产生的数组里所有数据的积
+
+          var arr = [];
+          var sum = 1;
+          for(var i= 0; i< 10;i++){
+          	var j = Math.floor(Math.random()*(30-10+1)+10);
+          	arr[i]=j;	
+          	console.log(j);
+          	sum = sum * j;
+          }
+          console.log(arr);
+          console.log("数组所有数的积为:"+sum);
+          
+          
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500" id="myCanvas"></canvas>
+<script>
+    var oCanvas = document.getElementById("myCanvas");
+    var ctx = oCanvas.getContext("2d");
+    ctx.beginPath();
+    var img = new Image();
+    img.src="boy.jpg";
+    img.onload = function () {
+        ctx.drawImage(img,0, 0, oCanvas.width,oCanvas.height);
+        //获取原图片的像素点 getImageData(获取像素的起始坐标X,获取像素的起始坐标Y,获取像素的宽,获取像素的高)
+        var imgData = ctx.getImageData(0,0,oCanvas.width,oCanvas.height);
+        /*
+        * imageData 对象
+        * data属性为数组类型,是一个包含了访问区域所有像素信息的一个一维数组
+        *     data数组每四个元素代表一个像素点的rgba值
+        *     rgb(0 ~ 255 ); a(0 ~ 255) 0 是完全透明 255是完全可见
+        *   width:访问区域的宽,height :访问区域的高
+        * */
+//       像素取反
+        /*for(var i = 0; i < imgData.data.length; i+=4){
+            imgData.data[i]   = 255 - imgData.data[i];
+            imgData.data[i+1] = 255 - imgData.data[i+1];
+            imgData.data[i+2] = 255 - imgData.data[i+2];
+            imgData.data[i+3] = 255;
+        }
+        //将更改完位置在画布上
+        ctx.putImageData(imgData,0,0);*/
+
+//        取灰
+        for(var i = 0; i < imgData.data.length; i+=4){
+            var r = imgData.data[i];
+            var g = imgData.data[i+1];
+            var b = imgData.data[i+2];
+
+            var newData = (r + g + b) / 3;
+            imgData.data[i]   = newData;
+            imgData.data[i+1] = newData;
+            imgData.data[i+2] = newData;
+            imgData.data[i+3] = 255;
+        }
+        ctx.putImageData(imgData,0,0);
+    }
+
+
+
+
+</script>
+</body>
+</html>

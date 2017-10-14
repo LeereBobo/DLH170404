@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		html,body{
+			width : 100%;
+			height:100%;
+		}
+			
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			var oDivs = document.getElementsByTagName("div");
+			var colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink"];
+			var maxWidht = 300;
+			var theLeft = 20;
+			
+			for(var i = 0 ; i < oDivs.length;i++){
+				oDivs[i].style.backgroundColor = colors[i];
+				oDivs[i].style.width  = maxWidht - i * theLeft * 2 + "px";
+				oDivs[i].style.height = maxWidht - i * theLeft * 2 + "px";
+				oDivs[i].style.position = "absolute";
+				oDivs[i].style.borderRadius = "50%";
+				oDivs[i].style.top = theLeft * (i + 1) + "px";
+				oDivs[i].style.left = theLeft * (i + 1) + "px";
+			}
+			
+			setInterval(function(){
+				var firstColor = oDivs[0].style.backgroundColor ;
+				for(var i = 0; i < oDivs.length - 1; i++){
+					oDivs[i].style.backgroundColor = oDivs[i + 1].style.backgroundColor; 
+				}
+				
+				oDivs[oDivs.length - 1].style.backgroundColor  = firstColor;
+			},500);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var arr = [2, 6, 81, 2, 6, 9];
+			var temp = 0;
+			for(var i = 0; i < arr.length - 1; i++) {
+
+				for(var j = 0; j < arr.length - i - 1; j++) {
+					if(arr[j] > arr[j + 1]) {
+						temp = arr[j];
+						arr[j] = arr[j + 1];
+						arr[j + 1] = temp;
+					}
+				}
+			}
+			//alert(arr);
+
+			var arr = [5, 7, 2, 5, 2, 9, 0];
+			var temp = 0;
+			for(i = 0; i < arr.length - 1; i++) {
+				for(var j = 0; j < arr.length - i - 1; j++) {
+					if(arr[j] > arr[j + 1]) {
+						temp = arr[j];
+						arr[j] = arr[j + 1];
+						arr[j + 1] = temp;
+					}
+				}
+			}
+			//alert(arr);
+
+			var arr = [3, 5, 1, 4, 5, 9, 0];
+			var temp = 0;
+			for(var i = 0; i < arr.length - 1; i++) {
+				for(var j = 0; j < arr.length - 1 - i; j++) {
+					if(arr[j] > arr[j + 1]) {
+						temp = arr[j];
+						arr[j] = arr[j + 1];
+						arr[j + 1] = temp;
+					}
+				}
+			}
+			//alert(arr);
+
+			//			数组去重 数组是[1,2,4,5,6,7,2,8,7,9] 
+			//         1.将数组中重复元素的个数  例数组是[1,2,4,5,6,7,2,8,7,9]    打印2
+			//         2.求数组中重复的数字有哪儿些   例数组是[1,2,4,5,6,7,2,8,7,9] 打印2 7
+			//         3.将数组中重复的元素去掉 例数组是[1,2,4,5,6,7,2,8,7,9] 最后打印数组[1,2,4,5,6,7,8,9]
+			var arr = [1, 3, 5, 7, 3, 5];
+			var count = 0;
+			for(var i = 0; i < arr.length - 1; i++) {
+				temp = arr[i];
+				for(var j = i; j < arr.length - 1; j++) {
+					if(temp == arr[j + 1]) {
+						count+=1;
+						var b = arr[j+1];
+						console.log("重复的元素为:" + b);
+						arr.splice(j+1,1);
+					}
+					
+				}
+			}
+			console.log("删除后的组数为:" + arr);
+			console.log("重复的个数为:" + count);
+			
+			
+			var arr= [3,5,6,1,6,9];
+			var temp = 0;
+			for (var i = 0; i< arr.length- 1; i++){
+				for ( var j = 0; j< arr.length - 1- i; j++){
+					if (arr[j] > arr[j+1]){
+						temp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp ; 
+					}
+				}
+			}
+			//alert(arr);
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1 {
+				width: 1000px;
+				height: 700px;
+				margin: auto;
+				border: 2px solid black;
+				position: relative;
+				
+			}
+			img{
+				position: absolute;
+				top:0;
+				left:170px;
+				z-index: 4;
+			}
+			
+			.ball {
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				/*background : url(img/download-1.jpg);
+				background-size: 100%;*/
+			}
+			#btn:active{
+				transform: scale(2,2);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+		</div>
+		<img src="image/植物豆.jpg"/ width="100" height="100" id="btn">
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oBtn = document.getElementById("btn");
+
+			function getRandom(max, min) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			function getRandomColor() {
+				var r = getRandom(255, 0);
+				var g = getRandom(255, 0);
+				var b = getRandom(255, 0);
+				return "rgb(" + r + "," + g + "," + b + ")";
+			}
+
+			//oDiv1.style.backgroundColor = getRandomColor();
+			oBtn.onclick = function() {
+				
+				
+				var speedX = getRandom(15, 5);
+				var speedY = getRandom(10, 2);
+
+				var smallball = document.createElement("div");
+				oDiv1.appendChild(smallball);
+				smallball.className = "ball";
+				var diameter = getRandom(60, 10);
+				smallball.style.width = diameter + "px";
+				smallball.style.height = diameter + "px";
+				smallball.style.backgroundColor = getRandomColor();
+
+				setInterval(function() {
+					smallball.style.left = smallball.offsetLeft + speedX + "px";
+					if(smallball.offsetLeft >= 950 || smallball.offsetLeft <= 0) {
+						speedX = -speedX;
+					}
+					smallball.style.top = smallball.offsetTop + speedY + "px";
+					if(smallball.offsetTop >= 650 || smallball.offsetTop <= 0) {
+						speedY = -speedY;
+					}
+				}, 30);
+			}
+			
+		</script>
+	</body>
+
+</html>

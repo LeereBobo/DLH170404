@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.div1 {
+				width: 100px;
+				height: 100px;
+				margin-bottom: 5px;
+				position: relative;
+			}
+			
+			.top {
+				width: 100px;
+				height: 100px;
+				background-color: black;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 100;
+			}
+			
+			.bottom {
+				width: 200px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: -100px;
+				color: white;
+				text-align: center;
+				line-height: 100px;
+				font-size: 30px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="div1">
+			<div class="top"></div>
+			<div class="bottom">购物车</div>
+		</div>
+		<div class="div1">
+			<div class="top"></div>
+			<div class="bottom">我的订单</div>
+		</div>
+		<div class="div1">
+			<div class="top"></div>
+			<div class="bottom">历史足迹</div>
+		</div>
+		<div class="div1">
+			<div class="top"></div>
+			<div class="bottom">网络红人</div>
+		</div>
+		<div class="div1">
+			<div class="top"></div>
+			<div class="bottom">精彩推荐</div>
+		</div>
+		<script src="../index.js"></script>
+		<script type="text/javascript">
+			var oDivs = document.getElementsByClassName("div1");
+			var oBottoms = document.getElementsByClassName("bottom")
+
+			//第一种方法
+			//			for(var i = 0; i < oDivs.length; i++){
+			//				oDivs[i].index = i;
+			//				oDivs[i].onmouseover = function(){
+			//					linearMove(oBottoms[this.index],"left",3,100);
+			//					
+			//				}
+			//				oDivs[i].onmouseout = function(){
+			//					linearMove(oBottoms[this.index],"left",-3,-100);
+			//					
+			//				}
+			//			}
+
+
+			//第二种方法
+			for(var i = 0; i < oDivs.length; i++) {
+
+				oDivs[i].onmouseover = function() {
+					var childArr = this.getElementsByTagName("div");
+					linearMove(childArr[1], "left", 3, 100);
+
+				}
+				oDivs[i].onmouseout = function() {
+					var childArr = this.getElementsByTagName("div");
+					linearMove(childArr[1], "left", -3, -100);
+
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

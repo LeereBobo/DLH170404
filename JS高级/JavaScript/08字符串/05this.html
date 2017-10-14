@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width:200px;
+				height:200px;
+				background-color: red;
+			}
+			#div2{
+				width:200px;
+				height:200px;
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "div1"></div>
+		<div id="div2"></div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			/*oDiv1.onclick = function(){
+				console.log(this);
+			}
+			oDiv2.onclick = function(){
+				console.log(this);
+			}*/
+			
+			var oDivs = document.getElementsByTagName("div");
+			for(var i = 0; i < oDivs.length;i++){
+				oDivs[i].onclick = function(){
+					console.log(this);
+				}
+			}
+		</script>
+	</body>
+</html>

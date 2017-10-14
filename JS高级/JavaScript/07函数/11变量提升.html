@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 10; 
+			function abc (){
+				console.log(a);//undefine
+				//如果函数内部定义的局部变量和全局变量命名相同
+				//在定义局部变量之前,获取此变量的值为undefined
+				//原因 函数内部会在函数中的所有代码执行之前 先定义此变量,但是不赋值
+				//在定义局部变量之后 ,获取此变量的值 为局部变量的值,并不影响全局变量的值
+				var a = 20;//局部变量 
+				 var b = 10;
+				 var c = a + b;
+				console.log(a);//20
+				console.log("c的值为:"+c);//30
+			}
+			
+			abc();
+			console.log(a);
+		</script>
+	</body>
+</html>

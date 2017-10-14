@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#main1 {
+				width: 600px;
+				height: 80px;
+				margin: 10px auto;
+				background-color: darkgray;
+				text-align: center;
+				line-height: 80px;
+			}
+			
+			#main {
+				width: 600px;
+				height: 80px;
+				margin: 10px auto;
+				text-align: center;
+				line-height: 80px;
+			}
+			
+			button {
+				padding: 10px 30px;
+				margin: 0 3px;
+				border-radius: 8px;
+				background-color: white;
+				outline: none;
+			}
+			
+			.content {
+				width: 600px;
+				height: 120px;
+				background-color: darkgray;
+				margin: 10px auto;
+				text-align: center;
+				line-height: 120px;
+				font-size: 80px;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="main1">
+			<button id="add">添加</button>
+			<button id="delete">删除</button>
+			<button id="big">大于0</button>
+			<button id="small">小于0</button>
+			<button id="fresh">刷新</button>
+			<div id="main"></div>
+		</div>
+
+		<script type="text/javascript">
+			var oMain = document.getElementById("main");
+			var oAdd = document.getElementById("add");
+			var oDelete = document.getElementById("delete");
+			var oBig = document.getElementById("big");
+			var oSmall = document.getElementById("small");
+			var oFresh = document.getElementById("fresh");
+			 
+			var arr = [];
+
+			var num = 0; //每次点击添加的随机数
+
+			function getRandom() {
+				return Math.floor(Math.random() * (100 - (-100) + 1) - 100);
+			}
+			//添加事件
+			oAdd.onclick = function() {
+				var	newDiv = document.createElement("div");
+					newDiv.className = "content";
+					oMain.appendChild(newDiv);
+					num = getRandom();
+					if(num != 0) {
+						newDiv.innerHTML = num;
+						arr.push(num);
+					}
+				}
+				//删除事件
+			oDelete.onclick = function() {
+				oMain.removeChild(oMain.lastChild);
+				arr.pop();
+			}
+
+			//大于0的事件
+			oBig.onclick = function() {
+					oMain.innerHTML = "";
+					for(var i = 0; i < arr.length; i++) {
+						if(arr[i] > 0) {
+							var bigDiv = document.createElement("div");
+							oMain.appendChild(bigDiv);
+							bigDiv.className = "content";
+							bigDiv.innerHTML = arr[i];
+						}
+					}
+				}
+				//小于0事件
+			oSmall.onclick = function() {
+				oMain.innerHTML = "";
+				for(var i = 0; i < arr.length; i++) {
+					if(arr[i] < 0) {
+						var smallDiv = document.createElement("div");
+						oMain.appendChild(smallDiv);
+						smallDiv.className = "content";
+						smallDiv.innerHTML = arr[i];
+					}
+				}
+			}
+
+			oFresh.onclick = function() {
+				oMain.innerHTML = "";
+				for(var i = 0; i < arr.length; i++) {
+					var freshDiv = document.createElement("div");
+					oMain.appendChild(freshDiv);
+					freshDiv.className = "content";
+					freshDiv.innerHTML = arr[i];
+				}
+			}
+
+			console.log(arr);
+		</script>
+	</body>
+
+</html>

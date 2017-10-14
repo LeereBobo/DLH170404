@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		.all{
+			width:500px;
+			height:500px;
+			border:10px solid green;
+			position: absolute;
+			top:0;
+			left:100px;
+		}
+		
+			#div1{
+				border:10px solid black;
+				padding: 30px;
+				margin:50px;
+				width:200px;
+				height:200px;
+				background-color: red;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div id= "div1"></div>
+		</div>
+		
+		<script type="text/javascript">
+			//定位left = 200px;
+			
+			var oDiv1 = document.getElementById("div1");
+			
+			//通过.style.left获取css样式;
+			//获取的是 行间样式;
+			//oDiv1.style.left = "200px";
+			//console.log(oDiv1.style.left);
+			//console.log(oDiv1.style.backgroundColor);
+			//元素的可见边距,距离父级左侧的距离;
+			
+			var theLeft = oDiv1.offsetLeft;
+			console.log(theLeft);
+			
+			var theTop = oDiv1.offsetTop;
+			console.log(theTop);
+			
+			//可见宽度 content(内容) + padding + border;
+			var theWidth = oDiv1.offsetWidth;
+		    console.log(theWidth);
+		    
+		    //可见高度  content(内容) + padding + border;
+		    var theHeight = oDiv1.offsetHeight;
+            console.log(theHeight);
+            
+            
+          
+		</script>
+	</body>
+</html>

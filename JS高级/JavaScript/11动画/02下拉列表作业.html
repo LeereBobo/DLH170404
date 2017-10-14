@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../index.js"></script>
+		<style type="text/css">
+			.all {
+				overflow: hidden;
+			}
+			
+			.all .top {
+				float: left;
+				width: 100px;
+				overflow: hidden;
+			}
+			
+			.all .top .title {
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+				background-color: green;
+			}
+			
+			.list {
+				height: 0;
+				background-color: lightgray;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="all">
+			<div class="top">
+				<div class="title">首页</div>
+				<div class="list">
+					<div>AAAAA</div>
+					<div>BBBB</div>
+				</div>
+			</div>
+			<div class="top">
+				<div class="title">产品</div>
+				<div class="list">
+					<div>AAAAA</div>
+					<div>BBBB</div>
+					<div>CCC</div>
+					<div>DDDD</div>
+				</div>
+			</div>
+			<div class="top">
+				<div class="title">关于</div>
+				<div class="list">
+					<div>AAAAA</div>
+					<div>BBBB</div>
+					<div>CCC</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			//获取页面中所有class为top的元素
+			var oTops = document.getElementsByClassName("top");
+			var oLists = document.getElementsByClassName("list");
+
+			for(var i = 0; i < oTops.length; i++) {
+				oTops[i].index = i;
+				oTops[i].onmouseover = function() {
+					//获取对应的list
+					var theList = oLists[this.index];
+					//获取有几个列表
+					var listDivs = theList.getElementsByTagName("div");
+
+					//获取一个列表的高度listDivs[0]
+					var h = parseInt(getStyle(listDivs[0], "height"));
+
+					linearMove(theList, "height", 10, h * listDivs.length);
+				}
+				oTops[i].onmouseout = function() {
+					var theList = oLists[this.index];
+					linearMove(theList, "height", -10, 0);
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

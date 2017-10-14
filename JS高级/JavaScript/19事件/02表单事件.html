@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="#" method="post" id = "theForm">
+			<input type="text" name="phone" id="phone" value="" />
+			<input type="submit" value="提交" id = "sub"/>
+		</form>
+		
+		<script type="text/javascript">
+			var oFrom = document.getElementById("theFrom");
+			var oPhone = document.getElementById("phone");
+			
+			//onchange  input 和 textarea  都是在失去焦点且value的值发生变化时响应
+			//select  当选项发生变换时响应
+			oPhone.onchange = function(){
+				console.log(this.value);
+			}
+			
+			//获取每次输入的内容   H5新增
+			oPhone.oninput = function(){
+				console.log("oninput" + this.value);
+			}
+			
+			//表单提交时响应
+			oFrom.onsubmit = function(){
+				alert("提交");
+			}
+			
+		</script>
+	</body>
+</html>

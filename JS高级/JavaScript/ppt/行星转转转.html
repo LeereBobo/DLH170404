@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            /*渐变色*/
+            background:linear-gradient(30deg,blue,white,blue);
+        }
+        #sun{
+            width:100px;
+            height:100px;
+            background-color: gold;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top:-50px;
+            margin-left: -50px;
+            box-shadow: 0 0 3px 4px yellow;
+            border-radius: 50%;
+        }
+        #earth{
+            width:300px;
+            height: 300px;
+            border:1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-left:-150px;
+            margin-top:-150px;
+        }
+        #earth2{
+            width:30px;
+            height:30px;
+            border-radius: 50%;
+            background-color: blue;
+            position: absolute;
+            top:50%;
+            left:-15px;
+            margin-top:-15px;
+        }
+        #moon{
+            width:20px;
+            height:20px;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            top:50%;
+            left:-40px;
+            margin-top:-10px;
+            /*圆心*/
+            transform-origin:40px  ;
+            animation: rot 8s linear infinite;
+        }
+        @keyframes rot {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform:rotate(360deg)
+            }
+        }
+        #marth{
+            width:500px;
+            height: 500px;
+            border-radius: 50%;
+            border:1px solid white;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top:-250px;
+            margin-left:-250px;
+        }
+        #marth2{
+            width:30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            top:50%;
+            left:0;
+            margin-top:-15px;
+            margin-left:-15px;
+            transform-origin:265px ;
+            animation: rot 10s linear infinite;
+        }
+        #ball{
+            width:600px;
+            height:600px;
+            border-radius: 50%;
+            border:1px solid white;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top:-300px;
+            margin-left: -300px;
+
+        }
+        #ball2{
+            width:50px;
+            height:50px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            top:50%;
+            left:0;
+            margin-top:-25px;
+            margin-left:-25px;
+            transform-origin: 325px;
+            animation: rot 25s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<!--太阳-->
+<div id ="sun"></div>
+<!--地球-->
+<div id = "earth">
+    <div id = "earth2"></div>
+    <div id  ="moon"></div>
+</div>
+<!--火星-->
+<div id = "marth">
+    <div id="marth2"></div>
+</div>
+
+<div id="ball">
+    <div id="ball2"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+
+		</div>
+
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			mouseWheel(oDiv1,changeStyle);
+
+			function mouseWheel(obj, fn) {
+				var isFireFox = window.navigator.userAgent.indexOf("Firefox") > 0;
+
+				if(isFireFox) {
+					//火狐浏览器绑定滚轮事件
+					obj.addEventListener("DOMMouseScroll", progreess, false);
+				} else {
+					obj.onmousewheel = progreess;
+				}
+
+				function progreess(e) {
+					var e = e || window.event;
+					var down = true; //记录滚轮的方向,默认true向上;
+
+					//e.detail 火狐获取浏览器滚轮滚动系数
+					if(e.detail) {
+						//小于0 页面向下 改变down记录的状态
+						if(e.detail < 0) {
+							down = false;
+						}
+					} else {
+						//非火狐  大于0 页面向下
+						if(e.wheelDelta > 0) {
+							down = false;
+						}
+					}
+					fn(obj,down);
+				}
+			}
+
+			function changeStyle(obj, down) {
+				if(down) {
+					obj.style.width = obj.offsetWidth + 1 + "px";
+					obj.style.height = obj.offsetHeight + 1 + "px";
+				} else {
+					obj.style.width = obj.offsetWidth - 1 + "px";
+					obj.style.height = obj.offsetHeight - 1 + "px";
+				}
+			}
+		</script>
+	</body>
+
+</html>

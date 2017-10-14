@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box">box</div>
+		<!--div{div$}*3-->
+		<div>div1</div>
+		<div>div2</div>
+		<div>div3
+		<span>啦啦啦啦</span>
+		</div>
+		<p class ="box">p</p>
+		<span>span</span>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			//选中div  类名是.box
+			//$("div").filter(".box").css("background-color","red");
+			//$(".box").css("background-color","red");
+			
+			//选中div中类名不是.box的
+			//$("div").not(".box").css("background-color","gray");
+			
+			//包含 带有span标签的div
+			$("div").has("span").css("color","red");
+		})
+	</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="checkbox" name="check" id="check" value="" />
+		<button id = "btn">按钮</button>
+		
+		<script type="text/javascript">
+			var oCheck = document.getElementById("check");
+			var oBtn = document.getElementById("btn");
+			console.log(oCheck.checked);
+			//checked 获取选中状态 非选中状态下为false 选中为true
+			oBtn.onclick = function(){
+				//点击选中
+				oCheck.checked = true;
+				console.log(oCheck.checked);
+			}
+		</script>
+	</body>
+</html>

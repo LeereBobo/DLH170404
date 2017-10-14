@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<htmyl lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500" id="myCanvas"></canvas>
+<script>
+    var oCanvas = document.getElementById("myCanvas");
+    var ctx = oCanvas.getContext("2d");
+    //save 保存之前的路径
+   // ctx.save();
+    //平移
+//    ctx.translate(10,10);
+//    ctx.fillStyle = "pink";
+//    ctx.fillRect(0,0,200,200);
+//    ctx.restore();//恢复之前保存的画布路径
+//    ctx.clearRect(10,10,100,100);
+//
+    //缩放
+    /*ctx.save();
+    ctx.beginPath();
+    //scale(水平缩放系数,垂直缩放系数)
+    //画布的缩放
+    ctx.scale(0.5,1);
+    ctx.fillRect(0,0,100,100);
+    ctx.stroke();
+    ctx.restore();*/
+
+    //旋转   画布旋转
+
+//    ctx.save();
+//    ctx.beginPath();
+//    ctx.rotate(Math.PI / 4);
+//    ctx.strokeRect(300,100,100,100);
+//    ctx.restore();
+
+    ctx.save();
+    ctx.translate(200,200);
+    setInterval(function () {
+        ctx.clearRect(-200,-200,150,150);
+        ctx.beginPath();
+        ctx.rotate(Math.PI/180);
+        ctx.strokeRect(0,0,100,150);
+
+
+
+    },30);
+
+</script>
+</body>
+</htmyl>

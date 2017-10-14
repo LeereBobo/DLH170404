@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height:100px;
+				background-color: red;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "div1"></div>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			
+			oDiv1.onmouseover =  function (){
+				lineMover(oDiv1,"width",5,400);
+				lineMover(oDiv1,"height",5,400);
+				opacity:0.1;
+			}
+			oDiv1.onmouseout =  function (){
+				lineMover(oDiv1,"width",-5,100);
+				lineMover(oDiv1,"height",-5,100);
+				opacity:1;
+			}
+			
+
+		function lineMover(obj, attr, speed, iTarget) {
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function() {
+				var attrValue = parseInt(getStyle(obj, attr));
+				if(Math.abs(iTarget - attrValue) < Math.abs(speed)) {
+					obj.style[attr] = iTarget + "px";
+				} else {
+					obj.style[attr] = attrValue + speed + "px";
+				}
+			}, 20);
+
+		}
+
+		function getStyle(obj, attr) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[attr];
+			} else {
+				return getComputedStyle(obj)[attr];
+			}
+		}
+		</script>
+	</body>
+</html>
